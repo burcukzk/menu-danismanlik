@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menü Danışmanlığı — Ön Başvuru Formu</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:      #1a1612;
+    --smoke:    #f7f4ef;
+    --linen:    #ede8e0;
+    --copper:   #a0622a;
+    --copper-lt:#c47d3e;
+    --muted:    #7a726a;
+    --border:   #d8d0c4;
+    --white:    #ffffff;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    background: var(--smoke);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    padding: 56px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 120%, rgba(160,98,42,.35) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--copper-lt);
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--copper-lt);
+  }
+  .hero-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,.55);
+    max-width: 400px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── STEPS BAR ── */
+  .steps-bar {
+    background: var(--linen);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .step-pill {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .05em;
+    color: var(--muted);
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .step-pill .num {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--linen);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px;
+    color: var(--muted);
+  }
+
+  /* ── FORM WRAP ── */
+  .form-wrap {
+    max-width: 640px;
+    margin: 40px auto 80px;
+    padding: 0 20px;
+  }
+
+  /* ── SECTION ── */
+  .form-section {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px 28px;
+    margin-bottom: 20px;
+  }
+  .section-label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--copper);
+    margin-bottom: 6px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--linen);
+  }
+
+  /* ── FIELD ── */
+  .field { margin-bottom: 20px; }
+  .field:last-child { margin-bottom: 0; }
+
+  label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 7px;
+    letter-spacing: .02em;
+  }
+  label .req { color: var(--copper); margin-left: 2px; }
+  label .hint {
+    font-weight: 300;
+    color: var(--muted);
+    font-size: 11px;
+    margin-left: 4px;
+  }
+
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  select,
+  textarea {
+    width: 100%;
+    background: var(--smoke);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 11px 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--ink);
+    outline: none;
+    transition: border-color .18s, box-shadow .18s;
+    appearance: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--copper);
+    box-shadow: 0 0 0 3px rgba(160,98,42,.1);
+    background: var(--white);
+  }
+  textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+  select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a726a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+
+  /* ── CHECKBOX / RADIO GROUP ── */
+  .check-group { display: flex; flex-direction: column; gap: 9px; }
+  .check-group.horizontal { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--smoke);
+    transition: border-color .15s, background .15s;
+    user-select: none;
+  }
+  .check-item:hover { border-color: var(--copper-lt); background: var(--white); }
+  .check-item input { display: none; }
+  .check-item input:checked ~ .check-box { background: var(--copper); border-color: var(--copper); }
+  .check-item input:checked ~ .check-box::after { opacity: 1; }
+  .check-item input:checked ~ span { color: var(--ink); font-weight: 400; }
+  .check-item:has(input:checked) { border-color: var(--copper); background: #fdf8f4; }
+
+  .check-box {
+    width: 17px; height: 17px;
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    flex-shrink: 0;
+    position: relative;
+    transition: background .15s, border-color .15s;
+  }
+  .check-box::after {
+    content: '';
+    position: absolute;
+    top: 2px; left: 5px;
+    width: 5px; height: 9px;
+    border: 2px solid white;
+    border-top: none; border-left: none;
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity .1s;
+  }
+  .radio-box {
+    width: 17px; height: 17px;
+    border: 1.5px solid var(--border);
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+    transition: background .15s, border-color .15s;
+  }
+  .check-item input:checked ~ .radio-box { border-color: var(--copper); }
+  .check-item input:checked ~ .radio-box::after { opacity: 1; }
+  .radio-box::after {
+    content: '';
+    position: absolute;
+    top: 3px; left: 3px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--copper);
+    opacity: 0;
+    transition: opacity .1s;
+  }
+
+  .check-item span { font-size: 13px; color: var(--muted); }
+
+  /* ── RANGE ── */
+  .range-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* ── SUBMIT ── */
+  .submit-section {
+    background: var(--ink);
+    border-radius: 12px;
+    padding: 32px 28px;
+    text-align: center;
+  }
+  .submit-section p {
+    font-size: 12px;
+    color: rgba(255,255,255,.45);
+    margin-bottom: 20px;
+    line-height: 1.7;
+  }
+  .submit-section p strong { color: rgba(255,255,255,.75); font-weight: 400; }
+
+  .btn-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--copper);
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .04em;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 36px;
+    cursor: pointer;
+    transition: background .18s, transform .1s;
+  }
+  .btn-submit:hover { background: var(--copper-lt); transform: translateY(-1px); }
+  .btn-submit:active { transform: translateY(0); }
+  .btn-submit svg { width: 16px; height: 16px; opacity: .85; }
+
+  /* ── SUCCESS ── */
+  .success-msg {
+    display: none;
+    background: #f0faf4;
+    border: 1px solid #a3d9b1;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  .success-msg.show { display: block; }
+  .success-msg p { font-size: 13px; color: #2d6a4f; line-height: 1.6; }
+  .success-msg strong { font-weight: 500; }
+
+  /* ── GOOGLE FORM LINK ── */
+  .gform-link {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .gform-link a {
+    color: var(--copper);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px dashed var(--copper-lt);
+  }
+  .gform-link a:hover { color: var(--copper-lt); }
+
+  @media (max-width: 480px) {
+    .form-section { padding: 24px 18px; }
+    .range-wrap { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Menü Danışmanlığı</div>
+  <h1>Mutfağınızı birlikte<br><em>yeniden tasarlayalım.</em></h1>
+  <p class="hero-sub">Formu doldurun, 24 saat içinde size döneyim. Ücretsiz keşif görüşmesi için ilk adım bu.</p>
+</div>
+
+<!-- STEPS BAR -->
+<div class="steps-bar">
+  <div class="step-pill"><span class="num">1</span> Form</div>
+  <div class="step-pill"><span class="num">2</span> Keşif Görüşmesi</div>
+  <div class="step-pill"><span class="num">3</span> Analiz & Teklif</div>
+  <div class="step-pill"><span class="num">4</span> Menü Teslimatı</div>
+</div>
+
+<!-- FORM -->
+<div class="form-wrap">
+  <form id="mainForm">
+
+    <!-- İşletme Bilgileri -->
+    <div class="form-section">
+      <div class="section-label">Bölüm 1</div>
+      <div class="section-title">İşletme Bilgileri</div>
+
+      <div class="field">
+        <label>Ad Soyad <span class="req">*</span></label>
+        <input type="text" placeholder="Ahmet Yılmaz" required>
+      </div>
+
+      <div class="field">
+        <label>Telefon / WhatsApp <span class="req">*</span></label>
+        <input type="tel" placeholder="+90 5XX XXX XX XX" required>
+      </div>
+
+      <div class="field">
+        <label>E-posta <span class="hint">(isteğe bağlı)</span></label>
+        <input type="email" placeholder="ornek@email.com">
+      </div>
+
+      <div class="field">
+        <label>İşletme Adı <span class="req">*</span></label>
+        <input type="text" placeholder="Restoran / Otel / Yat adı" required>
+      </div>
+
+      <div class="field">
+        <label>İşletme Türü <span class="req">*</span></label>
+        <div class="check-group">
+          <label class="check-item">
+            <input type="radio" name="isletme" value="restoran">
+            <span class="radio-box"></span>
+            <span>Restoran</span>
+          </label>
+          <label class="check-item">
+            <input type="radio" name="isletme" value="meyhane">
+            <span class="radio-box"></span>
+            <span>Meyhane / Balık Evi</span>
+          </label>
+          <label class="check-item">
+            <input type="radio" name="isletme" value="otel">
+            <span class="radio-box"></span>
+            <span>Otel / Butik Otel</span>
+          </label>
+          <label class="check-item">
+            <input type="radio" name="isletme" value="yat">
+            <span class="radio-box"></span>
+            <span>Yat / Tekne İşletmesi</span>
+          </label>
+          <label class="check-item">
+            <input type="radio" name="isletme" value="diger">
+            <span class="radio-box"></span>
+            <span>Diğer</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Şehir / İlçe <span class="req">*</span></label>
+        <input type="text" placeholder="Ayvalık, İstanbul, Bodrum…" required>
+      </div>
+    </div>
+
+    <!-- Mevcut Durum -->
+    <div class="form-section">
+      <div class="section-label">Bölüm 2</div>
+      <div class="section-title">Mevcut Durum</div>
+
+      <div class="field">
+        <label>Kapasite <span class="hint">(kişi)</span></label>
+        <div class="range-wrap">
+          <select>
+            <option value="">Oturma kapasitesi…</option>
+            <option>20'den az</option>
+            <option>20 – 50</option>
+            <option>50 – 100</option>
+            <option>100 – 200</option>
+            <option>200+</option>
+          </select>
+          <select>
+            <option value="">Çalışan şef sayısı…</option>
+            <option>Ben tek başımayım</option>
+            <option>1 – 3 kişi</option>
+            <option>4 – 8 kişi</option>
+            <option>9+ kişi</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Mevcut menü var mı?</label>
+        <div class="check-group horizontal">
+          <label class="check-item">
+            <input type="radio" name="menu" value="evet">
+            <span class="radio-box"></span>
+            <span>Evet, aktif bir menüm var</span>
+          </label>
+          <label class="check-item">
+            <input type="radio" name="menu" value="hayir">
+            <span class="radio-box"></span>
+            <span>Hayır, sıfırdan kuruyorum</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>En çok hangi konuda destek istiyorsunuz? <span class="req">*</span></label>
+        <div class="check-group">
+          <label class="check-item">
+            <input type="checkbox" name="destek" value="menu-tasarim">
+            <span class="check-box"></span>
+            <span>Menü tasarımı & yeni konsept</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="destek" value="maliyet">
+            <span class="check-box"></span>
+            <span>Maliyet hesabı & karlılık</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="destek" value="recete">
+            <span class="check-box"></span>
+            <span>Reçete standardizasyonu</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="destek" value="mevsimsel">
+            <span class="check-box"></span>
+            <span>Mevsimsel / sezonluk menü güncellemesi</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="destek" value="egitim">
+            <span class="check-box"></span>
+            <span>Mutfak ekibini eğitim</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Beklentiler -->
+    <div class="form-section">
+      <div class="section-label">Bölüm 3</div>
+      <div class="section-title">Beklentiler</div>
+
+      <div class="field">
+        <label>Hedef müşteri kitleniz kimler?</label>
+        <div class="check-group">
+          <label class="check-item">
+            <input type="checkbox" name="hedef" value="yerli-turist">
+            <span class="check-box"></span>
+            <span>Yerli turistler</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="hedef" value="yabanci-turist">
+            <span class="check-box"></span>
+            <span>Yabancı turistler</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="hedef" value="yerel">
+            <span class="check-box"></span>
+            <span>Yerel / bölge halkı</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="hedef" value="kurumsal">
+            <span class="check-box"></span>
+            <span>Kurumsal / iş yemekleri</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Bütçe aralığı <span class="hint">(danışmanlık için)</span></label>
+        <select>
+          <option value="">Bir aralık seçin…</option>
+          <option>3.000 – 5.000 ₺ (Temel paket)</option>
+          <option>5.000 – 12.000 ₺ (Standart paket)</option>
+          <option>12.000 ₺ üzeri (Premium / aylık takip)</option>
+          <option>Henüz karar vermedim</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Ne zaman başlamak istersiniz?</label>
+        <div class="check-group horizontal">
+          <label class="check-item">
+            <input type="radio" name="zaman" value="hemen">
+            <span class="radio-box"></span>
+            <span>Bu hafta</span>
+          </label>
+          <label class="check-item">
+            <input type="radio" name="zaman" value="ay">
+            <span class="radio-box"></span>
+            <span>Bu ay içinde</span>
+          </label>
+          <label class="check-item">
+            <input type="radio" name="zaman" value="esnek">
+            <span class="radio-box"></span>
+            <span>Esnek</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Eklemek istediğiniz notlar</label>
+        <textarea placeholder="İşletmenizle ilgili özel bir durum, sorun ya da fırsat varsa buraya yazabilirsiniz…"></textarea>
+      </div>
+    </div>
+
+    <!-- SUBMIT -->
+    <div class="submit-section">
+      <p>Formu gönderdikten sonra <strong>24 saat içinde</strong> WhatsApp veya telefon ile dönüş yapıyorum. İlk görüşme <strong>ücretsiz</strong> ve 30 dakika.</p>
+      <button type="submit" class="btn-submit">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        Formu Gönder
+      </button>
+    </div>
+
+  </form>
+
+  <div class="success-msg" id="successMsg">
+    <p>✅ <strong>Teşekkürler!</strong> Başvurunuz alındı. En geç 24 saat içinde WhatsApp üzerinden dönüş yapacağım.</p>
+  </div>
+
+  <div class="gform-link">
+    Mobil sorun yaşıyorsanız →
+    <a href="https://forms.google.com" target="_blank">Google Form versiyonunu kullanın</a>
+    <br><small style="color:#b0a99f;font-size:10px;margin-top:4px;display:block;">(Linki kendi Google Form adresinizle değiştirin)</small>
+  </div>
+</div>
+
+<script>
+  document.getElementById('mainForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('successMsg').classList.add('show');
+    this.style.display = 'none';
+    window.scrollTo({ top: document.getElementById('successMsg').offsetTop - 40, behavior: 'smooth' });
+  });
+</script>
+</body>
+</html>
