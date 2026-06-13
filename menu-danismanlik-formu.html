@@ -449,19 +449,19 @@
         <label><span class="lang-inline" data-lang="tr">Kapasite</span><span class="lang-inline" data-lang="en">Capacity</span> <span class="hint"><span class="lang-inline" data-lang="tr">(kişi)</span><span class="lang-inline" data-lang="en">(guests)</span></span></label>
         <div class="range-wrap">
           <select name="Kapasite">
-            <option value=""><span class="lang-inline" data-lang="tr">Oturma kapasitesi…</span><span class="lang-inline" data-lang="en">Seating capacity…</span></option>
-            <option><span class="lang-inline" data-lang="tr">20'den az</span><span class="lang-inline" data-lang="en">Under 20</span></option>
+            <option value="" data-tr="Oturma kapasitesi…" data-en="Seating capacity…">Oturma kapasitesi…</option>
+            <option data-tr="20'den az" data-en="Under 20">20'den az</option>
             <option>20 – 50</option>
             <option>50 – 100</option>
             <option>100 – 200</option>
             <option>200+</option>
           </select>
           <select name="Sef Sayisi">
-            <option value=""><span class="lang-inline" data-lang="tr">Çalışan şef sayısı…</span><span class="lang-inline" data-lang="en">Number of chefs…</span></option>
-            <option><span class="lang-inline" data-lang="tr">Ben tek başımayım</span><span class="lang-inline" data-lang="en">Just me</span></option>
-            <option><span class="lang-inline" data-lang="tr">1 – 3 kişi</span><span class="lang-inline" data-lang="en">1 – 3 people</span></option>
-            <option><span class="lang-inline" data-lang="tr">4 – 8 kişi</span><span class="lang-inline" data-lang="en">4 – 8 people</span></option>
-            <option><span class="lang-inline" data-lang="tr">9+ kişi</span><span class="lang-inline" data-lang="en">9+ people</span></option>
+            <option value="" data-tr="Çalışan şef sayısı…" data-en="Number of chefs…">Çalışan şef sayısı…</option>
+            <option data-tr="Ben tek başımayım" data-en="Just me">Ben tek başımayım</option>
+            <option data-tr="1 – 3 kişi" data-en="1 – 3 people">1 – 3 kişi</option>
+            <option data-tr="4 – 8 kişi" data-en="4 – 8 people">4 – 8 kişi</option>
+            <option data-tr="9+ kişi" data-en="9+ people">9+ kişi</option>
           </select>
         </div>
       </div>
@@ -548,11 +548,11 @@
       <div class="field">
         <label><span class="lang-inline" data-lang="tr">Bütçe aralığı</span><span class="lang-inline" data-lang="en">Budget range</span> <span class="hint"><span class="lang-inline" data-lang="tr">(danışmanlık için)</span><span class="lang-inline" data-lang="en">(for consulting)</span></span></label>
         <select name="Butce">
-          <option value=""><span class="lang-inline" data-lang="tr">Bir aralık seçin…</span><span class="lang-inline" data-lang="en">Select a range…</span></option>
-          <option>3.000 – 5.000 ₺ <span class="lang-inline" data-lang="tr">(Temel paket)</span><span class="lang-inline" data-lang="en">(Basic)</span></option>
-          <option>8.000 – 12.000 ₺ <span class="lang-inline" data-lang="tr">(Standart paket)</span><span class="lang-inline" data-lang="en">(Standard)</span></option>
-          <option>15.000 – 20.000 ₺ <span class="lang-inline" data-lang="tr">(Premium / aylık takip)</span><span class="lang-inline" data-lang="en">(Premium / monthly)</span></option>
-          <option><span class="lang-inline" data-lang="tr">Henüz karar vermedim</span><span class="lang-inline" data-lang="en">Not decided yet</span></option>
+          <option value="" data-tr="Bir aralık seçin…" data-en="Select a range…">Bir aralık seçin…</option>
+          <option data-tr="3.000 – 5.000 ₺ (Temel paket)" data-en="3.000 – 5.000 ₺ (Basic)">3.000 – 5.000 ₺ (Temel paket)</option>
+          <option data-tr="8.000 – 12.000 ₺ (Standart paket)" data-en="8.000 – 12.000 ₺ (Standard)">8.000 – 12.000 ₺ (Standart paket)</option>
+          <option data-tr="15.000 – 20.000 ₺ (Premium / aylık takip)" data-en="15.000 – 20.000 ₺ (Premium / monthly)">15.000 – 20.000 ₺ (Premium / aylık takip)</option>
+          <option data-tr="Henüz karar vermedim" data-en="Not decided yet">Henüz karar vermedim</option>
         </select>
       </div>
 
@@ -615,10 +615,17 @@
     if (tr) tr.classList.toggle('active', lang === 'tr');
     if (en) en.classList.toggle('active', lang === 'en');
     document.documentElement.lang = lang;
+    // <option> can't hide inner spans, so swap their text directly
+    document.querySelectorAll('option[data-tr]').forEach(function (o) {
+      var v = o.getAttribute('data-' + lang);
+      if (v !== null) o.textContent = v;
+    });
     try { localStorage.setItem('site-lang', lang); } catch (e) {}
   }
   (function () {
-    try { if (localStorage.getItem('site-lang') === 'en') setLang('en'); } catch (e) {}
+    var saved = 'tr';
+    try { if (localStorage.getItem('site-lang') === 'en') saved = 'en'; } catch (e) {}
+    setLang(saved);
   })();
 
   document.getElementById('mainForm').addEventListener('submit', function(e) {
