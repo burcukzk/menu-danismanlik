@@ -478,7 +478,8 @@
   /* ───────── PACKAGES ───────── */
   .packages { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .pkg-grid { display: grid; gap: 16px; grid-template-columns: 1fr; margin-top: 42px; align-items: stretch; }
-  @media (min-width: 780px) { .pkg-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 640px) and (max-width: 1023px) { .pkg-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .pkg-grid { grid-template-columns: repeat(4, 1fr); } }
   .pkg-card {
     border: 1px solid var(--border); border-radius: 14px;
     padding: 30px 26px; background: var(--smoke);
@@ -488,7 +489,7 @@
     border-color: var(--copper); background: var(--ink); color: var(--white);
     box-shadow: 0 18px 44px -16px rgba(160,98,42,.45);
   }
-  @media (min-width: 780px) { .pkg-card.featured { transform: translateY(-10px); } }
+  @media (min-width: 1024px) { .pkg-card.featured { transform: translateY(-10px); } }
   .pkg-ribbon {
     position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
     font-size: 9px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
@@ -519,6 +520,18 @@
   .pkg-card.featured .pkg-cta { background: var(--copper); color: var(--white); border-color: var(--copper); }
   .pkg-card.featured .pkg-cta:hover { background: var(--copper-lt); }
   .pkg-note { text-align: center; font-size: 12px; color: var(--muted); margin-top: 26px; font-style: italic; }
+
+  /* "Size Özel" invitation card */
+  .pkg-card.custom {
+    border-style: dashed; border-color: var(--copper-lt);
+    background: linear-gradient(165deg, #fdf8f4, var(--smoke));
+  }
+  .pkg-card.custom .pkg-name { color: var(--copper); }
+  .pkg-card.custom .pkg-custom-line {
+    font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    font-size: 1.5rem; font-weight: 600; color: var(--copper);
+    margin-bottom: 4px;
+  }
 
   /* ───────── TESTIMONIALS ───────── */
   .quotes-grid { display: grid; gap: 16px; grid-template-columns: 1fr; margin-top: 40px; }
@@ -853,7 +866,7 @@
     <div class="process-grid">
       <div class="process-step reveal">
         <h3><span class="lang-inline" data-lang="tr">Form</span><span class="lang-inline" data-lang="en">The Form</span></h3>
-        <p><span class="lang-inline" data-lang="tr">2 dakikalık ön başvuru formunu doldurun. 24 saat içinde dönüyorum.</span><span class="lang-inline" data-lang="en">Fill in the 2-minute form. I get back to you within 24 hours.</span></p>
+        <p><span class="lang-inline" data-lang="tr">2 dakikalık ön başvuru formunu doldurun. 48 saat içinde dönüyorum.</span><span class="lang-inline" data-lang="en">Fill in the 2-minute form. I get back to you within 48 hours.</span></p>
       </div>
       <div class="process-step reveal">
         <h3><span class="lang-inline" data-lang="tr">Keşif Görüşmesi</span><span class="lang-inline" data-lang="en">Discovery Call</span></h3>
@@ -883,14 +896,14 @@
     <div class="pkg-grid">
       <div class="pkg-card reveal">
         <div class="pkg-name"><span class="lang-inline" data-lang="tr">Temel</span><span class="lang-inline" data-lang="en">Basic</span></div>
-        <div class="pkg-tag"><span class="lang-inline" data-lang="tr">Hızlı bir dış göz için</span><span class="lang-inline" data-lang="en">A quick outside eye</span></div>
+        <div class="pkg-tag"><span class="lang-inline" data-lang="tr">Menünüze hızlı bir dış göz</span><span class="lang-inline" data-lang="en">A quick outside eye on your menu</span></div>
         <ul class="pkg-list">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">Menü & maliyet analizi</span><span class="lang-inline" data-lang="en">Menu & cost analysis</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">1 danışmanlık görüşmesi</span><span class="lang-inline" data-lang="en">1 consulting session</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">Yazılı öneri raporu</span><span class="lang-inline" data-lang="en">Written recommendations</span></li>
         </ul>
-        <div class="pkg-price">3.000–5.000 ₺</div>
-        <div class="pkg-price-sub"><span class="lang-inline" data-lang="tr">tek seferlik</span><span class="lang-inline" data-lang="en">one-time</span></div>
+        <div class="pkg-price">4.000 ₺<span style="font-size:1rem;font-weight:400;">'den</span></div>
+        <div class="pkg-price-sub"><span class="lang-inline" data-lang="tr">başlayan · tek seferlik</span><span class="lang-inline" data-lang="en">starting · one-time</span></div>
         <a class="pkg-cta" href="#form"><span class="lang-inline" data-lang="tr">Bu paketle başla</span><span class="lang-inline" data-lang="en">Start with Basic</span></a>
       </div>
 
@@ -903,32 +916,42 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">Standart reçete kartları</span><span class="lang-inline" data-lang="en">Standardized recipe cards</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">Maliyet & karlılık tablosu</span><span class="lang-inline" data-lang="en">Cost & profitability sheet</span></li>
         </ul>
-        <div class="pkg-price">8.000–12.000 ₺</div>
-        <div class="pkg-price-sub"><span class="lang-inline" data-lang="tr">proje bazlı</span><span class="lang-inline" data-lang="en">per project</span></div>
+        <div class="pkg-price">12.000 ₺<span style="font-size:1rem;font-weight:400;">'den</span></div>
+        <div class="pkg-price-sub"><span class="lang-inline" data-lang="tr">başlayan · proje bazlı</span><span class="lang-inline" data-lang="en">starting · per project</span></div>
         <a class="pkg-cta" href="#form"><span class="lang-inline" data-lang="tr">Bu paketle başla</span><span class="lang-inline" data-lang="en">Start with Standard</span></a>
       </div>
 
       <div class="pkg-card reveal">
         <div class="pkg-name">Premium</div>
-        <div class="pkg-tag"><span class="lang-inline" data-lang="tr">Standart + sürekli yol arkadaşlığı</span><span class="lang-inline" data-lang="en">Standard + an ongoing partner</span></div>
+        <div class="pkg-tag"><span class="lang-inline" data-lang="tr">Standart + sahada uygulama</span><span class="lang-inline" data-lang="en">Standard + on-site execution</span></div>
         <ul class="pkg-list">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">Standart paketin tümü</span><span class="lang-inline" data-lang="en">Everything in Standard</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">Aylık takip görüşmesi</span><span class="lang-inline" data-lang="en">Monthly follow-up call</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">WhatsApp'tan öncelikli destek</span><span class="lang-inline" data-lang="en">Priority WhatsApp support</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">3 ay boyunca yerinde reçete uygulaması</span><span class="lang-inline" data-lang="en">On-site recipe execution for 3 months</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">Konsepte uygun 2 imza "yıldız ürün"</span><span class="lang-inline" data-lang="en">2 signature "star dishes" matched to your concept</span></li>
         </ul>
-        <div class="pkg-price">15.000–20.000 ₺</div>
-        <div class="pkg-price-sub"><span class="lang-inline" data-lang="tr">aylık takip dahil</span><span class="lang-inline" data-lang="en">incl. monthly follow-up</span></div>
+        <div class="pkg-price">20.000 ₺<span style="font-size:1rem;font-weight:400;">'den</span></div>
+        <div class="pkg-price-sub"><span class="lang-inline" data-lang="tr">başlayan · sahada uygulama dahil</span><span class="lang-inline" data-lang="en">starting · incl. on-site work</span></div>
         <a class="pkg-cta" href="#form"><span class="lang-inline" data-lang="tr">Bu paketle başla</span><span class="lang-inline" data-lang="en">Start with Premium</span></a>
+      </div>
+
+      <div class="pkg-card custom reveal">
+        <div class="pkg-name"><span class="lang-inline" data-lang="tr">Size Özel</span><span class="lang-inline" data-lang="en">Tailored</span></div>
+        <div class="pkg-tag"><span class="lang-inline" data-lang="tr">Bu kalıplara sığmayan ihtiyaçlar için</span><span class="lang-inline" data-lang="en">For needs that don't fit a box</span></div>
+        <ul class="pkg-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">Yat & tekne sezon menüleri</span><span class="lang-inline" data-lang="en">Yacht & charter season menus</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">Açılış öncesi yoğun destek</span><span class="lang-inline" data-lang="en">Intensive pre-opening support</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">Tek seferlik kriz / hızlı çözüm</span><span class="lang-inline" data-lang="en">One-off crisis / quick fix</span></li>
+        </ul>
+        <div class="pkg-custom-line"><span class="lang-inline" data-lang="tr">Size özel teklif</span><span class="lang-inline" data-lang="en">A tailored quote</span></div>
+        <div class="pkg-price-sub"><span class="lang-inline" data-lang="tr">ihtiyacınıza göre kurgulanır</span><span class="lang-inline" data-lang="en">built around your needs</span></div>
+        <a class="pkg-cta wa-cta" href="https://wa.me/905335675622" target="_blank" rel="noopener"><span class="lang-inline" data-lang="tr">Konuşalım</span><span class="lang-inline" data-lang="en">Let's talk</span></a>
       </div>
     </div>
 
-    <p class="pkg-note" style="margin-top: 22px;">
-      <span class="lang-inline" data-lang="tr">Fiyat aralıkları işletmenin büyüklüğüne ve menü kapsamına göre belirlenir; net teklif ücretsiz görüşmenin ardından verilir.</span>
-      <span class="lang-inline" data-lang="en">Price ranges depend on the size of the business and the scope of the menu; a firm quote follows the free call.</span>
-    </p>
-    <p class="pkg-note" style="margin-top: 8px;">
-      <span class="lang-inline" data-lang="tr">Yat ve tekne işletmeleri için sezonluk özel paketler hazırlanır — görüşmede konuşalım.</span>
-      <span class="lang-inline" data-lang="en">Custom seasonal packages are available for yachts and charter boats — let's discuss on the call.</span>
+    <p class="pkg-note" style="margin-top: 24px;">
+      <span class="lang-inline" data-lang="tr">Fiyatlar işletmenin büyüklüğüne ve menü kapsamına göre belirlenir; net teklif ücretsiz görüşmenin ardından verilir.</span>
+      <span class="lang-inline" data-lang="en">Prices depend on the size of the business and the scope of the menu; a firm quote follows the free call.</span>
     </p>
   </div>
 </section>
@@ -1004,8 +1027,8 @@ GIZLI-BITIS -->
     <div class="eyebrow"><span class="lang-inline" data-lang="tr">Başvuru</span><span class="lang-inline" data-lang="en">Get Started</span></div>
     <h2><span class="lang-inline" data-lang="tr">Menünüzü konuşalım.</span><span class="lang-inline" data-lang="en">Let's talk about your menu.</span></h2>
     <p class="lede">
-      <span class="lang-inline" data-lang="tr">2 dakikalık formu doldurun; 24 saat içinde WhatsApp veya telefonla dönüyorum. İlk görüşme ücretsiz.</span>
-      <span class="lang-inline" data-lang="en">Fill in the 2-minute form; I'll get back within 24 hours via WhatsApp or phone. First call is free.</span>
+      <span class="lang-inline" data-lang="tr">2 dakikalık formu doldurun; 48 saat içinde WhatsApp veya telefonla dönüyorum. İlk görüşme ücretsiz.</span>
+      <span class="lang-inline" data-lang="en">Fill in the 2-minute form; I'll get back within 48 hours via WhatsApp or phone. First call is free.</span>
     </p>
     <div class="cta-actions">
       <a class="btn btn-primary" href="menu-danismanlik-formu.html">
