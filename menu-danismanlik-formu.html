@@ -2,9 +2,10 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
+<meta name="robots" content="noindex, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light only">
-<title>Menü Danışmanlığı — Ön Başvuru Formu</title>
+<title>Ön Başvuru Formu | Peren Açık — Menü Danışmanlığı</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap');
 
@@ -336,21 +337,17 @@
 
   /* ── LANGUAGE ── */
   :root { color-scheme: light only; }
-  .lang-inline[data-lang="en"] { display: none; }
-  body.show-en .lang-inline[data-lang="en"] { display: inline; }
-  body.show-en .lang-inline[data-lang="tr"] { display: none; }
   .lang-toggle {
     position: absolute; top: 16px; right: 16px; z-index: 5;
     display: flex; border: 1px solid rgba(255,255,255,.25);
     border-radius: 20px; overflow: hidden; background: rgba(0,0,0,.2);
   }
-  .lang-toggle button {
-    border: none; background: transparent; font-family: 'Inter', sans-serif;
-    font-size: 11px; font-weight: 600; letter-spacing: .08em;
-    color: rgba(255,255,255,.6); padding: 6px 13px; cursor: pointer;
-    transition: background .15s, color .15s;
+  .lang-switch-link {
+    font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
+    letter-spacing: .08em; color: rgba(255,255,255,.8);
+    padding: 6px 14px; text-decoration: none; transition: background .15s, color .15s;
   }
-  .lang-toggle button.active { background: var(--copper); color: #fff; }
+  .lang-switch-link:hover { background: var(--copper); color: #fff; }
 </style>
 </head>
 <body>
@@ -358,20 +355,19 @@
 <!-- HERO -->
 <div class="hero">
   <div class="lang-toggle">
-    <button id="btn-tr" class="active" onclick="setLang('tr')">TR</button>
-    <button id="btn-en" onclick="setLang('en')">EN</button>
+    <a class="lang-switch-link" href="/en/application-form.html">EN</a>
   </div>
-  <div class="hero-eyebrow"><span class="lang-inline" data-lang="tr">Menü Danışmanlığı</span><span class="lang-inline" data-lang="en">Menu Consultancy</span></div>
-  <h1><span class="lang-inline" data-lang="tr">Mutfağınızı birlikte</span><span class="lang-inline" data-lang="en">Let's redesign</span><br><em><span class="lang-inline" data-lang="tr">yeniden tasarlayalım.</span><span class="lang-inline" data-lang="en">your kitchen together.</span></em></h1>
-  <p class="hero-sub"><span class="lang-inline" data-lang="tr">Formu doldurun, 48 saat içinde size döneyim. Ücretsiz keşif görüşmesi için ilk adım bu.</span><span class="lang-inline" data-lang="en">Fill in the form and I'll get back to you within 48 hours. This is the first step toward a free discovery call.</span></p>
+  <div class="hero-eyebrow">Menü Danışmanlığı</div>
+  <h1>Mutfağınızı birlikte<br><em>yeniden tasarlayalım.</em></h1>
+  <p class="hero-sub">Formu doldurun, 48 saat içinde size döneyim. Ücretsiz keşif görüşmesi için ilk adım bu.</p>
 </div>
 
 <!-- STEPS BAR -->
 <div class="steps-bar">
-  <div class="step-pill"><span class="num">1</span> <span class="lang-inline" data-lang="tr">Form</span><span class="lang-inline" data-lang="en">Form</span></div>
-  <div class="step-pill"><span class="num">2</span> <span class="lang-inline" data-lang="tr">Keşif Görüşmesi</span><span class="lang-inline" data-lang="en">Discovery Call</span></div>
-  <div class="step-pill"><span class="num">3</span> <span class="lang-inline" data-lang="tr">Analiz & Teklif</span><span class="lang-inline" data-lang="en">Analysis & Proposal</span></div>
-  <div class="step-pill"><span class="num">4</span> <span class="lang-inline" data-lang="tr">Menü Teslimatı</span><span class="lang-inline" data-lang="en">Menu Delivery</span></div>
+  <div class="step-pill"><span class="num">1</span> Form</div>
+  <div class="step-pill"><span class="num">2</span> Keşif Görüşmesi</div>
+  <div class="step-pill"><span class="num">3</span> Analiz & Teklif</div>
+  <div class="step-pill"><span class="num">4</span> Menü Teslimatı</div>
 </div>
 
 <!-- FORM -->
@@ -380,135 +376,135 @@
 
     <!-- İşletme Bilgileri -->
     <div class="form-section">
-      <div class="section-label"><span class="lang-inline" data-lang="tr">Bölüm 1</span><span class="lang-inline" data-lang="en">Part 1</span></div>
-      <div class="section-title"><span class="lang-inline" data-lang="tr">İşletme Bilgileri</span><span class="lang-inline" data-lang="en">Business Details</span></div>
+      <div class="section-label">Bölüm 1</div>
+      <div class="section-title">İşletme Bilgileri</div>
 
       <div class="field">
-        <label><span class="lang-inline" data-lang="tr">Ad Soyad</span><span class="lang-inline" data-lang="en">Full Name</span> <span class="req">*</span></label>
+        <label>Ad Soyad <span class="req">*</span></label>
         <input type="text" name="Ad Soyad" placeholder="Ahmet Yılmaz" required>
       </div>
 
       <div class="field">
-        <label><span class="lang-inline" data-lang="tr">Telefon / WhatsApp</span><span class="lang-inline" data-lang="en">Phone / WhatsApp</span> <span class="req">*</span></label>
+        <label>Telefon / WhatsApp <span class="req">*</span></label>
         <input type="tel" name="Telefon" placeholder="+90 5XX XXX XX XX" required>
       </div>
 
       <div class="field">
-        <label><span class="lang-inline" data-lang="tr">E-posta</span><span class="lang-inline" data-lang="en">E-mail</span> <span class="hint"><span class="lang-inline" data-lang="tr">(isteğe bağlı)</span><span class="lang-inline" data-lang="en">(optional)</span></span></label>
+        <label>E-posta <span class="hint">(isteğe bağlı)</span></label>
         <input type="email" name="E-posta" placeholder="ornek@email.com / example@email.com">
       </div>
 
       <div class="field">
-        <label><span class="lang-inline" data-lang="tr">İşletme Adı</span><span class="lang-inline" data-lang="en">Business Name</span> <span class="req">*</span></label>
+        <label>İşletme Adı <span class="req">*</span></label>
         <input type="text" name="Isletme Adi" placeholder="Restoran / Otel / Yat / Restaurant / Hotel / Yacht" required>
       </div>
 
       <div class="field">
-        <label><span class="lang-inline" data-lang="tr">İşletme Türü</span><span class="lang-inline" data-lang="en">Business Type</span> <span class="req">*</span></label>
+        <label>İşletme Türü <span class="req">*</span></label>
         <div class="check-group">
           <label class="check-item">
             <input type="radio" name="Isletme Turu" value="restoran">
             <span class="radio-box"></span>
-            <span><span class="lang-inline" data-lang="tr">Restoran</span><span class="lang-inline" data-lang="en">Restaurant</span></span>
+            <span>Restoran</span>
           </label>
           <label class="check-item">
             <input type="radio" name="Isletme Turu" value="meyhane">
             <span class="radio-box"></span>
-            <span><span class="lang-inline" data-lang="tr">Meyhane / Balık Evi</span><span class="lang-inline" data-lang="en">Meyhane / Seafood House</span></span>
+            <span>Meyhane / Balık Evi</span>
           </label>
           <label class="check-item">
             <input type="radio" name="Isletme Turu" value="otel">
             <span class="radio-box"></span>
-            <span><span class="lang-inline" data-lang="tr">Otel / Butik Otel</span><span class="lang-inline" data-lang="en">Hotel / Boutique Hotel</span></span>
+            <span>Otel / Butik Otel</span>
           </label>
           <label class="check-item">
             <input type="radio" name="Isletme Turu" value="yat">
             <span class="radio-box"></span>
-            <span><span class="lang-inline" data-lang="tr">Yat / Tekne İşletmesi</span><span class="lang-inline" data-lang="en">Yacht / Charter Boat</span></span>
+            <span>Yat / Tekne İşletmesi</span>
           </label>
           <label class="check-item">
             <input type="radio" name="Isletme Turu" value="diger">
             <span class="radio-box"></span>
-            <span><span class="lang-inline" data-lang="tr">Diğer</span><span class="lang-inline" data-lang="en">Other</span></span>
+            <span>Diğer</span>
           </label>
         </div>
       </div>
 
       <div class="field">
-        <label><span class="lang-inline" data-lang="tr">Şehir / İlçe</span><span class="lang-inline" data-lang="en">City / District</span> <span class="req">*</span></label>
+        <label>Şehir / İlçe <span class="req">*</span></label>
         <input type="text" name="Sehir" placeholder="Ayvalık, İstanbul, Bodrum…" required>
       </div>
     </div>
 
     <!-- Mevcut Durum -->
     <div class="form-section">
-      <div class="section-label"><span class="lang-inline" data-lang="tr">Bölüm 2</span><span class="lang-inline" data-lang="en">Part 2</span></div>
-      <div class="section-title"><span class="lang-inline" data-lang="tr">Mevcut Durum</span><span class="lang-inline" data-lang="en">Current Situation</span></div>
+      <div class="section-label">Bölüm 2</div>
+      <div class="section-title">Mevcut Durum</div>
 
       <div class="field">
-        <label><span class="lang-inline" data-lang="tr">Kapasite</span><span class="lang-inline" data-lang="en">Capacity</span> <span class="hint"><span class="lang-inline" data-lang="tr">(kişi)</span><span class="lang-inline" data-lang="en">(guests)</span></span></label>
+        <label>Kapasite <span class="hint">(kişi)</span></label>
         <div class="range-wrap">
           <select name="Kapasite">
-            <option value="" data-tr="Oturma kapasitesi…" data-en="Seating capacity…">Oturma kapasitesi…</option>
-            <option data-tr="20'den az" data-en="Under 20">20'den az</option>
+            <option value="">Oturma kapasitesi…</option>
+            <option>20'den az</option>
             <option>20 – 50</option>
             <option>50 – 100</option>
             <option>100 – 200</option>
             <option>200+</option>
           </select>
           <select name="Sef Sayisi">
-            <option value="" data-tr="Çalışan şef sayısı…" data-en="Number of chefs…">Çalışan şef sayısı…</option>
-            <option data-tr="Ben tek başımayım" data-en="Just me">Ben tek başımayım</option>
-            <option data-tr="1 – 3 kişi" data-en="1 – 3 people">1 – 3 kişi</option>
-            <option data-tr="4 – 8 kişi" data-en="4 – 8 people">4 – 8 kişi</option>
-            <option data-tr="9+ kişi" data-en="9+ people">9+ kişi</option>
+            <option value="">Çalışan şef sayısı…</option>
+            <option>Ben tek başımayım</option>
+            <option>1 – 3 kişi</option>
+            <option>4 – 8 kişi</option>
+            <option>9+ kişi</option>
           </select>
         </div>
       </div>
 
       <div class="field">
-        <label><span class="lang-inline" data-lang="tr">Mevcut menü var mı?</span><span class="lang-inline" data-lang="en">Do you have a current menu?</span></label>
+        <label>Mevcut menü var mı?</label>
         <div class="check-group horizontal">
           <label class="check-item">
             <input type="radio" name="Mevcut Menu" value="evet">
             <span class="radio-box"></span>
-            <span><span class="lang-inline" data-lang="tr">Evet, aktif bir menüm var</span><span class="lang-inline" data-lang="en">Yes, I have an active menu</span></span>
+            <span>Evet, aktif bir menüm var</span>
           </label>
           <label class="check-item">
             <input type="radio" name="Mevcut Menu" value="hayir">
             <span class="radio-box"></span>
-            <span><span class="lang-inline" data-lang="tr">Hayır, sıfırdan kuruyorum</span><span class="lang-inline" data-lang="en">No, starting from scratch</span></span>
+            <span>Hayır, sıfırdan kuruyorum</span>
           </label>
         </div>
       </div>
 
       <div class="field">
-        <label><span class="lang-inline" data-lang="tr">En çok hangi konuda destek istiyorsunuz?</span><span class="lang-inline" data-lang="en">What do you most need help with?</span> <span class="req">*</span></label>
+        <label>En çok hangi konuda destek istiyorsunuz? <span class="req">*</span></label>
         <div class="check-group">
           <label class="check-item">
             <input type="checkbox" name="Destek Konulari" value="menu-tasarim">
             <span class="check-box"></span>
-            <span><span class="lang-inline" data-lang="tr">Menü tasarımı & yeni konsept</span><span class="lang-inline" data-lang="en">Menu design & new concept</span></span>
+            <span>Menü tasarımı & yeni konsept</span>
           </label>
           <label class="check-item">
             <input type="checkbox" name="Destek Konulari" value="maliyet">
             <span class="check-box"></span>
-            <span><span class="lang-inline" data-lang="tr">Maliyet hesabı & karlılık</span><span class="lang-inline" data-lang="en">Cost analysis & profitability</span></span>
+            <span>Maliyet hesabı & karlılık</span>
           </label>
           <label class="check-item">
             <input type="checkbox" name="Destek Konulari" value="recete">
             <span class="check-box"></span>
-            <span><span class="lang-inline" data-lang="tr">Reçete standardizasyonu</span><span class="lang-inline" data-lang="en">Recipe standardization</span></span>
+            <span>Reçete standardizasyonu</span>
           </label>
           <label class="check-item">
             <input type="checkbox" name="Destek Konulari" value="mevsimsel">
             <span class="check-box"></span>
-            <span><span class="lang-inline" data-lang="tr">Mevsimsel / sezonluk menü güncellemesi</span><span class="lang-inline" data-lang="en">Seasonal menu updates</span></span>
+            <span>Mevsimsel / sezonluk menü güncellemesi</span>
           </label>
           <label class="check-item">
             <input type="checkbox" name="Destek Konulari" value="egitim">
             <span class="check-box"></span>
-            <span><span class="lang-inline" data-lang="tr">Mutfak ekibi eğitimi</span><span class="lang-inline" data-lang="en">Kitchen team training</span></span>
+            <span>Mutfak ekibi eğitimi</span>
           </label>
         </div>
       </div>
@@ -516,119 +512,100 @@
 
     <!-- Beklentiler -->
     <div class="form-section">
-      <div class="section-label"><span class="lang-inline" data-lang="tr">Bölüm 3</span><span class="lang-inline" data-lang="en">Part 3</span></div>
-      <div class="section-title"><span class="lang-inline" data-lang="tr">Beklentiler</span><span class="lang-inline" data-lang="en">Expectations</span></div>
+      <div class="section-label">Bölüm 3</div>
+      <div class="section-title">Beklentiler</div>
 
       <div class="field">
-        <label><span class="lang-inline" data-lang="tr">Hedef müşteri kitleniz kimler?</span><span class="lang-inline" data-lang="en">Who is your target audience?</span></label>
+        <label>Hedef müşteri kitleniz kimler?</label>
         <div class="check-group">
           <label class="check-item">
             <input type="checkbox" name="Hedef Kitle" value="yerli-turist">
             <span class="check-box"></span>
-            <span><span class="lang-inline" data-lang="tr">Yerli turistler</span><span class="lang-inline" data-lang="en">Domestic tourists</span></span>
+            <span>Yerli turistler</span>
           </label>
           <label class="check-item">
             <input type="checkbox" name="Hedef Kitle" value="yabanci-turist">
             <span class="check-box"></span>
-            <span><span class="lang-inline" data-lang="tr">Yabancı turistler</span><span class="lang-inline" data-lang="en">Foreign tourists</span></span>
+            <span>Yabancı turistler</span>
           </label>
           <label class="check-item">
             <input type="checkbox" name="Hedef Kitle" value="yerel">
             <span class="check-box"></span>
-            <span><span class="lang-inline" data-lang="tr">Yerel / bölge halkı</span><span class="lang-inline" data-lang="en">Local residents</span></span>
+            <span>Yerel / bölge halkı</span>
           </label>
           <label class="check-item">
             <input type="checkbox" name="Hedef Kitle" value="kurumsal">
             <span class="check-box"></span>
-            <span><span class="lang-inline" data-lang="tr">Kurumsal / iş yemekleri</span><span class="lang-inline" data-lang="en">Corporate / business dining</span></span>
+            <span>Kurumsal / iş yemekleri</span>
           </label>
         </div>
       </div>
 
       <div class="field">
-        <label><span class="lang-inline" data-lang="tr">Bütçe aralığı</span><span class="lang-inline" data-lang="en">Budget range</span> <span class="hint"><span class="lang-inline" data-lang="tr">(danışmanlık için)</span><span class="lang-inline" data-lang="en">(for consulting)</span></span></label>
+        <label>Bütçe aralığı <span class="hint">(danışmanlık için)</span></label>
         <select name="Butce">
-          <option value="" data-tr="Bir aralık seçin…" data-en="Select a range…">Bir aralık seçin…</option>
-          <option data-tr="Temel: 4.000 ₺'den başlayan" data-en="Basic: from 4.000 ₺">Temel: 4.000 ₺'den başlayan</option>
-          <option data-tr="Standart: 12.000 ₺'den başlayan" data-en="Standard: from 12.000 ₺">Standart: 12.000 ₺'den başlayan</option>
-          <option data-tr="Premium: 20.000 ₺'den başlayan" data-en="Premium: from 20.000 ₺">Premium: 20.000 ₺'den başlayan</option>
-          <option data-tr="Size Özel: görüşmede belirlenir" data-en="Tailored: decided on the call">Size Özel: görüşmede belirlenir</option>
-          <option data-tr="Henüz karar vermedim" data-en="Not decided yet">Henüz karar vermedim</option>
+          <option value="">Bir aralık seçin…</option>
+          <option>Temel: 4.000 ₺'den başlayan</option>
+          <option>Standart: 12.000 ₺'den başlayan</option>
+          <option>Premium: 20.000 ₺'den başlayan</option>
+          <option>Size Özel: görüşmede belirlenir</option>
+          <option>Henüz karar vermedim</option>
         </select>
       </div>
 
       <div class="field">
-        <label><span class="lang-inline" data-lang="tr">Ne zaman başlamak istersiniz?</span><span class="lang-inline" data-lang="en">When would you like to start?</span></label>
+        <label>Ne zaman başlamak istersiniz?</label>
         <div class="check-group horizontal">
           <label class="check-item">
             <input type="radio" name="Baslangic Zamani" value="hemen">
             <span class="radio-box"></span>
-            <span><span class="lang-inline" data-lang="tr">Bu hafta</span><span class="lang-inline" data-lang="en">This week</span></span>
+            <span>Bu hafta</span>
           </label>
           <label class="check-item">
             <input type="radio" name="Baslangic Zamani" value="ay">
             <span class="radio-box"></span>
-            <span><span class="lang-inline" data-lang="tr">Bu ay içinde</span><span class="lang-inline" data-lang="en">This month</span></span>
+            <span>Bu ay içinde</span>
           </label>
           <label class="check-item">
             <input type="radio" name="Baslangic Zamani" value="esnek">
             <span class="radio-box"></span>
-            <span><span class="lang-inline" data-lang="tr">Esnek</span><span class="lang-inline" data-lang="en">Flexible</span></span>
+            <span>Esnek</span>
           </label>
         </div>
       </div>
 
       <div class="field">
-        <label><span class="lang-inline" data-lang="tr">Eklemek istediğiniz notlar</span><span class="lang-inline" data-lang="en">Anything you'd like to add</span></label>
+        <label>Eklemek istediğiniz notlar</label>
         <textarea name="Notlar" placeholder="…"></textarea>
       </div>
     </div>
 
     <!-- SUBMIT -->
     <div class="submit-section">
-      <p><span class="lang-inline" data-lang="tr">Formu gönderdikten sonra <strong>48 saat içinde</strong> WhatsApp veya telefon ile dönüş yapıyorum. İlk görüşme <strong>ücretsiz</strong> ve 30 dakika.</span><span class="lang-inline" data-lang="en">After you submit, I get back to you <strong>within 48 hours</strong> by WhatsApp or phone. The first call is <strong>free</strong> and lasts 30 minutes.</span></p>
+      <p>Formu gönderdikten sonra <strong>48 saat içinde</strong> WhatsApp veya telefon ile dönüş yapıyorum. İlk görüşme <strong>ücretsiz</strong> ve 30 dakika.</p>
       <button type="submit" class="btn-submit">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-        <span class="lang-inline" data-lang="tr">Formu Gönder</span><span class="lang-inline" data-lang="en">Submit Form</span>
+        Formu Gönder
       </button>
     </div>
 
   </form>
 
   <div class="success-msg" id="successMsg">
-    <p>✅ <span class="lang-inline" data-lang="tr"><strong>Başvurunuz alınmıştır.</strong> İlginiz için teşekkür ederiz, en kısa sürede iletişime geçeceğiz.</span><span class="lang-inline" data-lang="en"><strong>Your application has been received.</strong> Thank you for your interest, we'll be in touch shortly.</span></p>
+    <p>✅ <strong>Başvurunuz alınmıştır.</strong> İlginiz için teşekkür ederiz, en kısa sürede iletişime geçeceğiz.</p>
   </div>
 
   <div class="error-msg" id="errorMsg">
-    <p><span class="lang-inline" data-lang="tr">Bir sorun oluştu, form gönderilemedi. Lütfen tekrar deneyin ya da WhatsApp'tan yazın.</span><span class="lang-inline" data-lang="en">Something went wrong and the form couldn't be sent. Please try again or message on WhatsApp.</span></p>
+    <p>Bir sorun oluştu, form gönderilemedi. Lütfen tekrar deneyin ya da WhatsApp'tan yazın.</p>
   </div>
 
   <div class="gform-link">
-    <span class="lang-inline" data-lang="tr">Form yerine yazmayı mı tercih edersiniz? →</span><span class="lang-inline" data-lang="en">Prefer to message instead of filling the form? →</span>
-    <a href="https://wa.me/905335675622?text=Merhaba%20Peren%2C%20men%C3%BC%20dan%C4%B1%C5%9Fmanl%C4%B1%C4%9F%C4%B1%20i%C3%A7in%20yaz%C4%B1yorum." target="_blank" rel="noopener"><span class="lang-inline" data-lang="tr">WhatsApp'tan yazın</span><span class="lang-inline" data-lang="en">Message on WhatsApp</span></a>
+    Form yerine yazmayı mı tercih edersiniz? →
+    <a href="https://wa.me/905335675622?text=Merhaba%20Peren%2C%20men%C3%BC%20dan%C4%B1%C5%9Fmanl%C4%B1%C4%9F%C4%B1%20i%C3%A7in%20yaz%C4%B1yorum." target="_blank" rel="noopener">WhatsApp'tan yazın</a>
   </div>
 </div>
 
 <script>
-  function setLang(lang) {
-    document.body.classList.toggle('show-en', lang === 'en');
-    var tr = document.getElementById('btn-tr'), en = document.getElementById('btn-en');
-    if (tr) tr.classList.toggle('active', lang === 'tr');
-    if (en) en.classList.toggle('active', lang === 'en');
-    document.documentElement.lang = lang;
-    // <option> can't hide inner spans, so swap their text directly
-    document.querySelectorAll('option[data-tr]').forEach(function (o) {
-      var v = o.getAttribute('data-' + lang);
-      if (v !== null) o.textContent = v;
-    });
-    try { localStorage.setItem('site-lang', lang); } catch (e) {}
-  }
-  (function () {
-    var saved = 'tr';
-    try { if (localStorage.getItem('site-lang') === 'en') saved = 'en'; } catch (e) {}
-    setLang(saved);
-  })();
-
   document.getElementById('mainForm').addEventListener('submit', function(e) {
     e.preventDefault();
     var form = this;
