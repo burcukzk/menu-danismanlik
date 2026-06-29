@@ -6,20 +6,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light only">
 <meta name="supported-color-schemes" content="light">
-<title>Menü Danışmanlığı | Menu Consultancy — Ayvalık</title>
+<title>Menü Danışmanlığı | Peren Açık — Ayvalık</title>
 <meta name="description" content="Restoran, otel ve yat mutfakları için menü geliştirme, maliyet analizi ve reçete standardizasyonu. THY / DO&CO, Formula 1 ve uluslararası deniz mutfağı deneyimi.">
 <!-- Canonical -->
 <link rel="canonical" href="https://perenacik.com/">
 
 <!-- Hreflang -->
 <link rel="alternate" hreflang="tr" href="https://perenacik.com/">
-<link rel="alternate" hreflang="en" href="https://perenacik.com/">
+<link rel="alternate" hreflang="en" href="https://perenacik.com/en/">
+<!-- <link rel="alternate" hreflang="de" href="https://perenacik.com/de/"> -->
+<!-- <link rel="alternate" hreflang="ru" href="https://perenacik.com/ru/"> -->
+<!-- <link rel="alternate" hreflang="ja" href="https://perenacik.com/ja/"> -->
+<!-- <link rel="alternate" hreflang="fr" href="https://perenacik.com/fr/"> -->
+<!-- <link rel="alternate" hreflang="sv" href="https://perenacik.com/sv/"> -->
 <link rel="alternate" hreflang="x-default" href="https://perenacik.com/">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://perenacik.com/">
-<meta property="og:title" content="Menü Danışmanlığı | Menu Consultancy — Ayvalık">
+<meta property="og:title" content="Menü Danışmanlığı | Peren Açık — Ayvalık">
 <meta property="og:description" content="Restoran, otel ve yat mutfakları için menü geliştirme, maliyet analizi ve reçete standardizasyonu. THY/DO&CO ve Formula 1 deneyimi.">
 <meta property="og:locale" content="tr_TR">
 <meta property="og:locale:alternate" content="en_GB">
@@ -27,8 +32,8 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Menü Danışmanlığı | Menu Consultancy — Ayvalık">
-<meta name="twitter:description" content="Restoran, otel ve yat mutfakları için menü geliştirme, maliyet analizi ve reçete standardizasyonu.">
+<meta name="twitter:title" content="Menü Danışmanlığı | Peren Açık — Ayvalık">
+<meta name="twitter:description" content="Restoran, otel ve yat mutfakları için menü geliştirme, maliyet analizi ve reçete standardizasyonu. THY/DO&CO ve Formula 1 deneyimi.">
 
 <!-- Schema.org: LocalBusiness / ProfessionalService -->
 <script type="application/ld+json">
@@ -146,13 +151,6 @@
   body.js .hero-actions  { animation-delay: .5s; }
   body.js .stats-strip   { animation-delay: .66s; }
 
-  /* ───────── LANGUAGE TOGGLE ───────── */
-  .lang-block[data-lang="en"] { display: none; }
-  body.show-en .lang-block[data-lang="tr"] { display: none; }
-  body.show-en .lang-block[data-lang="en"] { display: block; }
-  .lang-inline[data-lang="en"] { display: none; }
-  body.show-en .lang-inline[data-lang="en"] { display: inline; }
-  body.show-en .lang-inline[data-lang="tr"] { display: none; }
 
   /* ───────── NAV ───────── */
   .nav {
@@ -171,19 +169,42 @@
   .nav-brand em { font-style: italic; color: var(--gold); }
   .nav-right { display: flex; align-items: center; gap: 10px; }
 
-  .lang-toggle {
-    display: flex; border: 1px solid rgba(255,255,255,.2);
-    border-radius: 20px; overflow: hidden;
-  }
-  .lang-toggle button {
-    border: none; background: transparent;
+
+  /* ───────── LANGUAGE DROPDOWN ───────── */
+  .lang-dd { position: relative; }
+  .lang-dd-btn {
+    display: flex; align-items: center; gap: 7px;
+    border: 1px solid rgba(255,255,255,.2); background: transparent;
     font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
-    letter-spacing: .08em; color: rgba(255,255,255,.55);
-    padding: 7px 14px; cursor: pointer;
-    transition: background .15s, color .15s;
+    letter-spacing: .06em; color: rgba(255,255,255,.8);
+    padding: 7px 12px; border-radius: 20px; cursor: pointer;
+    transition: border-color .15s, color .15s;
   }
-  .lang-toggle button.active { background: var(--copper); color: var(--white); }
-  .lang-toggle button:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+  .lang-dd-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .lang-dd-btn svg { width: 11px; height: 11px; transition: transform .2s; }
+  .lang-dd.open .lang-dd-btn svg { transform: rotate(180deg); }
+  .lang-dd-menu {
+    position: absolute; top: calc(100% + 8px); right: 0;
+    background: var(--ink); border: 1px solid rgba(201,164,99,.25);
+    border-radius: 10px; padding: 6px; min-width: 150px;
+    opacity: 0; visibility: hidden; transform: translateY(-6px);
+    transition: opacity .16s, transform .16s, visibility .16s;
+    z-index: 80; box-shadow: 0 14px 34px -12px rgba(0,0,0,.6);
+  }
+  .lang-dd.open .lang-dd-menu { opacity: 1; visibility: visible; transform: none; }
+  .lang-dd-menu a {
+    display: flex; align-items: center; gap: 9px;
+    padding: 9px 12px; border-radius: 7px; text-decoration: none;
+    font-size: 12.5px; font-weight: 500; color: rgba(255,255,255,.72);
+    transition: background .14s, color .14s;
+  }
+  .lang-dd-menu a:hover { background: rgba(201,164,99,.12); color: var(--gold); }
+  .lang-dd-menu a.current { color: var(--gold); }
+  .lang-dd-menu a.current::after { content: '✓'; margin-left: auto; font-size: 11px; }
+  .lang-dd-menu a .flag { font-size: 14px; line-height: 1; }
+  .lang-dd-menu a.soon { opacity: .4; pointer-events: none; }
+  .lang-dd-menu a.soon::after { content: 'yakında'; margin-left: auto; font-size: 9px; letter-spacing: .04em; }
+
 
   .nav-wa {
     display: none; align-items: center; gap: 6px;
@@ -629,11 +650,22 @@
 
 <!-- NAV -->
 <nav class="nav">
-  <div class="nav-brand">Peren Açık <em>·</em> <span class="lang-inline" data-lang="tr">Menü Danışmanlığı</span><span class="lang-inline" data-lang="en">Menu Consultancy</span></div>
+  <div class="nav-brand">Peren Açık <em>·</em> Menü Danışmanlığı</div>
   <div class="nav-right">
-    <div class="lang-toggle">
-      <button id="btn-tr" class="active" onclick="setLang('tr')">TR</button>
-      <button id="btn-en" onclick="setLang('en')">EN</button>
+    <div class="lang-dd" id="langDd">
+      <button class="lang-dd-btn" id="langDdBtn" aria-haspopup="true" aria-expanded="false">
+        <span>TR</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="lang-dd-menu" role="menu">
+        <a class="current" href="/"><span class="flag">🇹🇷</span>Türkçe</a>
+        <a href="/en/"><span class="flag">🇬🇧</span>English</a>
+        <a class="soon" href="#"><span class="flag">🇩🇪</span>Deutsch</a>
+        <a class="soon" href="#"><span class="flag">🇷🇺</span>Русский</a>
+        <a class="soon" href="#"><span class="flag">🇯🇵</span>日本語</a>
+        <a class="soon" href="#"><span class="flag">🇫🇷</span>Français</a>
+        <a class="soon" href="#"><span class="flag">🇸🇪</span>Svenska</a>
+      </div>
     </div>
     <a class="nav-wa wa-cta" href="https://wa.me/905335675622" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A8.9 8.9 0 0 0 12.04 3C7.1 3 3.1 7 3.1 11.94c0 1.78.5 3.43 1.4 4.83L3 21l4.4-1.45a8.95 8.95 0 0 0 4.62 1.27h.01c4.94 0 8.97-4 8.97-8.94 0-2.4-.94-4.65-2.4-6.3zm-5.55 13.7h-.01a7.4 7.4 0 0 1-3.78-1.04l-.27-.16-2.81.92.93-2.74-.18-.28a7.39 7.39 0 0 1-1.13-3.94c0-4.1 3.34-7.44 7.46-7.44 2 0 3.86.78 5.27 2.18a7.4 7.4 0 0 1 2.19 5.27c0 4.1-3.34 7.23-7.67 7.23z"/></svg>
@@ -646,29 +678,26 @@
 <header class="hero">
   <div class="hero-content">
     <div class="hero-eyebrow">
-      <span class="lang-inline" data-lang="tr">Menü Danışmanlığı · Ayvalık</span>
-      <span class="lang-inline" data-lang="en">Menu Consultancy · Ayvalık, Türkiye</span>
+      Menü Danışmanlığı · Ayvalık
+      
     </div>
 
-    <div class="lang-block" data-lang="tr">
+    
       <h1>Gökyüzünde, denizde ve otelde pişti.<br><em>Şimdi sizin menünüzde.</em></h1>
       <p class="hero-sub">Restoran, otel ve yat mutfakları için menü geliştirme, maliyet analizi ve reçete standardizasyonu. THY/DO&CO uçan şefliği, Formula 1 ve uluslararası deniz mutfağı deneyimiyle, online ve yerinde.</p>
-    </div>
-    <div class="lang-block" data-lang="en">
-      <h1>Trained in the sky, at sea and in hotels.<br><em>Now working on your menu.</em></h1>
-      <p class="hero-sub">Menu development, cost analysis and recipe standardization for restaurants, hotels and yacht kitchens. Backed by years as a Turkish Airlines / DO&CO flying chef, Formula 1 events and international galley experience, online and on-site.</p>
-    </div>
+    
+    
 
     <div class="hero-actions">
       <a class="btn btn-primary wa-cta" href="https://wa.me/905335675622?text=Merhaba%20Peren%2C%20men%C3%BC%20dan%C4%B1%C5%9Fmanl%C4%B1%C4%9F%C4%B1%20i%C3%A7in%20%C3%BCcretsiz%20g%C3%B6r%C3%BC%C5%9Fme%20almak%20istiyorum." target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A8.9 8.9 0 0 0 12.04 3C7.1 3 3.1 7 3.1 11.94c0 1.78.5 3.43 1.4 4.83L3 21l4.4-1.45a8.95 8.95 0 0 0 4.62 1.27h.01c4.94 0 8.97-4 8.97-8.94 0-2.4-.94-4.65-2.4-6.3zm-5.55 13.7h-.01a7.4 7.4 0 0 1-3.78-1.04l-.27-.16-2.81.92.93-2.74-.18-.28a7.39 7.39 0 0 1-1.13-3.94c0-4.1 3.34-7.44 7.46-7.44 2 0 3.86.78 5.27 2.18a7.4 7.4 0 0 1 2.19 5.27c0 4.1-3.34 7.23-7.67 7.23z"/></svg>
-        <span class="lang-inline" data-lang="tr">Ücretsiz Görüşme Al</span>
-        <span class="lang-inline" data-lang="en">Book a Free Call</span>
+        Ücretsiz Görüşme Al
+        
       </a>
       <a class="btn btn-ghost wa-cta" href="https://wa.me/905335675622" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A8.9 8.9 0 0 0 12.04 3C7.1 3 3.1 7 3.1 11.94c0 1.78.5 3.43 1.4 4.83L3 21l4.4-1.45a8.95 8.95 0 0 0 4.62 1.27h.01c4.94 0 8.97-4 8.97-8.94 0-2.4-.94-4.65-2.4-6.3zm-5.55 13.7h-.01a7.4 7.4 0 0 1-3.78-1.04l-.27-.16-2.81.92.93-2.74-.18-.28a7.39 7.39 0 0 1-1.13-3.94c0-4.1 3.34-7.44 7.46-7.44 2 0 3.86.78 5.27 2.18a7.4 7.4 0 0 1 2.19 5.27c0 4.1-3.34 7.23-7.67 7.23z"/></svg>
-        <span class="lang-inline" data-lang="tr">WhatsApp'tan Yaz</span>
-        <span class="lang-inline" data-lang="en">Message on WhatsApp</span>
+        WhatsApp'tan Yaz
+        
       </a>
     </div>
   </div>
@@ -676,15 +705,15 @@
   <div class="stats-strip">
     <div class="stat">
       <div class="stat-num">20+</div>
-      <div class="stat-label"><span class="lang-inline" data-lang="tr">Yıl Mutfakta</span><span class="lang-inline" data-lang="en">Years in Kitchens</span></div>
+      <div class="stat-label">Yıl Mutfakta</div>
     </div>
     <div class="stat">
       <div class="stat-num">11</div>
-      <div class="stat-label"><span class="lang-inline" data-lang="tr">Yıl THY/DO&CO Uçan Şef</span><span class="lang-inline" data-lang="en">Years THY/DO&CO Flying Chef</span></div>
+      <div class="stat-label">Yıl THY/DO&CO Uçan Şef</div>
     </div>
     <div class="stat">
       <div class="stat-num">F1</div>
-      <div class="stat-label"><span class="lang-inline" data-lang="tr">Formula 1 Pastry Chef</span><span class="lang-inline" data-lang="en">Formula 1 Pastry Chef</span></div>
+      <div class="stat-label">Formula 1 Pastry Chef</div>
     </div>
   </div>
 </header>
@@ -693,33 +722,33 @@
 <section class="audience">
   <div class="section-inner">
     <div class="reveal">
-      <div class="eyebrow"><span class="lang-inline" data-lang="tr">Kimler İçin</span><span class="lang-inline" data-lang="en">Who It's For</span></div>
-      <h2><span class="lang-inline" data-lang="tr">Üç farklı mutfak, tek ortak dert: <em>menü.</em></span><span class="lang-inline" data-lang="en">Three different kitchens, one shared problem: <em>the menu.</em></span></h2>
+      <div class="eyebrow">Kimler İçin</div>
+      <h2>Üç farklı mutfak, tek ortak dert: <em>menü.</em></h2>
     </div>
 
     <div class="aud-grid">
       <div class="aud-card reveal">
         <div class="aud-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg></div>
-        <h3><span class="lang-inline" data-lang="tr">Restoran & Meyhane</span><span class="lang-inline" data-lang="en">Restaurants & Meyhanes</span></h3>
+        <h3>Restoran & Meyhane</h3>
         <p>
-          <span class="lang-inline" data-lang="tr">Satmayan tabaklar, eriyen kar marjı, sezonla değişmeyen menü. Hangi tabağın gerçekten para kazandırdığını birlikte buluyoruz.</span>
-          <span class="lang-inline" data-lang="en">Dishes that don't sell, melting margins, a menu that ignores the season. We find out which plates actually make you money.</span>
+          Satmayan tabaklar, eriyen kar marjı, sezonla değişmeyen menü. Hangi tabağın gerçekten para kazandırdığını birlikte buluyoruz.
+          
         </p>
       </div>
       <div class="aud-card reveal">
         <div class="aud-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="8" width="18" height="12" rx="1"/><path d="M7 8V5a2 2 0 012-2h6a2 2 0 012 2v3"/><path d="M3 13h18"/></svg></div>
-        <h3><span class="lang-inline" data-lang="tr">Otel & Butik Otel</span><span class="lang-inline" data-lang="en">Hotels & Boutique Hotels</span></h3>
+        <h3>Otel & Butik Otel</h3>
         <p>
-          <span class="lang-inline" data-lang="tr">Kahvaltıdan akşam servisine standart, fire ve personel verimi. Crowne Plaza ve uluslararası otel mutfağı disipliniyle düzen kuruyoruz.</span>
-          <span class="lang-inline" data-lang="en">Standards from breakfast to dinner service, waste control and staff efficiency, built on Crowne Plaza and international hotel kitchen discipline.</span>
+          Kahvaltıdan akşam servisine standart, fire ve personel verimi. Crowne Plaza ve uluslararası otel mutfağı disipliniyle düzen kuruyoruz.
+          
         </p>
       </div>
       <div class="aud-card reveal">
         <div class="aud-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18h20l-2 3H4l-2-3z"/><path d="M12 3v12"/><path d="M12 5c4 1 7 5 7 10H5c0-5 3-9 7-10z"/></svg></div>
-        <h3><span class="lang-inline" data-lang="tr">Yat & Tekne İşletmesi</span><span class="lang-inline" data-lang="en">Yachts & Charter Boats</span></h3>
+        <h3>Yat & Tekne İşletmesi</h3>
         <p>
-          <span class="lang-inline" data-lang="tr">Dar mutfak, sınırlı erzak, yüksek beklenti. STCW belgeli, liman cüzdanlı ve Celebrity Cruises deneyimli bir şeften deniz mutfağına özel menüler.</span>
-          <span class="lang-inline" data-lang="en">Tight galleys, limited provisions, high expectations. Sea-specific menus from an STCW-certified chef with a seaman's book and Celebrity Cruises experience.</span>
+          Dar mutfak, sınırlı erzak, yüksek beklenti. STCW belgeli, liman cüzdanlı ve Celebrity Cruises deneyimli bir şeften deniz mutfağına özel menüler.
+          
         </p>
       </div>
     </div>
@@ -733,27 +762,24 @@
       <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIjJSUlFhwpLCgkKyEkJST/2wBDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCT/wAARCAKAAoADASIAAhEBAxEB/8QAHAAAAQUBAQEAAAAAAAAAAAAAAgEDBAUGAAcI/8QAPRAAAQMDAwIFAgQFAgUFAQEAAQACEQMEIQUSMUFRBhMiYXGBkQcUMqEjQlKxwRXRJDNDYvAWcoLh8TRT/8QAGQEBAQEBAQEAAAAAAAAAAAAAAAECAwQF/8QAJBEBAQEBAQACAgICAwEAAAAAAAERAgMhMRJBBBMiUQUUQjL/2gAMAwEAAhEDEQA/APRw2EbGdURAStBCw6FgJQIyAuSwgJsIpCAYwiARBiDyu24SDBRDKANq7aOyIhcGohAEUQuAS9UUjWog0HokHsjagQBcWg9ERELuiAQ0BEGjsuARQikDB2XFo46JRM8rjKDg0IgAkSgYQLEjhdtC4JQiOAAHC6F3WEpQJtSgCEsYXD4Qjg0dksLvZLyUUgHwiA9knARAoEj2XYSruECEApYAC4rp6SgSPZLAjhculBxaCJhIW9EsxhCXCeYQIQCfhLA7KHf6pZ6bbvuby4ZSos5e54AC828T/j1oukh9HSgb646H+Rv1QerBs9FHrX1pQfsfXpNf/S54C+Ytf/GjxLqzSxl4+3pO5bT9P2jKxtTxDqlZznPu3kuMknlDH2ey5pVRLX03D/tIKJrmO/maSvjzTPGeraZUDmVt7YgtyJ+3X3Xofhj8Z6ts8Nql7mdaFw7cD/7X8j6ppj6D2ieIXbJ6LI6D44ttft/zWnOYA3FWjUqZZ9Oi1FG6L2hxbAcJg9U0PgBvRLgnhCKoeQAIcehSEkGDz0QGAOy4j2SAyOM9UsoEgTwlAAK4f+FdKDiAkAHZKkQdGFwaEvK6JlAgCQwSiOEn0QJHsuKIgIQCCgQtlJHOEXRIQgTaELgOyJIeqAIHuu2ooSwgHb7JCAOiKEhAQAQCgIEQnCEJQIAPsugdlwEFdKBNoPRJtCJCZQA4CIQkInSUJRAOAnhAWyOAnDldCKaiUY4hABj2Tg5QKGpYSpQJ6oaSJRALgEQEIgYRN4SIgiOS90nJSkYQcFy4LiilASgQuAA6lKOfZAXKQpEQGECBKl2wUoQDxlFAISEJRwgSM4RDC6EsIOSwuASkIpDkpQJSR3RgYRCQuhLCUNygTqu910JYwhpJS5XQlAyg5ITlLwF0TkIE5ShJI7hKM/CKQ4SE7RmERjaST9FSa3rthpdu6vfXVO3ot/UXHJ9h3RD15qDzV8mg7aQJe+J2j/deaeO/xVtdBL7LTnVL28GKlQv/AIdM9vcrMeOfxe/M0a1lo73sbVd6q3Xb2C8lv799w4U2lwDjMEz9SirTxH401nxNX/4u8e9jeGAwxvwFn6t0ykDEl3MlN3FTym7GYKr3y4+o4VkZtSH3j3mQfqmxXqE/qcSmiSlBJ/UY7FVNSi65pGH06gPMEEY7p2jfwQTH1T9vqV3SoNabjdTBwTkt+qcuNEuKtsy6ZSYWVXGHtPXkhFmrvw14rudJu2VqFUhzcRMSOy+iPAH4g2up2nk1bgS3+Rwgtnt3Hsvkua1pUh7S2OJ6rQ6Prl1ZFlWjVc09+qxY1K+yy4VG7rdzXEeoAcgp2lUNxD9hB6g4LSvEfDVz4ovtNp3FK9satN1PewPunNJb1HypLPFnjSzPmWFjWuQ3DttXzmH5BAP7pq49nqVBTG5/pHUk4Sisx3BB+Mrx/TfxlunVH0NZ0Nts+mIJlxb9RytjYeOmXdFtWnQtjSj9VKriPcRhNRsNwnsiEHhU1h4jtb1wYKgpv4LHEZ+qtd4ImRP2VBkJYQseZAd14KMyECQlBSApfdAnXlIZlKeV0Hqg4hDwiiFxCAVxS+yQ/KAJXFKeEPSEHLgV0YXQgQnKElEeUhAOIQDKSOqLb0XQgBIjA6JIhAJQlEUP0RNChcITkJCEDPVdKMhA4RP3RQBuEbRnK4cDolCJo8BLyhAlE3HKJSyuJSEdkqBEoXRKINRHBEVwS8o0HCUBclEIOXIgCAk6oORASuhE0IOjC6ISkrkHQFwCWF3CBIjhKlSwikiEo+Fy6MoORBIEvCBSMJClkkJDPsiFHXCUAYVPrXiew8P0TWvKsAfytEkrJO/GSyNQ7NOvfKHFQMkfsg9GAXHGTwF53W/F/SWW5qC7pl//APnBDh8hZu9/FitdVCWXdGhROBnJQx7G+s0TDmn64TTq7W5NRoleKu/EqkA0/wCqS/qBTLmlNt/Fl1Bzpb5zehaCAfoVNXHtn5k8sfSd3BMIW6lbF+0uDXf09/grx9n4u2twzb5RoVhx/SflS7f8TqNzTLLhlF7SP5HQR9CmmN34u8TU9CsH3AMvIIAHUr5v8V6vf6xfvr31zUquJwyfSwdgth458X0dUoUadJz2bHbtj/8AfqvPL64NV76hxJkK6Yp6+41CBEqPRbtL3nJjEqZWpwwu4nqVDrvbTpbf5nKxKg1cvJKjOIBz1TtepEhuCVEc7cVphIo3Dabp2Nd8iVe6NpNlqzSa1waJ6Naz1fTus41hJGOFPt6lamBtBa5uQ4GFKLSv4fdb3LrUvJc5s0agEB/sQoNtf3umF1Jji3a4F1N2RI6wnq99c3e11Zzt4jPx1Ua4DqlQVdxLj+qUaXtO+0zU7atSurJ7XOzTex3/AC3f5Cp6ts+zqNIe1zXZBC6xuH27zhrmuwWu6p64dSrUHeW0tcCXAcqC98P+IdQo02WlvcNaym7e1rzAB6q9oap4huLppo3VRr3ugFs4PtC8+sapo1mlzT8d1oqWu1aMC0c+kZ/WXAke0ws2NStnqdDxfd02uvLqvXEwDUoA4+SFWafqOs+GboOpmi9rj/y6ssnuATx/ZV9HWLq8cBeXOoVafO1h5Uq4dpt5tDb11JwEGncUtu72JH+yivUfDPjnwz4juG6brFnU0rUuGVWO2B/xGCt9QqV9BZTbc3H5vT3kNp3GNzZ4n2XzZW0ltzphr21Oq6kx0OB9QY7u14y36rY/hp+It0/d4Y1qsK9Oo0toPqH/AJh/pJ6O7Hqqj32mHNZLYczsnadTeCD+pvKo/DN282j7eo4vNAw1/UsPEq5LdxD2HPSFQ7HdEAhYQR7kIwYQIQkgdUR6pCECdkv1XFIgE8pCjieqQ/2QBEZSESjSEIAiFw4REGEiBISQlg5SoAiEkeyIgpIhAJEYQlGSDOUJGECEIYRRlIUQkYQxAwjSQi4aIQkZTjhlCRyiGmmUUYHRCw4TgOEZcEvVcUQRa4e6VIQZRNQJCJq7lKEC/C6Oy4QljlFIQEoXdFzRhAWFwGUoC6IRShKkHwiRCR3SwlXRKDh7roSgQBhKihARQl2peEAgJQEsJenuiB54XdEUYQ8FB3RQNd1NumadWuHH9LcKeRg5hYX8TtR/L6G+k2psLnCT2CK8413xOy+uHXd1VdXInZRYJmP8LGX/AIi1m/c42zXWdsMB24gINX1yk+s+m0sFvRMOc0wX+wWa1XXa16doJFJuGNPQIHa9xUNU+fXc9w5M7kyLgvkbvgqpdUccyZPKcoVxIa4wO6uGrYXD6YADj9QiqV6zGb9lQU+pEwoPmvY3dScQ4Hr0Kdo6i+u11Ou9xY+Q4A8Huphp43bgZme/ugfqG2dji0fKgPeYdTJlzeD3CiPuDG0nhXE1fW+o1Lmo2m9xeBxPRPPqCq7aDjqs/ZXBY5z5OG4Vg95pW2+cuAMph+SVqFZgc1jSDA47Kjvbj+LzMBOX1zuuMTwFXXLpqE+yuM2ke8vdAUm1tQ6C9wjsFDYYPdWVlgtdUVROp2NNrNxmPdIRTYfSJKe8+mWAE46Jmo6meHD4Uaw09x/pQAg4IQvInBSAme47Ip5rGnn90TrctzTcQT0PVFSdA/qb78hSfQW/Tr0QRGVSw7ajARPKlDy3M3MOexTLoktcJ9kLWFjhtPpUqpX525oNHk3VVgHG15EJG6lqNeWuNW5BEZG5RzUyWuH1SUq9W3eHU6jmHpBhQWOm+Ir3Sbo1bWs+3eRD2kel47OaeQn726FYiu5goXBd5jXUv0PHsenwoVS6rXzR51NlYjMker7hO6latbp/53TvMbRpuDbi3edxt3HqD1Ye/wBEH0T+EPiT/UbRlKvX82o+g3y3n+cCZB/7hwvS2sDHyJDXcjsvk/8ADrxbV0SoXhw8tjg7vsP+xX01pOtM1GypXVB7atvUEtc07h8SOqmi6AIA+yIJmlcMqMwZHMjKeDmkTIP1VCrlwd+y6UHEJEX1Q9UQqQhKkJ6IBjK5Ku6IBhJtRnhIeUAfKQjKUhcihgwuPMIihPVAELiMcokhHRABSFFCQhAK7kLjykCASAhPsi6pDjrCIYjHwjaQhAwiDR7IyMJOq4CEQEosEOcpUg9kuUV0peF3TK5FKCinKBF2QKUTQIQ8IwiUvC4RhJzCIBFjuq7uigLoQcAEsLhxCIBEClS9UsdUV0RzC4rj2SxhBwSnokASTkdgURxE/C7ouyuAQC5wY0knEFeL/jTq7KNg21bU/i13k7Z4AXqHiXXbbRrKrWrObFNpwT+o9l8v+KdXr69rFe8qu3CSB7DsFNVj7qfMcXHr91FLse6nXrIcd0x1hVdWoA3EwtxL8Oe7um3CeCZ6ZTTnEnlDvcCqzqfRui2N2ZEFJWeA4Paec46KK1+9vYg4S7iJahp+pVLofOUzU9a5pkFpSDiDyiCs8vLJ5/srHUawNAAHjH2VYwllTc3kJ2rVLwRODkIpq5fucHdwEw90wSnIJHwhLDCIGmIdJUgViOCUxEcLiYCKlNrGZJJTn5qOxUFryDMog/ccj7IJfmh4zH0RNjoZhRTcNb6QAEP5oA9lEWlIkZUoOG3dAI6hVlC63gZkqUasN3DjqO6NQ7V9QHdvB9kf6o6Tn6plr/5eg6pxhIb7grLQvLDiJUaoSzcI46KS94DWuESZ+6beBUMHrhAdjWDn7d5Y7kE8FTqmo1NxuAQX+WadQR/zGdWu7qmAdReC0wAprYq09wxHPugPQ6vl6g2mwnZUlsdSF7Z+HeoajodIahp4/MWuBd2O79QPFSnPBxx3XhVq8215b1QP0VB9l7h4er/ktOsL1rqQpAup1Q4R6HHj6HIWase0aZeafrdq28sn9SNzcOaerXDuPdTGNcRsquIPtwV57WpXNncnWdCr2zLrAr2peCy5b3+ex5C1+j67T1fTxdsqU4mKlN8h1Nw5afcK6mLQUPLJ2vd35lE2ruO2DPYqNa3rLonadvUsP6o7/CkkbYLGn3J7Kg84zk+yPEFCARM/CIyg6UMZSrigRcllciAPskPCM8oUAwuS8FJ1wUVxAQkI+iEiAiAI6pCUcIUAlIeERGUhGEU2UiMhA4YQCYlIUsLjCBuEsdl0QiARnCD3S4hKAlgoOB6AoowUICMDCKSJRNauiEqGODZSgBcOUpBJRRRI6pYwkace6WZyiVwaQiAKEIhwiwuOqVB1TgHsiEAwlCXgJQJQJEroHVEkPCBUsQMrgl5RYThDEgokhwCZAAzlED9CqTxP4ssPDFoalw/dXcP4VEfqefjsqjxV+IdvpwqWullle5A9VSfRT/3PssdZeFr/AF+qdU1WpVd5mS+rgkf4Clq4znirVr/xK9ta9qOoWwP6OhPYd1gbx7KleoWMDWNkNAW78danb0t9vbbXBv8ACpx0A5MLzmrULHH+3upGkG6aK1uXDkSCs/WBGDgwrqnWhz2jO0zlV1/QDHvA4/U09wVuOfStKQkriepSgg+62xpNxa6QnJ3GeqAtkYXMJaUqnAYKMCUtOk6p+kFT7bTK9XLabj3gcLNsjU536QAwypFOzdUBjnt2Wg0/wzWrPHpwe44Wp0/wXxvpk9ZAXPr0kdufDqvOHac+MNKZdaVG4cwhewN8F0xkDHKjXngmn/LTLsLH98dL/F6eTOtiRgR7Jl9Et6L0yt4JNMGAJ9wqyp4ScJESOkhanrGL/H6jAlruIQmQtbdeFajJLWlUVzptSi4hzT7rc7lcuvOxXOyfdC4DcpD6JB44TZYDjqtuZKL9juTCsqD3OaW91XU2EuI7hWFswxHXCVYfpKR/0vYlNNZAPsjqGLQunh0rDYKj4MJR6gCJkYUWpU9XPKdpS70k4KoeDhUAa79XEdwmofbuJGWomPa4+XUw4dVINNxp8B8Y+VA0AyoRJhp6rceH9U0Sh5NnrVk7yQSDdW7yd4PEj29lh6TWiRnae/RPi4uKMmk+CcRHKlHuGlP8Canbts2/w3NMeeau15HQzIVtd+DzpNP834Y1i8pXUtdUpVH+ZTuAOnYmOMr59papcU3gvYHRyAOQth4b/EoaRVbTrWwvLUEF1CsYcB12uH+VFe4eGPHdGrVpafrlq2zuXn+Bc0wQyqesTwe7St9RrB8BxBJEA9HLxLUquheJbE6t4erValuRN5YOcTUoHpUb7jqtT4A8YOuKj9E1R26vTYKlKqDivT6OCsqY9IbxnolgJm3q7paXB3Ba4HDgn5VCAJCEXZdGUAEJYRbUJEcohEiVCg4jK4tSjnK4osIQUkJTK6EQMeyEjlGhPUoBIyhjolJlcigIQHhOHtKAhA2ULpIRxk9l0BAMpQMIQiaUQULiu90kdUCtR9EIhGIRY4BdCPEITKI4fCIZSBKDCKUNRbVwMogiEa1LCJvC7qgSEULoRQgQcmVw4SmEg4RcEAkAlcClHwiOXEgDJhCZ4lQ9T1O00m1dcXdVrGN/qPJ7BA7d6hQsqTqtaoGsaJJKweu+JbzxI2raWRrW1iMPe0Q+t7DsFEvdQv8Axdd/wmuFoHw1jcD6nqr+hYWul0mNruG5uSAVGpFb4d8IW9tTbdXdCm1jBLGuyGnvHUqH4z8V0tN0+o6m/a2NtNs+qo7v8BH4k8V/lrM1Xyynt9FMnJ9/heHa/wCILnVrt9au/ceGjoB7IIuo6g+4uS57iXST8KqrVMH/ALk4+QCXHJ6qDcVfV/YItR6T4rOPThFXZ5jIPLJGOyYmNx90+HbqkzzytM1QVAWuIzylYT0KdumEVn+xS29v5jh2Wtc82uYwu6ZU6z011d7Rt5Vnp2keZBIWy0jQmBrTtz3hce/THq8/49qt0Twg2sGl7M/2W50zwkxgb6B2OOVaaNpQaG+kLVWlm1jRDc9V5OvW19Lz8OeYoaHhikwCKYHv2VpR0hjGDAJHdXDKOIg4ReVDekrlbXecxTfkQ2fSMJl9mC6YEj2V2+mTmEy6gDOPoo1eVDcaZTqEemf8Kvq6NSmNo+3K09SlAwOf2UGtTAJCbiXlkr3R6cGGj2wspq2g0y10NAPwvTLmgKjCY6LO6jaQSQJXTjuuHp5yvJL7RnU3uAGR/ZU9xYOpOkAkTyvUL7TmOduLVnr/AExgDjH0Xq59Hz/Tx/0yLbeC2pHHKlNaxtaWcO4nopdS1FIkHhRWf/0MA7rv+WvNebD76QbujqmbqG2b47hTav8AzKoI4Cr71w/KuE9VBBqH0gjKkUX7S09lF5aVIo5bnsSrUh+qAYeI+eyO3rvBBpvhw5Y7gpkOBpbSczhIW7oc3Dwoqx/hXIBHoqn+U8E/KOlRa8inUf5L+jncFQKVaf1CfcchTaF417Q0kOjiRMKVSvolstcYPSP90BY24IbU/h1RxUPB9iFMszbGoKdw40mHAeBLR8+yl6l4fraftdU2uoPEsew7mkdCD1CGGNEur7R6xv7KoWuokedTBnaPfu0rZ2/iNwFvqll6KltU8ymxpzT/AK6f/tPI91h6FS50a+o3jIqM6gj01WdWn2PEK2e63sL6jcWribC8bLP+0dWn/uaVFfR/h/xdbXTbO5qHyba7Zh7v0B3z0+CtnSqCo0EFrh0IMgrx38I7p9XTtQ0SsyibmwrCtTByKlF/buJ/uvRrextactptqW4L4ApvLQ139KsrNaD3nC4VGzE5VeNOou9bq1w//tdVJCl0aDKUBjTHyqHycIDzlLAhIUMCF0YS8peqJgOv+6UpSEiDoQkfVEkKKE5SEIoQ+yACMpOEcJCCOiBshcclERyhjqgByApw5Qn3QNtGAiAXQlRClIBK6CUoCBQBKJJELuRKKUH7JQMoUYQdCWEQyuhBwCIJOUsIgspQEkHqjAOUHcJRldGUvCKSEoCSDCWUCRHCWYErkLjIKIi6jqNDTbOpc1nehjZ+SvLXVrrxxqX5zVC6hp1N8UKBxuhXnjzUKVe5ttOe4mk3+LVg9jgKoo1Li71Fzv4TKVNg2U3YgfClWRqqFe20+zIt9lKmwRvjj2CxuseLqQc80QC4E5ecn3PYeyZ8S+JKFGm+28x9xWAjy6cNaPkjheb6vq5cCHOMc7R3UakL4m12tqFQuq1/Mfx7fRZYkk7j+nqUte781xc4wOyh17wNaQPoISLRXNxE5yq9zyZcfoue8uJLuUnSDwtM2m3HaMpy3eTUYfmU1UILscJbc9eyqGbmkDcugYVppFjve3GFFdS8y4C1Wh2WyDErn6dY7+Pnt1a6bpwaB6QtdpGn7gCR/wDSqtNtTUcMYWz0i2DQBC8fXT6Xnziy02yDYxCu6FDaJOVHtKIDQ4jhT2xHK5O4QOw55SiicnCda3bKIuDR0VTUbyx1ygfTAgjn2Tzn5xGE1UIc3Ej4RpEqtzwoFywSVZVfTHKgXBycArNVArtAaqe7oySe6uauZIn6qDWYHAiJ+EjPUZe9tpJkKivrQEGfotje242kxKz19R5AB7rtz083fLIXtlDXSFQPZ5daDy0ytrdUgQZEyFltWtnUorDjgr0+fX6eL15BcPHnOI4c1VN5U/h7e6mVXy1r56RKrLt2Grs8tI0y0KTbO2ubOQcH4UWkZZ7hSaQksB4KtSEr0zR9B749wua8gZ4P7Jy9La1Qhp/TACZBJYfblRUhpk9JXOpP/UwKPTeJ52n36qxps82kYBBHIHVKEo1H4a/jorrR9Zq27TYVaw/LVcbXjcxpPt0+izlRjqbsd07TrFw9x0Srq+uaZp7reptLCfSQZAPsus3B1jdadVGRFag6eHDkfUKupXRfSNN2Yy09lMpF1SrQ2TvcIxysj0P8Pdbq29xpWq0jD6Tzp9wD/PTdloP04+F9Bsays95kllemHcdR/nhfM/gihW/0jXqTKZcaFNlYR/K9jsH7SvojQb/83Z6fcncWXNGnVGOCW5B+qQWlk53FQeuOe6mgqFWcG3VI42uO0/4U1ogkHlaQpXEYzhLGF0IgYSxhF8rpRQHCQ8JVx4QDlJCILuiAfdCfnlEUMIEPOUk/dcQu5ICAT1QGOE4Qg9oQCeMISMoiMoYQNA4CJsxlJAhKMICEIghai6oOOVwyliQuAjKBQMhEAuAlKECtBS88LgJRQgQfKIJA3qiAQFHZcETQuHMIOzK4pVxKBAmrir5LNwgQOTwE8VGvrdt3bvoOMB7SwnsCERm9R8eaXp7nNq6ha7xyzM/sqe9/E21IbTs3NqueMHa6B+yg6bqo8L3x0HXLW2Ba7+BeupD+I0nAcY591beIfEWm+H7bzbi6tW7mzTEAF/wFFjznVdeuqt7+ZvHepztrhBDYmRKq77xHXqGs2o19MvMgt5I+eyTXvFFDV2Vapqsc6rHoaOFnG3z9hbDa9Nv/AE38fQ9FG5CahqrocygNjXGTuMknqqK4qOeSXPVlXFvXLix1Wi85h/qHxKqqoIPqMAHogiVY93KNUeO33T1aSTBIHumCBM8lVKECTJ+iRxkgDquJk9/8IRiTx7qoGoYmOuEdOGAjqmyZqAJwiBHcoROsKXm1wStzo9pta3cOFmvD9jvO8iQSt3p1vgCF5fTrX0PDj4WulW8kOEQMrWaZTAhUmmWopxPVaWxpGOAF578vbytKBDWjEp2SQBwe6Sk3a0fCV7MfustHGzC50HqRKbDiOuERJPdEpI25wgeAY6iFzg4meibdu4AKLhqs7BBgCeygVRPUKfUYSCOVDqtg8AKVUGsAASFX12hpOCMKxqubBAiFX3BwcyJSRKrrmQcT9VUXlAVJwrmq2TmfhRq1vDeJW58OVZS8tiOnVUGo2oq0qjCOR+62l5QBPBVHfWoDCYXbnp5++deeVt1JhaeWmCoFw7ewHsrnVqPk1amMOwZVI4jh32Xr5uvndTKShkqZTMvmYACi0WHzD0A4T59LT0laZGz1lxQUjJP7pyiwi3fUjBwCm3GOMTyVAlSngj/wJbS5fRlpJj+ykbN9EVAJHBUepR2uBGQURZPAu6Be2C8ckdVEa4tqCeR1XaTcmhcNDstcYIUrUbUUqu4D0zIU+mvuAjhw4KtNEt/zF7Qc9ztrXAQ3lVluN7Cw5IyFZaJWNC/ouALiXcNME/B7pVj1vwDb0aGuaxptOq00LyycQB1O0/8A2vSPw+uXV/B2iVnEMdRYKZM/qAx/heBU9b/IeJDeUbhxaBBcRtJBHUd16n+FxZe6VZU/zIhm53lFxxk/cKalesln5lxeQC0j0gf3Uim8bWk88ZHKr2OrWzQH0Zonl7TMD/Cl22x9EllQgSYkYMLSJHOOq7lIHFoG4YOZC7hxPdAq5ck4CBSEJ5S5SEfCDvZIZgouVxECEQByhMyjISHCKAwcISMoikOAgEoTwjJhAchALuUJRkJCEDLeAigQkCUcIFAKX4XNS9UCjlFGEICKBCBRH0RAfZAM8BEEBAop7ZQD9k40IFA6JQF0JRygUBd8LhlEAJQIlhcQAeF0YQC5wCbadxLj3SvkEnBEJnfV2F7IAPEojPeM9Isr+yL65Y1w4kSSPbsV86+MGeXq7rOo+tVp0IDA/BDewnovdfEerM0eyfqV1XabjdsFMiYE8BeDeM9VqeItYfXexrTECBwFK1Ii07yi2k6ky3ayfbKZqXW1uNrcdFVUXVW1jRqNILeCSn3huwHaSB7qNEq3FRxgvA7QoryY/Ufkp/1FpIYAB1Kh1zUe6BhqYhqpUmcqOXSYCddTnJOO6bcWtw3JVQMRzyge4DHRc9+zM5Kbpet0nhVDtFuS4qRZ0nXVxABIBTBkgMaJJWq0DR3U2NJHrOSsd9ZHby4/KrbRLPyw1oWzsLQgDHuq/RdKIcCWrX2enloGAvF1X1PPgen0HA+oLQ2dOBJCYtLAYMYVvRoBsYMjkLDr9Fawu6FGLeRlP06RdESFKFKO3CuJqrFKDxM/snG0gARBUt1AE7lzqcMICuLqG6mD8Jl4a1qlPAaJJ+VDq1GuJkjCmBmpJHsqy6kCe3VS7u9p0xkgf4WZ1bxHQtZG9pPyk5t+kvcn2kVTkyTjoo7nNaI3Anss1eeO7Km0snPsVQXXjZlVw2OIPdbnlXHr35jd1XsySRPbqo74e2e/usH/AOq3VHEGr6uhUi28T1aT5qEVGdYOVq+VYnvzWiumEFwlU94wbHYwVOGqWt4zzKNWTGR1CrrqqHEwcFSTFtlnwxevUAHOdyOFlLin5dQg/wD6txq9PcZ+4WS1K2LHbQDjIK9Pnfh4Pbn5NW7C8F/QYSZqViwdlYNtvy+nMqOH6lBsxNV9Q8AfuurgsruiKGnUmt5P7qvazdTjryFZai6LeyZ1NMuI+VBpw05yJVgd08iKlN2Q4QPlNk7HFp4HMpWzRc0twWmU9qdISyqzhzQ4IILR5VfHQyFe1m/mLRruXQqIncGmMjlXds/dZkHpBBUq8q+jU8qqfZSXPyHM9JkOBHQqLdDZcVB34RU3+hvwcqC6p3H+ou3bSajnAPa3n3I916jomjXNjWtvyl4QyqzzLSq3AeRyPZ3cLy/w8ymL5le5pufZ0yPzJbyxhMb/AKEr1azFfw9T/IXVYVrCu7zLe6ZkMd0eOx7j6rKvSfDXjLex1trNKpTr0hD6jZI/+Q6fPC1NkxlBpqUHmrbVTvLQZAnq3/ZeeW11S1Owo6ls8u6pHyqjqfLXDn6Rkey1dhVqWwbWoBhIaC+m0+iq0/zM7H27qpY01IDy4Ydw7Sha5u4MBzyFH067ZctPlu3MIlvQp65YS0Vacb6Z3R37haZOgd1zv0mFzXNcAWkke6GoS4hgPPKKI/suPJ4XETnouPMIEAhclgJCg7ogPKKZwuAhABQmUZCD2QCZ4ScBEUJ590AlJyldiEM8oGRwE4BI5TTeAnm8IFASIgEkZQKGg+6KOUg5RIEARbUobIRQEQgAnqnIQjojBQ10dEnVLCUBFK0wlkykAShAqT2SnCQmBKBi7eGU90xCgXWoCjbP2AOdE/Cd1RodaOlxG7r2WS1DWaWj6ZXq3ckN/ndieyVHn34pXRNZlHzXO3AVHNnAPC88ZRphm55Jc7MK18U62/V7t1U4H8rR0EqooCpUcGxLisOkM31NlSpuazgQO4UIjYJeQwD+XupGoOqmoKVMeoc/Cp7u5ZTcWl26OypUmvdveA0OjECFCeQYJd15Kh1r15/RgdlDdVqOOStYzqydXojLiXH2UepdtgljNvaVGiOSVzabnnccAd1cQu51R0CflPN9Az9EPpbhpnuVIsqPnVQX8Dopbiyat/D2mea8VqrZJ4leiaPpzQwGM+6y2lV6VIBoAW00zULctDdzRAXm9Nr3+UnLTaPZtD5A4C0tvaj0gZKptHuKL2t2uB7QtHaPa4CDmVwse2dJ1tbgNAjB4VhStwBMZPVMUIdtcSAQpm7aR2TC0gZtIH2XT6IjPyicdxjhI8bJGPlVkjA10yeQm6ztreiAV9mZGRhV9/ehrDJRTF9etY13qys9qGtNtaBe50SmtW1JoeZOB7rBeI9ZqVGup0iT/ha541jv0yA1zxlWfVfTpPgcSsjf373y6rUNR7vdOeS98udO7lBQ0qpcVGy0yV6JJHh6vXSnNKpWqS0HPRXWk+GLy8y4EDuAtr4f8Fte1r6rJWytNEpWlHa1oaAsden+nTj+PvzXmrPA7mtlwhMV/BtRoJbI9pXqxoNPQQOsZTNa2ovaSWiCuf8AZXf+iPIbnw/fWA8yluxkQgtdTLwaVfDhjK9NubSnsc2AWnosN4k0GmZq24hw7dVqXXLrzvP0p71u/wBwVQ6hZ727Y6q1tqriHUXyHs7pq5YCDgzC1Phy6mxT6zW229CiMQFXW8NouHVycv3mpW+BCYpvDYHRd5Xl6nyl6hWLqtPs1gblDtwPdN1f4lSCjz+loyMBajI6Y8wbowMT3CebUFai6kRkZYu2GnQbS+rj2UOtWLcsOW9lQ27BnuVbWrttrMzgKskVWF4xOSFLt6v8DYT0WaQ3dO3VScztAKGg4ubHYoaj5JcitY9X3UsVp/CDqbrytb1P+qw0wDw4Hlp+Vv8AwHdU9Usrnwxfk/mKBIpNd/1Gt6ezgPuF5XpVXyrppc5zcj1DkLTNuatprhrCq5lxUaKtKu0/oqt4d7iOVFb3QdQd4U1mppt3Ue/T7t3l7zy0jg/+5pP1C9G8PX7ar32rtoc2S3sHdY9jg/X2Xl2p6pQ8U6Y7VWt2VqZbR1W2HNJ/8tZnsVK8I+IbijessK1YfmgPLa8D9RH6HfUY+iI9joD8ncsr0y7ZV9UdM9f8K+D21ae/IxysppNpfXNpTF5dlmS3YGgFk8SVfUbVjGsdVc94d6XhzsBysQ95wokMJGRg9PhP0xOepTRtaWwObTEiHBOjGQBHbsqCj9l3XCLnKEjKDknyu4SnjugFJMlHEoSEAOEpIMouq4ohuOhQnPRG5BMooCJSGURScoGQ0QEYQjCIHCA2wkIMrm5SgIFaUSGUoMBEGPhKByuBx7ruqKXhECEI5R8dEQqUJF0oCC4LgcruiK76oX/pIHZLnmF3IQU+v31G10qpVrvFNrOSV89+M/GNz4rvxSpvNCwpGIP83uV9AeJtLGtaLeWAgF9M7PmF4RpmnU7N9TRq+ngXzau4Oe6JaOmeilIzly6ytrbZSdVqVRkkjBCpnCq/1UXx1DZyvXLrwy6/tyyrVFuTMBjcbvb2WR8ReHbXw9RafzAqXLxJjr7qY0xDK9S2qVLhz5qFpbtJ5lUxoZcXAwO/VW903zXkvADQoFeptJjgdEhUJ1Hc4Q3Cac1jHZapwOyiaryM/sqxxdUeScCVuM0ZLRmAkLi7rDVxbAEpmq4yROEDjqoBhnHfurSwoFtIOccnKprdhqVWtW10jQ6t3tc5h9pWO7jfnLb8IDTcSAzcQP6QpFGvd03yalRq3ml+EqVSnDxB5BVjW8BUrimdh2vjlc/zj0/09fbIaV4l1DTnhzK+4A8E8heiaJ4wyypU/wCWY3CY2lYu88IXVlVJDNzTyIwU7ZW1xakOaDt4c0jBHZZ6krfF75ezabrVOrUfTnB9TT0IV7SuA9uD9SvGNHv61vXFA1CIM093UdlvtH1V9am0OJ3tEELj1Merjr8mubVl0l0Rwm69zBPMKJRql4zP0S1S4ggdFnXTDbq+2cql1Sq6qw7DBzjuplw8tcYMqtunFzXDt3U0rF6rcVXb28E5+CqO4tHV6hBBMgdOVo9Sosc+TiCVCaGMOR9V1lxwvOqlulNb6iPaFd6Joja1VjjTwF1rauvKwYAQ0Fa6wtmWlIADPUp+ROJEllsy2ohjQBAUOvckEiSpt1cU2sknjus3qGqsDneqFjLXaXEw3Q3QXGT0SOqtIJBEcrPHV2bp3CUr9Uc7h2Dyr+K7FlWrAzCptRYypTIIT35kluTJUK8uJECEnwx1jI6nZCnVNRgyCoNT+JSJ6laG8aKgJ5VJUpFhcu0eTqMfesLLlzSOCoh5jqrrWKG2oKoGDgqlrNLXSu3NeTqZTpJJDhlSrYhzhPVQ6dYBuBz3TrawHWHHhbjFS7yrtaadPJ6lVzyBk8FPjzMnO4c9imnCZEKskpEtcR0UsbWsbtJkgyolNp8wg9QnqjjTLTPRSrDe+QZR274LvhNuHrJHXokYSHKCdTqFvXI4V83X/wAyLIVqFEPt3AeZMBw4ys4DJEI2PnAgHsVKut/bG6pXFWvp/l0HGltqU21QRXpn+XsVY6XbWta2N7p1WL7TzufRqGHup9j7g4+CsDZa3f6eaVSiaZFF25pc0HnoR1CtKnie3uq1O6Nl+XrTFYUj6Ht9uoKmGvqfw3rFtr+lWd9bOaypUpt9B4dHLT7q/pvZV30iYD8Q7lp6r5n8GeK9Qa1+naW0XZY41qTAYqAdQDyfggr0PQ/xPovrMttUoahp9yx217azeR89fsqmPXKLt1IT+oYPyj2dFnNH1k33mVrC4p3lBzp2tI3s+nX6K9p3LKjofLD0ng/VUPAYSJSACOfukyPdBxCSUvIwkQcCUhSiOy48+yAUjkSElA2ShPCN2ThCeEATKEoihQNjhEAhHAwnAEQoEJUiWPZFJARAd10GUsFAoSgrgMJQOkIFai4SDCWECt+yKEkJQUHBKugLjwgSEhwM/KLaYyUFRoPpQRKwmXDkdfZUes+GNL1uiypXt2+azAqjDvutG5o2nsFR63fDTbBznOEvJ2j2Qeb+I9RPhvdY27m1iTDJHqA7Feda9UfUdurP31XiXHsOwWruqVXUdUqvaXVq1V22mP6Z6rI+KqTbW8q0GO3Gn6HH/uWVZuq01TtaAeig3dDYB191fPtha0Wg5c4fuqjVXQ5tNvTlWFVNy8uhs+kKMSAZP0COq6Xk9E0Tuf7LSOy9xJ47Jl4kn5T7YhxUZ7obE55VRaeGrb87qTWgeluSvX9IsmMaA1oELzX8PLcVLmtV7EAL1rTmQ1uM+y8vr18vf/G5/wAdXOm24ESBjCuKQETAkCOFU06woAEvjvlH/wCoLOgCHVGz2mVxeu1OuqVOsPUAoLrCg/0lo+SotfxRZE4dDfhM0tZpVD/DqAlPk+Ex2iUKmQJ7HsrDS7SpbVe5PVQ7a+DuZJ5wruwe17hB+Ss21rjmL+wpHYJ5UmtRG1xPZdZABoUm52mnxlZjVrN3NOHxnCp9Rqim0niFdX7xTJMrE67qEB7Wuj2VKgX921ziC7n2TVtRfdOAaMd1TuuH1qu6Tk4Wy0m0bb2gqOiSJlbkc7TdvFo8NDfkqYdQ8luJc/mOir69001TtiR1nhVlxq1M+jcGU55J5WpNS9Ym3Na8v3OIq7WnoFVXOllxgvcSe5R1PFOm2Ya2rXYMYz1Wb1b8QrRzIoQXBxOAtzmuXXrzPtLurJ1DgGPYqudfuoO2l5Md1TXHjw1cbcKvreIKd1MmCThb/CuN9p+m5tNRNUbZOV1asXGCVm9H1JpAl+Arhzi9wcCSCsWOvPexJDQWngqvvLbmMKwtzuMRCW4t9zeFCzWT1C3DgQ4SOCszeWzqLiIkdCt5eW0ggjCzt5bw4iFvnp5++dZkY9il2ea0kHKm3do0cCJ5UA03UnSF2leewLatSkQCTzCe8wuInlJUdJBET2I5ShodGPZaYPMBILupyhqndTmOOU5G1oI4GEDHNeXgcdR2QNh5JbPUAFOub1CbDfU4RwZb8J1/pAkKKJhEI3OY0B4Dp7oG9xmeiGo7ZiCWnkFBb2lqKtJl1TpGtTMtew8z7HupVnQp1RVfYhtYNbNW1qfrA7jv8hQNA1SrptYhgNSjUjcyefj3W3/9PWPim0F7otU0dWoje6gDtNYdXM7PHUdeQpRltzbSpSvNLq1qL2H1E/yfJHRb638e6tptszTvGGnU7/Tq4DmVqjNw2nqx44WBuBX0+tsrsNK5BI38B/cOb0K9I/Cfxpa3VA+D/E1tTdZ1XRa1nD/+d7v5TP8AKTx2JRWu8Padol1Zi80uvWqWZdPnWtQitbns9n8w9xBWx0291XTvLdVqN1myI/XT/wCZt7tP80dWmCOkrzbxD+Ges+Cr8694QuXbGCa1u48DsR2P2Wl8E+NbfxTWfa0mO0zXaTQ6paVcNqkdQOo/cT2RHpthe0Lyi2rb1RVoPEsfwR3aeoI98qWRnKzDKrmOq6nY0nNrN/8A7bI8u7kdnDoeoWjtrild0KdehUa+lUaHscOoPVUOcHHHUJSkc6WlLMhAMR1XEpYjlIQgScf7oSij6pD7IAP2QuREHhB1QCQk2yZ6o0h9kDDeAjCFkGAnOAiOHEIgfshlF8IQoyURACEGOiIGUVw4SzldHdd8oCBlFwUIRYQH8JEowEvRBw4QnKU5SEnsUCtMj36oDz8pCXdGlI6SM4CIGo8Q4NysH4yrB1Ih251Rx2UgO629RwpUnycgSsRDdW8TUaZM0qAkfKKpLGw/0Gk+8qgCuyi57twyDC8imtrer7HN3mrUdUcByvf/AB7atbpdbY0bqjfLafcrxXwVZhus6reEA/lqbmgdiTCi6ptaePMogDaAIEdVmNRqbqjnTlaXxA4gtEgljiMdMrKai4eaZ7Iiv5nKaBgn2TnBICacOVoE138MqM8yD3T/APJ/ZRnjaTPCrNbP8N3Yr99wXpVG+bQo7txkLzX8OmltO5PQuC1eo6tTsLM1KhyeP/peT0m9Po+Fzz1Kq6426ujRurn8ueQ04Dh3BUG48V6Zp1R9JxFWB6XNyQsDq2rP1a6DQ4BgOHcQtXouiaF/p5fVuaVSu5v8zuCus85HLr2t+nVPxCFxTLDSJ2EQ5reUzT8a2tVwLgWO/qbgqFp9xRs6F5bmzfXLxtaWjDT0Kq7Tw3qFy/02lR27gELV55c56d69B0Xxmx9ZlJ9UFrjAPUfK9Q0io55Y+RnsvCtN/DXXK1SQG0yciHcFe7+FtNrW1la21cl1amxrXuPUry+k5n09/h11f/qNnaE+WDwF11cbWxuTjWspUg3MqrvnwHScLi9Ck1q82h3q6LBatVNWpiTK0+sVnFx+yzdah5lScJDr6V1rbubWYPdanXbv/SvDv5ggkkhsNHKgW1l62u5IWwtNMbeWrW1KYqU2eoNOcrprlY8cvPFlbaWUrWsfbaZKp7Vup6/qLbatX/IUXZLqmF74/SbF7/4lnSBHLgEzV8H6Peth1MAn24XTn0k/Tj15ddft4h4o8OWOl0KZtni7IcN7i+SVmNcdQf5bbSg9o2Q6ehXv99+E+lV3lzCQ3nBTQ/DDR6U/8Jujq4yun/Y5cL/F6r5udRqkYa8oDb14EUnz7BfSY8CaZQ/TZUhHZqYufCVkwQy3pt/+Kn/Yh/07/t4BYOvabmhtKoYPZbywNc2lN1bBPTstpW8LW1OCKbST7KJcaAzBaC13aFjr1nTrx43lTWzj5sDhW77ffTBBkqOLDy6oMGByrehRbthx6YWL06zlmbygWgiFn7+3zuhbjUbQFpLVl9RogAjiP2Wubrn3zjJ3lOJEZVfXoEMDzieB3VxeUjvxklVl2SfTkgYlejh5O4gGmQJPQ5R0hteT04TgpwCDieETqflOJIgAwtuISfTB4Kiv3Uy7oeB7pwVBJng4KGuA8NAMjoVpmpNLbVZu/mHI7IqrPQHdO6ZtcHs73U8FrqZGC09FGorRVNKSZiVMBZVgOzjlQ7qkQ3EEAoWVCKYIPCCwZbPouFRhkA9FcWOpVLSrSuKX8OowzIMT7qioXpiHCR7FTKN23d1jsQs1da83ul+IW1RqRLa9Rnoqg5Y8cT3BWburW8sCx8FzGuLGvng/0kpurUDYe14zwnKGoOdTfb1MscZkHgjgqFe9/hB+JrPFFKl4e1ars1GnT229Yn/nNHR3cx91b/iD+HtK9tqWs6NFhrFi7dSq0jBDhnaf+09O3wvnWpXbY1rXWNJuqlG+ouDnsiHMeP5h3BX07+Gn4iaZ+IWgBlwKbNRDBTuaPBc6P1D2KqIPhTxkfFGh19RaxrNcsKRp6hagQawb1juMwfkLQ+C7yjUtmUaLz+Wr0vzVAH+UEw9v0d/deZ3tA+AvxQo15JstQPk1HExJ5BP/AJ0W40Um21FlSgP+GoV30WEH0lrjn6SAg3QJnaee6c9kAbOXfqPRKDn4VC7pOUhXdEnVAjikK4iJldzCBCZCDrlFjuk6oBScJScpCgZaCjCQRAREIjgl/wDMpAljKELKMJGtHZFHCKUcLoSjhKg4cokPVKgIIkgCUgoFwlSJY4KJXdIKAiOmERQ8kIIt+zbaVi0eosMfZYrwFb1LivUvKpaREGed2ZW8riRnLeCFlvBVtTtf9UtIING8eBPVpyEVF8fOYyytqjz6GVxuPYEEf7Lxvwa4DxLf27z6PMJdPUbl7n4o046tpN9YtP8AF2eZSxyR0Xz9oVd1v4ruLeYNcEjuHRx90EH8QLD/AE3UHmmIp1XlzR7chYrVoLw9uAQPuvR/xFa25020uw71SabgRkQvM752+CDMBQQQYfhNkkz8oiYkrmtkg9CtATjCj1+E9WMcd0w8F4gc9FUrd/h3bOFm8nG90grVXnhl2uVG0A7bTaJe6OU14N0l4sLejTYS8tC9T0Hw+y2pNNRoJOTK8Hff+VfW8vL/AAkrF6R+FOmvpgOtt0DkjlX1r+FGksdudaD2BOFv7djabNjBn44QXPnEEAQsf2dN/wBXM/TKN8F6Pp0bbemCOwUW6tKFJ0UKbTnstI7Tqlw71vweYwnqGg0WQXAHqn5W/bc55n0pNH0+pUducCxvxytNaW7abp4IRGmygIYEBe4+30UrfPNSqldoaqq+rS1zR14Uiq6ABKrLt/PdRv8AFRahRLyeCCVXi3h2VaXLo3Zwq1141j/VyOqMVKtaIa4SFptKreVDeiz1lXp1xyJjsrezLmOGePZTTJWhNrRuPUAAeyjvsWNyRIS0qrhB4UoVtw9Q6ZV1PxV7qBGGPIIUZ9pdOMCrI7lWz6bHnc2PqmHBzcKXGpzUA2FXbl4J+UL9N3AS8z3VgBuPMeyEuIlrpkLLX4qS60wMbuABhQK1kwjAGeCtBWcCCRweQqe6HlmQJb27It5UF1YhpJAjKifoJHYSra5rAsIMe4hVFc7ncR8LcceucRb14LT8LKam6Xk/RaO6PpcOvRZu/J3EHhdeZjh2pblraVF9Q/qOG+yoNvnVA0cDJKtdTqEy0GAOqj2VINtX1CAHOwCV6uXh9FfWbLwBxKZu6heY6hS6jBuJ94AUGqPUStuFNPG3PumG1HB4A46qRccCeEwCNzhtz1K0ylMeBnnoSp1IEEH+VyrqQAnJI7KwtP0+WeDwexUrUM3FPyqhEc5hRntbjaY9irK8oOr25IHrp5VbO4AuCQoaZ2vgqXTHQ/RRjT34ByMhP0iS3a8Q4ce6VFhZC1fVDLjfBEBzTkFSK1hTpljw8miXbXOj9Kqt0EZgrReFLelrRraXXrvY6q07CO8Yn6rLR7VvDL9LY6q25a4sa2oGVGljnsPYHqFG0jWLnwzqdtqthUdTDnQ8Nd16hao0Ha74WDr6+r173Tz5LmPghrAMe8dFiNctv9Pqsohxcyq1r2+4/wB0SvUPGGuah4ls7e6vNrNjqNalAzUBdEyF61RaLHTqLQeaLauOZ3gr588Nahc3mk/6d5zahNWlRZTeJMbpEHoveaNzVt3U6F/bVbdottkPO4H3aeyg9FDt0EEcYSD9SrdAvmahpdCu2oHekAwZghWQ/VnqtQdMLkpXHCATyhKMweqAoB6LkoK4mUAEISeiJ3KAmEDbeAjB6IRMBKEQvHVE0ZSAIh8oCBSjOUGehRNnrKAwuj2SSiCDpSpMLjhFGCiBlAEYGEBDulQj+6UCBwg4/uk2noOCuKVueUAVGSyO6z97Tq6NqlS8t6ZqUKsea1ozxytGcqFqFOof4lEAuA9TD/MP90FHeXtveeXcWl6A7MDqCBwQvn3x5p99pPiL/V2UDRZUqSCzgO6r6C1fwra65bh7fMsbwCW1qPpd9TwfqvN/GPgnxrRtHU2VrLWLKMucBTrM+RwfkIPKdT1eprTPy0w0E1Y91k7lhDiD8LWDQtYtqtZxsvJLDDy536Z9lRalpteiBWcACSUGfrNLHFvZOMaCyZS1hvdJ56pJ2td8YVEasZA+VL0Gwfqer29qxu4ucD9lGDd24e0heo/gd4abeXlzqtVkimfLpzxPVY9O/wAeddfDzvp6Tl6x4R8NtsLSnub6y0SVrGWwaIgYCSypBjQIgKfsHYr5v38197MmRFaXNxCQk1HZH3Uh1MxJTfl+rGSqzeQsbtzAgcFKXE/HCc8klvqCB7mU2gdThMT8SU7beZcMJ/8AJy0ENP2Tlq9m2CZKkuuKVNnIkjutSLapLulsacRHCz17WLQ7qFeaneNJdEY6rL6jdtY45EIuoGoXO1syRKzV1dEvOeqm6lfghyo3vNSsCJiVuRx6qys9RqW7wZMLa6DfsvAJPssDDXMhSdJ1N1hcgF0CZCl5XmvX6VIPaIE4wjFu9pzwofh++beUWHdk8rQGiHtwVjG9xWbdp4Ehc5jXySQJ7d1Iq0i0kEHsmC3BIcpi6Yc0tlwIUV7/AFHrKlvIAgCT2VfWcBPQDKljUR67g0k91W3Dw489IhS7h2/IVVcPgkdFJGqh3VSHFolVV0YJIVhWdJzGO6rbp7YOV0kcelTdPyROFn9UqhtN7sB0K+uhIcstrji2jVgzjC7cvL6fSjvHbwOs8rnVA2m1vAYFDfWnaSUNWvuaYMyYXp5j5/dFcODaYnl3ChkAwuvapcGieOEDKoMLTkG5Ev29x+6j27ZEHkKTUb5jnOGISNZBc7uVpC0xDgCplGabhPHHwojDL9o6ZU8Uy6mD7QflRUtjmkh38pO0lV15a+TWMD0nj3T1vW2vLH4acH56FSLqmX0c/qZx7hQVAO13aUbHw6OnY8LqjJyJ7psZJnqgfBDmwRkcI7W5qW1dlai4te08yo7dzeCSP7Ig6TmPog0NHxHUta9avQA3V2EPDhieqpS99zW31CT5ePogY8jBTlkTuLQOefZBqfw3o07vxXRZWBfTYw1XUwY3BvMfdfSlLSLO10StdXBDXkCo1jnTA/lAXyz4V1D/AETxLb322fKfMd/ZfRulah/6jsxZWrmttnjcajnCQz+gHuP7KVU7QKdKzvby8tKVdjRUn0n0vP8AM2OCFu6F1SrU2vaYBAicLIaFUoincmnXFO2oSxrokH/7Wj0m5o3thTNICoBgGOFYixDtx9kFR8A5TfkluS4zOI4hQdaqGlp9Z3mFgYCSRyIEyiJ1Gt5jZHBThg9VA0i4FxaNeCCCAQe6mj9OYkorguld/Kh46oOPKB2ZRJCgBsAIhkIemEQ4MKoUCFw/suCX3UHBGEnThLgosEEoQh0JRlEKiASBL14QLCIcd/lJ0XD3RRApUgCVByUfC7HKUiAgB8xAwShY0AkR8o3NPISSJ7d0R20AZAI6JurQp1GkFrSOoITpiELnNbA/ZBgfEvhChUZeVqLA2qW4MfqHYheGeI9Nfa3gtqjSA5znAEe3C+n9RcH06rYLnuG0ADgLxzx/oTrzVKbrZkPosBJHBd7osfP1akWvcD0cQm30/RiVc67ZPs9SqAiGvJdEcHsoXkng5DhhBWNbBJ4wvo/8H9Hbp3hO1cR6qxNU/VfO1xT2OaO+F9VeC7YWnh3T6URFFv8AZef+Tf8AGR9D/jp/la09BoHRTabSWyotu2eFYMaNkTC8kj6nVMGluOZStpgGScnhO1BEj7FRrit5bcHoqx8gu7htMZge6p23Drm6LQTDclNaleRIDjlR9Hum/wDFPJwAFLXST4WwujTME8pi6v4BO6Asbrvjejo9ztqMe+kT/LyF1PxNZ6tb+ZZV21P6mzkfRXGbkWGqansBh2VkdR1MvJh0z1Tt9dmpuDnQOAZXn/inV7uhWFC2Ja2JLgunHOuPp6ZGlNcPJ3EfdO0qQaN0juvJ69zqL3FxuKx9pK1HhbxDeNb5N5uqUhgOPK69efxrzce0tyxrqlaHQJA4UW9uBTDXjoei6pcMq+tp5VVqV1uApg5JWI7258vVfBGql1No3SOy9KsrkPYAV4v4LqPohnuvVNNr72tJJBXK/FdfvlcV4cZjhV1aQ/HBUsvcWwYIUOuZHwYKUnwi1Sc5g+6g1xPaOymXYOCMEKBWfyFmukQa5kFoPVVdxOSTBVjXfA3QVU3LwQc5SL0rq9Q9FW3LvUZKnVnZKrrpwz3GF0jz9IFw+Q74Wb1tofScI4Cvrh84VLqDd7XA9l15efv6YSo4hzm9QU0yoYAd0OQntSp+TcPCiNqCoJP6uvuvTPp8zv7HVfvc0dQm9xaQPdDVOZHRC1+90GJlaYqwY2RAEkhI5u3A6p63bFIPPKR4DA4nnoqGrVm68AM5CtabAHuBPOFXWfpu6ZPZXFajBLhwVFiFeUNrpjBT1s7zqJBy4CCnC4PG1wwR/ZRrcmhcqKh1Wmm4j7JqowOEj5U/UabWvlogEKv4AIKJXU2uJjkAJT+mQEG6OMSipvBgEKg2w6OT7L0Twp4e0R3hi7vLmsypdMHmkTEtj9M91grC5dYXlO4phrnU3bgHCQ72VpfanQdWqf6b5lCjcCalB3DTPA7hSh7SNIOrNvKlPcx1Ih1N39PytR4MurW6qV9MqXdxo+rbf+Hq0nxTrO7ObwSp/wCGFWrfWl7o9PRHX9SuPMp1WODDSPElxxCi+K/w+1TTah329Lz6bfNLKNTcQO89ws1Y9T/D/XKLKNxoWsUhZ39qdj6YB2vnh3uCvR7C2p2tGl5Ti1r25gyJ5XyxU8V61Y6tpl3qBqV6tBnlPc4bar2f0u/qjoV7F4U/ETR9bsIbrdDTrlhipTruABHQwY56wVUeouqOpuHmNgEfq6fVZf8AEPVG2Gm/lqb4r3DHMYOZkbR+7lU6v+KOnaRbObcajplVw9LW0n73P+AJUPwfpmpeMdXb4n19hpWlFu2xtXCJH9bgg22hWrrTTLagZAbTa0dyAOVa9I6IWy926OeEUQrAiQiQiyuQNlIc/VK4CTCTogbHyjHCbGU4OIRCgpZ6JOEo5QKPZKBPRcEQQdGEoSxhcECjKKEgCIIpQMJYyuBI6pBygIJeiFqMZQI1HyhjKL5wgSOyFwx/uj5CHhERa9XymuLhholRH3Hk235isSNwmJ4HRTL6mattUa3DtpheZeOvFdS2sbKvRqBrGVW07hhGWkGD9kGovdTZQ9dWq1lRwwN+AqO/utPuqUeex1w9w8zuPqsdV8a2VrqnlsadRruENc3q49PZarRtX/I6b5d1pbKNYS5+8+oz1900eMfiNpVKhqdQUfXLi5pB5BWKbUDWSW5aeF63rWkXGv1q90KYbRc7Dj/KOkLzDWbMWVV7Dh4cQ6OD7hGlde0g59JzRILgvqrRKezT7VsYFNv9l8q03by1pOWuBj6r6w0sf8LQmP8Alt/svL/J/T6X/H/+lxb4U5rgAPsq6m4tkKV5kM9+F5o+j1Dj6rQ0gnKptQu9riQeimXFYNbMws9qVxuBjOUqcxX3dU1nbZlSbW0qU6LyAAHiD7pdKsHV6nmOz2C0LbFracAfdJFvTx7xVpTqtw7cwgz1CpdE8N3TtRbWtarqW39RHBHZex6p4cpXxO9pnumtO8L0rBv8NkA/dbnWM9SX5rAalp1driWyRGcLJapp7nPlzCSva7vSWOk7QYVRV8M0KklzM9PZa56xz65144zSd0nyoSDTn0ydjIK9VuPDlOngMx8KI/w6x0jaJ5W/zcv648/oUL14LGtHvIVlp3hqrUrNqVvUZnPRbClojaIyzqrKhYNpgGPosXtqcGtE0wUQBEEdlrrN5pAAyOirLKjt+PZT9sdYAXOusq4ZX3NAElI71N7qFbVCMH6KWXxgcDKauIl24Maeiq6tQCZVndGRBVVdDkA9Fl0iFcvAzxjoqq6eIwf2U25qSYVXdO/lmecQrGeqhV3mXGYwqyu6euVNuDMwq6u7mBjquscOqhV+D3VVdCWkd1aVvbj4Vbc9l0jz9MX4ityD5gGZgqhpH1QtXr1PfScFkwHMecL0cX4fP9ZlOE9EjGjzN3RKYMrqfpyfoFvXKxZ0aoBaD24Q1agdPYqJRqnzST06rvOkwTyVSJjAdrHtyWH9ld+a19CeSRKoravja4QrKm6GS3IHPsopSSM87TlBW9Lw7oU42HSOqauGwwdZ6KKO4HnUQQZhVUwS3sVOp1Ja5s47KvqnbVchQvwuHqHwlBDh9EjRtJH7KsnXTDXDkKbbMaagqEslvqAfw6OihM9UBSGmaODkYUqvSfCPjBtmKLWMNOtRMhkQ0tPIPt2K3Gqa9a3GkXYdZtbcXAHkkHd6SOF4ANRuQ6kTVd/DG1p6gdlpNH8Qa7d1KVG2t/z1TDaTQCS0/TqpYN544bYajpehWVFgfqFW4DSxmcbv7q3uvw10PWfGtnpdpZ1W07ekX6iQ8EUxGADmCT07Ko8Cfhtrmoa0/UdWdWtGae+Cyg4F5PWDx1XuvhnRtJ0SyLNMo7RVduqued1So49XE5KCg0n8HfCmiXLbm3svOqN/Sax3ALa06bWMaxrA0RgDoiptDWhn9PCIiJ/dUJ0gYSnhISulAnRCSiKHaSgElIiIQEIAbwjHCbYcJ0THVEKBgrvuuBwk6oDn3ShBOUQ5KByey4FCCiGUChEEkrpRR8rkgSmJQE2cpQUgSjCBQUq4ruiBUJPylgd8oSY5IRFfrV3+UsK1UmA1pXzb+KmuMutTdRtyW03ACpBw4jr8r3T8Rr82fhq7cTy2fsvmLW61XVX1bst20y+BAUqxL0PUqDHW1jeFltbuqguugzc5o7+8LYatTuaZYLXxA3VbcCWbHnj37Ly9z3Bmw5jInopDr+i+1NNls5lUf9RtX+4RWy1PxRWtbXyhXbTERBrgwfgBeb6heOurhz3mSUtV5JkmT8qDVw+UBMq7KgcehC+stBrtraVaVWmQ6i0z9F8jkkg919Qfh/dC68K6bUB5otC838ifEfQ/4/r/ACsa4Phsge6XzobyMqOXenByhc6G89F5X1KG5r7pExCqnMNesByJUuvUJED+6boANcJPKrNuLixt206TYAiFOA9OAo9o5pYOylyFpxtA5o3DhcWANjiEBrt3xMoalQlriJHuoIV2xodMqO2kHe6cqEu5nKARIBwjURbi1k8KKbYMJJHKuatMFm6MDKrq8HMwVUQX0WHAiQhLA0AjonHuIM4UetVAESEVIoVdj5nEKe2oHAQOVRtrBh/spFO+9UB2URdU4Z2UgO3CBlVdK6D2mYlTKFbpKy1C3OR7qruRMqzrHdMKpvScxyo3qpuXHfhVly6JI5VndABpPXpHRUtzWIBWox1UG4OTHBUCtBcc8qVXqySFFdJ4C6xwtRKowoNyxWFbg9VDrLcc+ma1eluaQcdsLJ3NGHE8Lb6nTlhlZS7YRIhduK8XrFZHTsijqj2xPslDQ/Iyujzm+J90MTyjcC1cWiAUDluRuz0Vla1CBMyPZVIcWx91Jo1XUqgc0wCFRbt9LwcZ4XXGWfHCataorUySctP7J2q4eUfgqCu8zY4Rw7KYuBJkCZwifODKTDpaeqBuk6EZjkJng+6d3AtWgbHeoHspFIhzHDuocwDCeouLWwpUWukWthcValC8NRtWoIouBhs+61fhbTPEGlai6toTZvKFPzn0OlRg5kd1jrVjH1ae7dEwNvIK9x/Dfw7rFrdVr6qNl08C3qPdlzGwIj5GZUqt14B8SaXrmi0LnTy5t02ad5bvMvY88z3E5BWxp2rjRFZgio0Zjh4C8t8TaO38PdbsPF2lDbbmoKOoUGfpewmNxHf/ACF6za3LH0RUa4Gk9u5jukHKYDoPbUDagOHj6pwhRLNrWVHMDt3qLh7T0UyZKASkiERCQ4QIknldJEJIzwgQnugciPPKDqgaYcBPAppuAjaiCCLhAEYx/wDqBQIRBIEvQIFBEohkYQhE3CKPHyuj2QznlGBKDksfZcUoEtyg4EpR8rozhKOcIFldK4lcg6UFRwY0l0Iv3Crtcc4WNRwMANyeyI89/Fe+J0ytbVHFlOuNrT/QR3+V4Ba3cNNF5lokOaTgr1bxXfVvEQv3Nqb3Wjm1fIPLm8H6Y/deP6rSbaXgfTdut6uQe3sfhSrCXLKDmmNzXjiOCFXPcJyeFIrOPBn5UKoTJPKK59QcJl8knKVweBLmuH0QyOT1RDbh06r6I/CK7FfwXZ5k03OYfuvnh7h0Xtf4C3or6LqNgf1Ua28D2cP9wVy95/i9X8PrO3rDf0gwgeYxmOUlE4grq2BH7rxPry6rbqv6vZR2XgL2sBHMJrUXlrzHCobm/NtV8zdwkSvQba8a1obOVJN5uPsvMNN8a0Ham21r12057la288Q2lnRFUVWuEd5layxzl36aCm5gMuPumrnWLSiC0vasFW8ZVLw+XQx0VfcXj6xJq3ABOSAUx0nM/b0Rmr2BOawPZR6+uWbP+o0jovNquo0qREVHE9wVBvNWBaNrzJxyrOVyR6ZceKLRrIFT91A/162qHNQfdeZu1FpmXn7qPX1Qt/5ZefcBPxTY9T/1KjUkteCPlRqty1xHq+F5W3W9Qpu/hit2wFIb4j1RmHUKh+nK1+DnenoVW7AM7jChV9WNMmHHCxFfxZesB3W7yq+p4luqp/5L8d1Z5ud7x6dYeIWyGudB9ytDZam2oB6ueF4c3UtVrZo0IHMkq98M+I9S0+5A1CH0HHIHLVOvM59fl7U2vvbIKrrsgknundNqsurVlWk7e1wkQm7oESMLk9MU126JM/dUF+8Q4CJ+FfXoDg4Rxys7ekCVvly7VzqhJ2k8cJcAEFNuguMBSTSmmHAZK25RCqN7qDXxzhWVQdSIlV10IJWoz0qNRgtOVmLpsvyOFpr4SCqC5b/EMrry8foqX0y126MSg2ZlvVXQsQ+kRySq/wAg03FjhBHddJXG8o8jaS4A/KZcGyIkKfVazaS6BGJ7qsc0z7LUZvwMtg+yWkSJ9spYmAiDCBA+60ynaaDtefqiua/p2yioN/LWbi4Q45VdVqE5JWVEThvbKGfWDP1QtdIlCXEnHRELUHqkJW4XE5BSTlUOdJHIRMd3TM8p2mC6BylE20fI29jK+i/wu1//AFPSrK4e+aob+UuJP8zP0k/T+y+cGB1GoJBAOR7hej/hnrNSyF3bsc0bnMqAkSQQeVmq968fNo3vh66tq0OFRgYxreXvPELS6RaPs/DlpaVs1KVuxjp6QFSaDoDrqvT1TUa7rp4bNFrh6We4HdalzQ5vl9Dz8Khq0otpNO0RKkDOVzWgDhKEAEBC4JxxTbuEAyumUhSEhAjoBQlL1SIGhwjaJ5QjhG1EGG4XLknVAYyijCAYRAoCAIRAwhnHK4FATeUZQDuiQF7pZlCMohAQFK6UI5RorikSrgOiAXDcCq3U6wdaXDH/AKNpaSRgSOqtTtmFS+IaVVltVq0w4tc0ioBnHwiPA/EFxdaXrj61ptN1TAhkYrsPb/bqsNrd3bX1xWbTo/lmPdu8p3NKp1A9ivUPFGm2Wr6f5N3deReWhIpXLeA3+Unrt9xwvLNdfqDbz8nq9Njq7QIrACajehDhh3ysqqWV30HmjUAxj1dEr6XmvIpM3R0CZ1C0rUR5vmCtSOPMByPYjkFV4r1qOWvPurBZVdLviC51Co1g4J4CrqlM0nQ4ZT41u9FI0jXe5vYmVCrXD6zi57iSqOe6Sc8r0f8AAfVRaeL6llUfDbyg4D/3NyP8rzTgZU3Q9Uq6Nq9pqNFxD7eq1+D0Bys987LGvPv8epX12WeVV4w5JVbmR9PZJZ3VPVtMoXtFwcytTbUaR7hOCHN91859uX9qPVKBe0ugyvO/Etd9Lc0T/svVL5g8l0dV55q2juv74Mjk91ebFvzGd8H+HBq2rmvctLmRiVrL/wAMUravscxxpkcA4C0+haHS0+3ZsaGkfurh1nTuBtqNB+ivXVtXiTlgKGg2TQAKWyPcp9nhi1uAS1oPvK2TvDtF/wCmcqNV8NVaUGi8g8rF11nXLGVfB9uA6QWkcNB5QDwrY7qbSJP8xK1tTTb0S12wjkyVHqadcbwdrRHcqzSYomeF7VkkU6bQMSRlQ7yztLWRuDu0Bah+nXNWd72tHYHlV1fwy2qSalR09gqWxjLq6aQW06YJHVQnNurn+R0hbYeHqFKYbu+e6IWNOlIDAFqXHHqsCdKua7iS3nqpFtoIpuDqox7LXVrdo9IjlRvIlxIW/wA3OxU/kmsGwNxHIT1po7ari57RCs6duGmOFKZQ2lrRxKz+ROWi8K0Py9uKI/R0HZTtSoEZGF2jUw2myOOqlaoQaZhYdGXuhtDgSs3qIgfPK0F8+SQcKhvyHCIWuWO1OGk1Bxz0VqacUwOcKHRpHzG4Vk4HbPQLfTEVt030ZCp7kZPsri8J2kdFS3JwVrly7qpvTzErOajWFIOd16LQ3zuVjtcuJqeWF24ny8fr18GKOt3dF2HBw7EI6uqvuILmNBnnsqwmOF0kjld8jzfnVg6q8mXGQUj/AFicCExSrQNrjgp4MLyA08obpykwOyR6R1Uy3t95DiPdBQoNpCajx/7e6kuuW0aZcTDeg7qKY1Ott20gcnJKrHGTCJ9V1eo6o45JTdQyBCJRl20AIWHcT3KAukxOFwJBlUh3cYHulMEe6SZaCuAnhEEB1UzTXtp3dJ7m7mtdJb3CitbgBSrSkaldjAYk8qNRa63Q8htEsgUXkupjq2Ykf2Vx4EvNmv06EbhXApgHvIhUmv6jTuX0bSgQ6naNLd4/nPU/4Urw6yrZ+INJrTArVGuaRzh0KK+vfBVxVufD9t5zpqMBaT7K/a0ciVQeEjOk2r2ghlRro+60KDgF3VJxhdCIR3MJD+y5wJPCQoEKAo/qhPX3RQHnCRKYlJygaa5ON4TLeidBwiDELv7oWmUoklAQRZTc5RgygUSlBzCUcLhCDpjCMGUCJuCijB4SyhH1RoOCIfVCOUQQL15RDCFH0RAOE9cqNWY4y13qB/T3ClkDhNvphzSCTB/ZDHlH4j+D7yvQq3Gm0SXOBd5YaJB6lvyvB7+9urFwsdRoGvaNJmhU5pzztPLV9h3FCqKfIqs7Rke687/EL8PrTxRRNc2Pl1oAF1b/AKv/AJN6qVXzPftp1G7ra486iOG1MVGj37/uqt8g7SCPlazxF4I1DQ7lzKoFSjmKrQYPyOiy1ekWOIPI5TQw6EBHVEZSFpK1rOggu5KURkBcZGIIStbAUNfQn4H+K26noH+kVXDz7LAk5LDwvRSNjvnK+W/w58Qu8M+LLW5c8tt6jhSrD/tPVfUBrCvSFRjgQRMrw+3P49Pq/wAX0/Pg3XJcCOn9lVM09rrwPLZHVWxbuA+6RtPa/gZ6ri9kSaNIbGkBPhkHcutmy1PBoIPshQ0auwxEhOvqgsGQmXNzjCjuB3EIkhLh7dxIAUSoJnqni10x+xQvaYJgqtRDc0Axwm6gphhyfqir06xeNgwfZAaDol8gjCqq24dBIGVBfuJPUlXFW3JOByor7XYOMBGbFPVpukiPqkZS2jPKsH0gTEYTT6QbyrrOILhtHGU/bPBqCfombkweiG0eXVPhEbDSawOJMKTqRLmGMqt0WpAM5Uu/rtgmcrLTMak7YSJhUdcl5jn6Kz1SrLjkKqxukldOXLq/LmMDHSU6+ptpfK7bI7nhR7h+1sBXGdRLuoDPZVFxwVOuTnqq65ftEkrpHDvpSapVFGm5zjACwV1XNeu588nC0fie/wB00Wn5hZYCV6fOPB69bXJQlhJAC6OQ2QYnhWtA0wwNbLjHVVG6D3CdZUc3a5rpPb2UqxbFzacmJd2Ua8c6oAScJPNDod+yFxBJBMgqKjOzhEwwc5HVGaRB7hdsLfdFC6iP1MiEG0zlPhvYFC6mfoqjmD+GuB2nlHENgA90AE5UIkUzJGJCeBa3pHuCmmNyFP03R7vWqhpWlMvLYLj0aO59lFBpWl3Os6jSs7Rhe956dB3+i3/j3RKeg+NtH0iwA329pRB28l5Ez91sPB3hjRPCNvQuaz21Kgpl9zX49I9Rj2wAPlUngRlb8SPxYufEFemRa0XmuZ4a0YY1NV9F6DZ/kNLsrYk/waQb8mFaQmaLCGSRn+yeQckMgosfVCeUQhyUJ5SlcUCE4TRKdKBwCLAIUqQgIGGlOBNtTjcq4gmmEYCABONKBNqJI4rmmeqgMZ5SxhD1RTPVB0FEFw6oo6oFCVIUgRRhEOEgIXeyAgUY4TYRgojoXQlCThDSEc9FBrMaHnY9rH8wRgqfz0UHUNKp37INWpSd0c05CDFeNNEo3dq4U6NI163pB2hwHc54XkeseB9PDdrQ3cw7SQwNJ7kr1/xBoet27d9G7Zcw0iXCDCz1PwVq2r2E1/y9He2fMmT9kV4Xr/hajoOoAV2l9vVE03A8+ybtPD5uqn5h9KnQoBu5rXH9Q7r2DxN+DlV+nsNpcOvK+31tqmft2Xj3iHw9r2gbqVxSuW28wCZgImGtSp6Zp9Le9jatcnAaRA+izzqvnS+AJOE2/duIdJPuiptJkQUZMVH+pwmI6r6D/BzxiPEGgiwuXj85ZAMMnL2dD/hfPVZu2o8cSrjwh4lr+E9dt9QoS5rTFVv9bDyFj14/Ll28PT8On1lTiePunhTBhVulapb6rYUL+ze2pQrsD2OHUH/KtKTg4R/lfPsz7fZnUs2HbdsCD0yno+I5TbJEgFPtaPlGo5jJbJygqUhMjhSG44Tbwcj6o1IYNJkEwm6jGgHGU8eCCmXAxxMHqq1gBQYBJyUzWt2kGBlOVHbc/wDgQueSM9EMQnUWtE8kKNcUg6R+6k1qu1xg47KM+pJMcoVV1KW156hRbh4Axwp9yYwCqy6dIIB90jPSpuTzkmEVoQySevZN13y6JKZFTYOi242tdp1YNpDjCC/uAWkgxAVRa3pDBDuOyC9vC8ZdyFMX8vhDvau5xJIURvMnhLUqbicoS4R0WpHK3aeL9rSoVzUBMzwiqVRHKgV63qJkrUjHXRuu/lUGs3v5ei4zk4Cn3d6GMcSf0rIajcPuapc7A6LrzHl9OlFqL3VHEuMknKiMapV7+pRxAHuvRHjri0Qm3NJzCkUaZqc8KUbOaXpWkVg4RtGMcJarNjyEVIZhA9SO6nDj6h1S5GCkgAn4SbiOCoCa8g4MFEK3RwBCaLozHCBz2kyOVFSvMacTCVjmzH7qIJmcp6m0tGeqKddIEykY0loPUothLZAxwnqdMbQFCOY3AWk8M68zQrW6ApF1WuAzd2b1VBTZueWjleh+C/wmr+I6FK8uLh1KjVJDWMEudCNRSap4n1XxO9ml2DHuFQBhp0xl/wAr6G/CHwE/wt4dosrtDbiufNqx1PY+wU/wL+FWjeDbbdQtw+8qfqqv9Tmjst0ymGAAdBCDgzbAHRdGUSSMIO4wgOSiKDhECQuKU5SEIBKE8oikMDoiwB4SHJRH3QGUDLcowhHARtyFUEMoghGEYgKATylC4np1XDnhAQOETRPRC1ODAQd0RAoUTSIQKu68pUkICHuiQQSiHCAkQPVCEoRRcLueVyVqIThFuxBCEpRPygiahZsuqYBwZ5VRbW9xZVTSI30t0gf0rREAoKlJpO4DI5RUekGgT5eTnA4VT4h8O2mu2z6VagPXImP8K7FMDjA7ojTMZJRHyl438H6h4Sva9AWFO4oGXMrCmD6f8Lzp73tYWBrW5kmF9qeItEbqFtu8trqlMkiRhw7LwTx7+GbDVffaWwNafU6iOneETHjde2L3NcBjqE3SpsZUHmSac5hXlWzLHupFpD5iCOVCurGpQdFSm5s5yFdRuvws8dN8OX3+iX1wH6dcOBovJ/5Tyf7H+695t6wIkEFpzIXx++iekghexfhV+JBuKVPQ9Vq/x2AChWecPH9J915fby/9R7v43v8A+entDK0PAlTKT+JVFSuwYM/KtaNUOaCDK8z6MqaSPuu/U0hNhwc2ZyjBMCfujqj1RtH1TL8DnPZSagLpBTFUgACco0YfJB6dVHqvgZgSFJe5pac/VRHtLm9UENxDpI59024wYb9U64AHH2Ki3FQUmE4RLUa6qtbO7lUV1XM9ipN3eA7jPwqW6udxPK1zHHvsFer6jBUJ1Yz7JKlbcoz3n/ddMefrtZUbqGxKV9xvG0qtp1zOE95wlMZ/NImTPQJuo8gJPNkcqPVrAAycqxm9Oq1DBVVeXO0GT8hO3V0AMFUt3WdUJyMrUjl10hX1y6sSJwqy5EAqbVHKhXRwukcapL0ZUfkwpN3kpqkzc4LrPpwqys7WaYgcqYKHlCSFK0613MaI6dFI1W3FG2nuVYxWSvABVwMEoWtaWyMEJ+7bNRsplzC0wAqpNxLc8pJj5RBvdIeZwkAu4hMO5TzjHVNOgwqFpvLTypQfuIPRRAMqRQBOIwpVSackqZRY55DWjLjCapUoaOqsqDW06YoUW+bc1YEtzsHb5WWoj2NFz7raMy6Mf3X1h+Edh5eg0q7st2htMR06n7rxj8Ovw8r6vqlKm+kSyQarwMNb2+V7/p2hX3h4+VYOa63x/CPQeyitQ0mOEcqHbV678VWbSpMz0VQRiCZSE4SdIS9ECFAeUZyE24e6Dp6LiUi4uwgFJC4lceUWBMoST7oye6EnKIYaRARgjomgIA7IxgIHAUUlNtdlFOZlAXJCVIAlCAgUabARN5QKjBwujCUIOSgwUoXRJQEIhcOUgELhzCLBxwlSfdKg4GesogkhKEC9F0croRAgBAkZ4Sx9lyVAO2QuDco2riEDbmBwgrM+IPCVPUKT/KkOIztxK07VyI+dfF34PXlQ1Luwa5tRpkg9VlG6Nq9sz8pqelC5YMB4GV9ZPY1wIc0Ef3WV1zQrCnNYkUqjTLT39kSvma/8L2W0u8mtScehEQszd6c+xqebRFT0mWuGIPyvpLWW0L6j5QtaeOXFvJWKuvD1CuDQ8oAH2RzvpJ9K/wDD/wDEJ+pNbp2pv23LcMqH/qfPuvU9PvN8NJ+F4hQ8KXFjrzKtmNzGPBcPaV7oNFFa2o1qDvKq7focLz9+MvzHs8f5ufHSwbV9PPwlF1AgnKqm3NW3d5dy0scPsV1S9APPRee84+t5+vPU2LN12HR2TFSruk7p6KsN20mJld+cEzuELLt+UWDnyyAZKj1H7QRwOyiVdQgEAhV9zqJGS7hD8k2pcBqpNQuy8mD7Jq41P1HKqrq85IIWpHLvuRHvbwjAI7Ktq1T35RV3STHJUZ4jqOF1kx4u+9rt0/KB5nhcA6f7pQzurHO0jOUTnADnKQkAdky+rtBCqaN9faPhQq9ySDlJVrF2AeFGcc+yYlpqtUJJJKhVnHspb+OVFqhWMoNSSDAwoV1xyp1UwFX3BlajFVdwJJQ2VPzLljAOSnKwyr3wboNTULo1y07G4ldXDr/bQ6RppNMOiB37KD4mEPZQHQSYWxfQZYW5JwGiVjb0Ou69SsZMnCrlb8sfe4OcEFDTAfBiTCuL7T2VNwedpHB7pnR7K0rPNCvV8uqD6S4+krTU+UBwbEASUw5jiYGFaX9OhavdSY5rnjEtMhQZJ4TVRzR7oCyXQOFKdEd0tGi578DhNDf5QgNcWkA54UmhbkZa2Sre2s3VzTFzNOnxujAW503TLChQpMtdLur0uIh7KeHH5WbW5HntDTb24dNOhU2jk7cL1H8Nvwwr3TxqF+PJpfyj+Z3wtRoXgfX9SuG19Q02nQsWCWUA7bn/ALl6voegPtwypcup4/TTYIa0dkWRJ8PaDaaLaU6VrQFMBuYGSVcESQcTK6NogJBzCI5wkIYRkpEApQuKQj4QdPKE/wBkREcIUApCcJSk5CBOiSEpEIS6EAnlIcJSkQMdAiQNmOyJAbUoBHdC1ED7oCCIBDKJAY4SthCClHKA/dEEAInlE0iUBcLuUpGEhMBAUrhykGSlCAxM8oghBCJATRAXeyGesopCBVyQHKUCfZAoRIeCuJhASQpC9oySotxqVKjiZPsiWyfaUTiVFuL+jbgl7wIVVd6tVqNPlkNCpLipUqOc5zpKa49e2fS2vPEp9TKDMjqqC5q171xdVfu9kr2nBH19k9SpnAhZ1xvdqBWtAKTiR0VGy13XrcRB4WrvKcMI9lm6k07thxEwjNpq00ymyvXIZMmVtrDabWmR/SAs5SpFtzUIEbhKudErE0X0z/KcJSUepWba1My2cLI3zalu8tB3NW7LNw2kcrP6vpu+m6Bk9hwsdc7Hq8fe8X7Y+pfVWPnPZNO1YkESR8pb135Ot5d23a0mG1QMA+6j1bQ8gAg8ELhecfU497ZsOf6g6J3YUate+Y2CeE2+hHsoz6LgeSpJG/7qGrXcScqJUqTy4qU6geSUy6jBlXGL1ajmXd/lD5OM/upO2Ae6QhaYRi2OITbnbZT1TCi1HCCZQNVKkn90w8zMlE8mZwmKjoTUNvKbPCVxlNudA6KoB0dlDrO5GFJqOnhQ6xiUSolZyr67pJU2u6ZTNpYV9TumW1sxz6jzC3I59GdK0ivrV+y1oNJLjkjoF6/pej2+h2FO3ot9QHqPc90Xhnw3a+GLFsAVLioPW/37KP4h1ZtpTLGEOrvGB2XWPJ33tyKfxBqHn1vylEkgH1lVrLeWgQlt7Z24vcZLjJVlTtXBu5wVZZjXLQGidsgtEysY8vDyJK9E1pk03cdiFka1o3fO3qq1KqhuOcynGNe/EmFb0rGnUbOzgq2paRRexv8ADiU1fyUWlaPV1NziypTptbyXHP2XoPhT8Pxqd5b0KDSaYy555+Sq2y8OWlM7gHMdPIPVemeB/DtzcUhQt9bp0xuks2w8/VStyxsLXwTo7LOnpzbanXAjeSAZPyr3S/A9HSWeXbVrm3pHIZTfLQrLRfDg0ym0uqmq6MklXbBsEcpjavt9JpUQCataoYyXOlTqbAwQOAiI7LpiUCnhIZ6FdKQH9kSuzK4iV3OVxQcuPCRdKDuiE8ogUJMmUULslJOQudyhPCIWZ5QEeyUZSZCLAnlDKI90IQMtiBhGMpAAESM64IwhaYSj3RSz9kQKDlH7oFByiBQ4SglAcpQTKEIggczHK4coZShAUwlBykC5AYOUW7HKBpk54RoFhcEhdAymX3dJnLgUTYk8JHVGtGXAKrramZOwQO5UKrdVKpPqPwprF9Iua2p0KQy8E9goVXVyf+WAPlVVR8c8902KpLuRCmud9KnVLyrVnc8/RM+pxkkn5Q027jz7cqUxggzyjnbqHV9LVW3NT1YMqyvCQwqpJbUqhpKrB63aXHIEKxoURgx7IadMDbAAhSqLYnCgr7+nDSRlZDViaTtwxtcCt1fAeWRgLEa6yKdQDkBGelvbEVdjhw9qn6aPLacR6lUaBWFxbUCc9Fe27Ad7GkyMoRODhgpqvSbWmAM5CKkZpieSiJgn/wAwo0yWvaSyuxzPLB3dD/lYmtb3eh1CBNW2B45NP47hes3NFtwJEGBHyqXUdGp1WOa+mJWbzrt5et5rD0bi2vG72uaZ5HZJWo5xwnNV8MPp1TXtHGlU9v0u+Qqp2pVLR4o3bfKfwCeCuN4sfS8/TnpIfT5ACjPp+ykfmWPbOITT6rCJmCVnXRHcAMdU04R2R1qg+VGfVwrqG6zhnqoVQkyna1QSYOFFc/srAFTiQVHcJKePq+E28xMf/ioYcM55TTxKfdAEkqNUfMgcBVDFR0cnhQ675PPRSxSqXVYUaFN1So44AGVtPD34f0aI/N6u4FzDPk/0qya5d+k5nyyWh+Db/Xn74db2wOajh/hb7SfDmn+HKZZRYH149VQ8n3lW1e6bRAZQAp02+n0j9QVPqGpNos2hw3AYXWR4evW9E1PWBaU3OLt1Q8CeVkia17cOrVPU92VJrudeVdzpIJU6ztAyJGFuMBtbQACRJUmvApxxAT+xtMRx7qJcmfYdkNUOpgvlpzCoKtoS4wFpblvmOIhRHUAjWq62tNreFdW9HbTpiOq6la4aD1PAVg2hD6bRwMoaac51F2BgKw03UXUKgex7qTx2Kj12SSmhTg+/90Nep+G/xMurRraV08XDBABccrf6Z400vUWgCqGP/pd3XzjSc5rsEhXVhe1gQWvMo1O7H0bTuKdYA03hw9inTwvGtH8TXlps21XY+y12n+PD6W3DA7uQjpPSNtC6FVWXiTT72A2s1rz0cYVm14e2WmZRvdLMBITlcc90iGOJ4SdFxSIFSHHyuKFxQISZ5SH5Sn3SEIruiQmOi6UJMoEJlCSukykKBtpBCNoCaEgJxrkZFtCL6yh5SjkoruDhEDKSJKUCAgINSgLmrieiAgYSz0QAoushAYKIIRyF24SeiBwFcSmH3LGKJVvHGduCEYvcix81rQSSE1UvQJgZVS+5eMl3Kj1Lpx5OFNc76LKteOfMu+iiVLmBnlQXXJHJ5Tfnbncyo53pKqXG7GU35h6koAd5AmVxMEg/sjOkqv28pqnVBfJMoq8ubkQo7RBA7lEq3tyCZgRCmD0tknoqy2dPQ47dFPaRsyZCCHeu9ByqZpIuAZ56K3u8Bwz7KqfPmg/eEZq9ogFgI4UljI94UKwq72NEhWjWDBCpEO7plzJ6QsZr1EQ+OSFu67BsKymt0PS4jmFYnSp8G1d9BgPLXEe/K1lL0XsA4cMLAeFrg0b+4tTILahPK2d+XsYyuz+XMhRF0aWcAQueGgTGCmLC+bc0Q6eRkKQec/pKjcqPkO4+EFSmKoknMfZSHMl53f8A4m6lMjLSgqbzT/MYdzQI6d1mdU8PULqm+nUpb1tah3Ng89FX16MjAwe3KmNc92X4eUXvhm904ufY1jtP/SfkfRVNXUq1s8svqD6JHXp9167WsQ4/pk+/VVN9olrcMLa1Nr1i+cenj+VZ9vPqVzRuANrxn3Q12jadpCvL7wRYvq7rc1LdxM+h3P0UOr4QucijeE+z29Vi+f8Ap6uf5PNULhOThNPIHVW1XwtqTP0VKTz1zCju8MaqR+mmP/kp+Na/t5v7VL6kJpz/AP8AVcHwpqD8FzJ9lOs/w6urxw31i2nuAJaFqc1m+3M/bJOqFx2tBcfbKvNG8EanrD2Oqs/LW7jh7+T8Bb3TvDGj+GGFzmebWpuBfuMkhPX2qscx1JhDKQO+me3stThw7/k/rlD0rQ9L8P0gKNEVKs7Ks5M95TFzdOHrqvy2QD0hQb7XqVEv2ulxOTPVUVxqVa7f2BXSTHltvXzVje6ruJbTn3VS9tSu/c6TOFIoWrqkOI69VZUbJo9RgiODyVWUG2spI3BTm0fLHuMfCkCk1g9R9kxVcOcqxdR6rgTEqHXIa0iR8qTVdAOFBrOL8Y+EIhvaMkmEFKjveMcHqpJpkj56KRQobWwB6nItrrehuduIHpxKfp0t73P74+iM0/LYGt/UcQnmU9sDrCJDDqUkyuFARkDCk+WdwwnBSkETyioLbUF2AVa2loGt3QflFbWhdUOMKc2js4P+yGuokNEnnunm1yHYTLwGECI6oZJfiUEn829p3AnHZXel+L9Rsy1jKnmMEYcqGnQc/kfZSqVoRGIKi7Y9C07xvbV2gXLTTf8Asr+31C3u2bqNVjgfdeVU6Duo+6l24qUnbqT3Uz7FNdJ6X9vUpB4KSVhrTXdQtgAX+awd+VeWniWlVAFVpYf2Vbncq8JQpqjdUq4ljwfgpyR0RtxSHldz8LiZOEVx7oSlBSEIExCE8peqFzgEDAMwjahBgZSgoyMIgkjqu4RRrplCDlEgMFckGEm6EBg/ZFuCjurBuJymKt3AIn6oze5EypWDBMqM6u54MFQTdbnQT8KRScHH6KWuHXpaLJ55CbcMkThP8jhA5oLeFGEaoMccKuu6gZ7eysLjDZVPek7CQMqpUepWyZJhOUK5cccKqqVCJl0f5T1pcElGV5TdkBOfqPuFGovyOoKfn1SDz7KNBqQQRwmA2ajRE9VIeAHbo5/ZMjkx0RKlUXeoQfupreP2UCg4CB1U1hkCCVUMXQ3BwkwFWVWgOxKtbmYwAq2oBuIOESpOnVCHBoGFoKHqaJ5CzVs8NqAjsr+yqS0e6B2qJB7fCodVobmugCRhaOowAT3VZqFKWkDKFeWVt2leJaVY+ltb0n5XoFu9t5Z7DHEx0WK8cWLzZmrTB8yk7e09VbeDtZF9YUnh8kCCClZiWy4fp1xGfLJ+gV/bX9OvTBmZVZqlq2rTL25nPyq6yfUpv2ZahrWfmGiWuMthKRuEh04VKy4qN/VMRyOi7/UH0zupuIM8I1q0q0Q9ucZUWrR2jrjr/ZMs8QtpnbVZAGCRlSRqVnXGHiTnb0CgiPp7pHtBH91DrUGk4HOfkdFa1DSdIa8Ef+So2ykTBqtzJMlBSVLUGoMDHI9ykdp4LcHHA6K1rusaUbrgGWSIP3UK51rR6DHvfVBEDMpjUqGdNaBn6jqE4NL9LiWQAM7sTKi3njjTqAeLdoLnAbcdVmdS8bXV2XeW10Ow5pOExd1rK9pZWpeKlVrjtDmhvQqs1HxVa2zHU2Pp06Thw3JBWIudQ1C8hr6jg2CQAePqo7LB1Qy6SSJz1TFW174oNZwNFpc6NpLuCqe5vLm59O4xzCn09NwcYEHjCks00AxHWCVU2KejYPefUSZ5PKtLXS2tiR7FTKFrH8oGPupJfTpg5EwCfcomorKAA3OAEjgd0T3bRkFBVud0iAFGfVJOXFFhx9RziY4TZcD15Q7xMDCafU29Sqpq4PuO6ihpJkcJ9x3kTzwnqFtuy6IKBmjQLvUeI/ZSqdIAbziApFOiKnAGwfY/VEyibirtaJY059/ZGdBRoeZ/EPJ4+EbqJBzyFYNohpgiEBZ6uyKisp/2RU6ZJGFKFOWwAIPVP0bJ3EIWnbOh/DmE85kOn+6k07c02AAcJmsdrjI9lEQa4BfgoraiXOk8If1PJ/up9rTxxko0do0xtEAKZRZt5590NCkYgxx1UtlPAMBE0AgCMmU43vBRtpYmE4KJGIyUXSNLY4ynmQYyhFKcBPCmB3x+yLKeoufTALHkH5Uyjq1ekf4h3BV04MGUheYE/fujc6saG31qjVw47T7qfTrNqCWun4WM3iTGPhPULqrTI2VCPqkrc9GvkJZlZ+hrVSnAq5HcK2t7+lcNljhlV0nUqQTlNuEri6SPdKHfZGjHRG0ym5kImlGDod2K7qgBj4Sg+6KclEDhNpZKKMFN1TAMdEs9uU28zjqEY7uRH8wF2ZBKi3LiAQE9X/h5BEymLmNu4lZeaq91x5VSSTCttPqipBnKz2ovAPpbEZUnRr4l+TKrLTuYBPVJ2GEDau8YOUTIPWVF0zcskGAqS+ZAdkZWieA5pnIVTqFEEHuhWOvYk8ggpLKqQ+JBgqTqLZLhAVXSqeXU2twQVRp7SpJ+FObUGBJnsqWzrggZE84VlSO/MiYUKlEiCTPyUxGSBx1ThJOOEFTLSBARKfpQACOVKp1ARk9VCpuAACkggQYyqgnuk5n/AGVfcSXwptSBwYMqDXB3nj6olAyRVHP06K/sak7YwAFRU2lxHcK2098YP7oi53bmjhRrynLDhSaYGyUFcjZBiUaYjxDZ+ZSeCMEcLAeHb46Lqz6DiRRe6D7Feo63QNRjsSAF5frtp+Xvt8QDElVj9vULSo2vRbJljhII6eyCrZbSdoDeqz/hTVw2iy3qkQf0uPRa5nAa6I/lcVEQGsyGnd2UW5swfVJaZ5CtK9Egbh/+qO8hwAf3ieiKoLmk+m4ggOB+mFBqBwEkOHC0la1BJMS3hRKlo0yCMoKE3ty1+K7xPCYdXuojzyre4sWkmAO0KvqWgBx8Awi6rK9vUr5c9x+TwolTSnOmQeMHsrl1oZxIzMBM1adUCGkxCCkfpcgwD0KJul7TMfzYxlWJNZkxHPCafXrtzI6dOENqNT04AgFvBITwsiC0RAjaT2Xfmbh0THHZc99Z7T6uYyh8j8sNADnAS2CEFa5pMG0SZjKYqUak55juu/LmfVHOZ4hFwNS6e6SJx2Ud7nvMT3gqSWBgAaOBCbqADdtHuIRUciO88pNmCpWwcHM9k07An/wIuojxBzxwmy3eYE+6lCg6oe2eSpVtYtaN1TA4z37FXV1BoWZPPA79VNp0d2QCGDkwpYti/wDV6Wc7T/MPZNV6jrh4t7cY43dh2TU0MGsBQox2cQOFZ21myg0DGO6kabpgt6IhsmMuUl9ENPqJlRFfVY1hnrCZpMkqTc8x/dDbsBcM/RVS0rc7gIx2VvZ2gkE/yobe2BcYnKs6NIsb0yFERarAFU3ZG8gA4Ku7hsScRHKpbkw48QSiodFm5+ZVxaUQIPUKBZ0QX5lXttbiBMIoqdIEzCkspgRjhK2mA0REdUQB5x8ohGgwW49061oEcrgwxKca3bhwQcQGDue6bMlE6IyT7oGuk44RRsYQJMJurDW8fCktZuGRAhMXFMN6k4UXUFznbpGETKsJKjg0RGT3TEkkDCYupgfgAmRCcp13UnbmOIUNr/gpxjpEZRZV3Z6u5sMqkn3VvSuadVoc0ysf5kNmU7Qvn2z5Bx2V11nefbVDMIh8oGlOBV0xyWcJEvygJuQi5TYwkqVNgRLcE90BMuk90Bqk5Sg7hE8rNee3TF5LqcgwmqoLrZjickKSW72uHVNNaDbx1aYSMVnr8bmkOAx1US1rm3qgTg+6ttSpbgS3+yoLhpYQRgKstjYXQqMGVPY/GD9Vk9Jvjsa1xlX9Gv5jZAx3UIsKb9xiVFvaYIPT4TzSRDsR2Q3Q3s4EH+6NMpqVIumBghZu4G1/utjqNIbDEjHCyl6wNJ91Yyk2VWWiT9ld0HyMHKzFpU29TCu7SuTGfqpWlu2o7hETjrnlMMrFwAjM8p5suZJBmUSuZ+uOhUyl62xKiN9MEznopNN5aQMQVUFWadoPEKFWhrskgnoptWSOcE/dV9xE85HdEoqTsuHRWNkRkHBKqaZiTOeSFY2hkyTgc+yI0FtLmTOF1Zst+OyasKkjkYUioJ3I3+lFqNIFj5GV514otfMDjtw3hen3lKQ7ssT4gtC9zuAIn5SOfTJaFcmlUDHH0zwvRdKvHikG1fXSIweoXmEPtrojiDhbHw/qcgMcSZQbDlksO+mckdvZI6iyqTH6hz0hM0Q4hr6L4PMdE8KrS6KjfLf36FEMPovp9Mdh0TFS3ZVzkEKfUD2jPraDyOT7KNVDDLgdp4I9+yCruLZ3MfZQals7+mBMK9duBIIDoJHym3U6ZGAfkjsgz76e0cRA+6YqNDiRGBMq8rWjOZ7D7qPUsBkxHJ+UXVI6k1zug46KO+kxw4ERx9VePsd+QMSAo50/b+ocg/TKGqd1u0Y6ZygbRHQdOitqlgWT6cz/AITTbRzSPTHBKEVzqfYSZCDyCWkbforY23UD+Uwfdd+UG09YMx8qauqR9u4O68/aUwbZ0wA4BaE2nAIzx/smjbBvJEk4HY9lV1SflahIEc8Qi/JOJA2nuPhXPlbiBRYSYlpHQjokfa/zVajabXZAHQ9kTVXStg07WtL3e3X3Uj8qyiPNrkF0SAeMd/dFVvqVH+Ha097+fT0KSlpdxdRVunQDkUh0Q1CrXNbUHtZQY5tEHBVxpelMZADThP29i120MaAAryytPLajRhts2mADgDqq27IDj7K5uB7wVRXbjuc3AOOEEGrD6k9CpVrQ3OHumGN3VMgfVXNnQJgAK1Eu2t8tByP8qa+n6eIR29PbmOi64B2z/ZRVXeckZgqjuf1kK5vXFsmSYVNVBfUnogfsmknIIJ7K9tm+kTyCqvT2CfhXdOnHfCKca0FmeSeETaQ5j4hKxpgYynWU+45U0I2nAJ+0pt7Q0T3UhzY9PCg3lUNGH8CPhUN1aw/SDkZTlo01XGM9lXOrtdUhpk9Vb6bSPMYQlSmM2NzIwod04Scwp9eof0hU12+HGThRUWu/MdY7qOHbjmJ4SVqvfp1TTKgcYB56pqplMmCMwfZG0RMyZ6JKTcTlE+cE47eyaEnGJHykL/VtjjqmnEsJJygNUEmDPsjUbwd0404QN4CMcLT1FmFxd1KQrkQswExWfJKdqOAbAlR6sx3Urj3dMOqEHryjt6wnlR6r9mUlCoJkgwQsuVqyaPUD36ps0zve3Hf5S0CS2enQrnO9TXZ7KpflX3lKA4HjgrPXVJokTMLWXlLBwMqhvaIG70jKM2Ke0qGnVAHdaO0uJYAXFZupLPVxlWNlc7RkgkKprU0asgNkcJ8iWObCprS59YJVzTqtqGOZCixUalTGwx0WRvaR3vkhba+pyHcYCyepsh7gBgpBTB2x8AERwrOxrfVVrx6gek59k/b1dhHT6JVaKg9xAk4n7qe13oHfseiqLV0sEkxGVZ0XyQfZEpzq1O03AOzxKFpHJ5HthCzc4uPEZQPVCSzB91EqAFxdGBz7KWCNnHT91ErO9JjgolNPcd3RTLSrmOf8KvJ3QBBIUqh6XAdT/ZVGisHjBVg+O/Kp9PcBEH5VtuBYCMo3ES8Ag4WW1mkS1xPHRay5IIwqDUqe5riROOEZsecapb7X7w0T1S6XcGnVbmP8qy1WhG7cIJ4VLScKdSOPdViPQNM1De1quHeVVbkzIWN0m5ALWgrS21Yhonuo0cFOrRduo1JaD+lySpXa5o8+ltjryPlSGPEA/dc6m14dwCUTEEU6JP8ABrYmAD1nlC+3qObAcHNOE6+xpOJIbB7pipY1aZLqdd7cdchEw2+lULwCwgTuP+EDqZggyMQfaVzjf03ENqMdxgp6nVvnSHUGPyDIPCGGiA1zRJGZj6JpwZA3f08R7qXU/MwT+W6zEpl1Ws8uAtTyDPRQwyabajuvMjHso1S2MiKTjifsVN/4sP2tpUw0e/RA6jqVUta11FrRjKLiA6hWmQwAD1CeyBttUIIdUAhpx3CnHSbuoG770NMQQ1vKbdoTNmbuq50czCEiFUFBoIqVploPMZUevf2VIODGh7sOAGcqxGkafTHqpl7gOXEmUFdlOiQ2jRY0DrtRcVRur25cW21q8NLpDnDaEA0i5uXTdXG3qWM/3Vsy6IY5rhn2CZZ/FcZLiOkKmI1G0oWrdlGkB79SpFKi90SM8fClUrUb52nsrO0tBI9IQMW1pt9RAE9IUt3oYR1Kk7NmAOFFuSAwkHnhGlddVAwEkkzxhUddxLz3VldvloJMRyFXEGTElVKcs6Ie6T9ForS1w336qv0y0JzAx3WitqIa0KLIQMLQCAIhRrkkgj64U6s2Bj7KtucGJ5RVReTudElVzmer9oVjXkvJHIUZoBqyf7IibYUc9RhXLKePlQLFowMzCtqdM44ie6BGU/SSQU41pA656JwN3HpgpCBPxlRUa4fsEzk9uipL2qZic91YahX2nGR1VLVq7nAzyVYlPWNM1KjcDlaihS8qjuHVUekU9zwdsq/qeloGYCiyIdV6pdRq7SZgf5VpePLJws3qFwXPjdMFFR61VzpAOD1Umwpl7gdqr6bjVqRBAlX+m0Q1nRFPNpbQ0AIKwBAUp4BiD7pmqGASQPqUEG5gRHJ5Ufc5pmE/WIkwPZR3HkOlUehgAQinCbBwMogZVewQykOAlCF5I4VZ6uQLhJ+iF7cewRNdHWUtTLVlw3Vdctid3UqLTMPAnqp1engx9VWV/Q+G4ESVHLpb0q22AB0Tj+OflVtncAtgnPup7H72Z5Qhx48xnqM5VXe0wQSREcqyovBc5k4Awo10wSS4ShWYvGNaSIwFFoVDSfEx8qy1FnqktEKpfIO7t3WoxV3bXElri75V/p9Tc5ufhY+zrEuAMYWh0y4/jsG6RIhSkqxvWwHA/wDhWY1Rn6j1K1t9T6kArM6lTLw6OQeqjbMVAdxBKJg/m5PZOXFIsece6jNf6sD2lKi3tH8AYCt6Ehv6sqhs5BB4V3a1YbHdBNHEB046o6bSG5wE3TMjiQU8OpjPRFKXA4mMcKK9u4E5EhSgOsRgBR6pE4cQOESoQBa7BCl0hDhJ9Siuy8noTx2UmkQGZOZ5VZW1gckyruk2afCoLAlwEx8K9tXTTwCEahuswiSDj4VVeU5aQcxwrupH6eqrrtmDCi1h9Yt5eSeeyy9zRdRuCQMHutzqlDcSYmVmNQtmku6EBWMC0qr6gStRZ3EgLF2bixwBx9Vf2VxwNxVGnp1AROAlfUIO4fCg0LkwMqbSh/PCgRlR0ZEd0TnkgFxSlkCRxPKYqOLSevWEV1TacgdcLm1XMkcDhcSSBg9pTLpYCA4n2IQS/PbtInPATFe5EwMEBR3OdAgfdC9jnGccqAvPBMzgJTWIbg8pjygxmYOcpHbyI4AKDql2QYMpl1dxBMJS07iATJHVI6mXSJyQEDW4vEuP/wBoagkxDu4UinQ4Jz04T4tzgngYRVfTtCZJPPAUuhaBsEgZUtlASDA9kdKi41BIwFUgW0YAdHHACk02hoBiCnm0pAngIKpA/wDOVA3WfiTgwq28qEAnsVMuD6dwOR+yqrt5cMkQqqrr1NznZBBQ21LzHdYS1Wh5O2RJU2woEmeeFUXGmWwAA7q4ZTDRAH3UWxoloHQBTo+iy0iVyYgkYVXd1AC7EmcK1uZ2kyJ6qku3AEhv19ykSq+tPqAgfHRAxkkOn90dQO4IS06cgBUWVjTMA8nuriiwANlVtkJAEK0p/obg90B7YB7pqqdrD8J14huDjkx0UO9qQzbPdFUWpXJY4tGR3VaHAuDSfcJ/U6nq2yO6i2xmqBzOEZafQaRABOMZlWlU7sSoelxStpIknj3TtcuawEAif2Uais1Gpt3GYWZuzuMjE8K31OrzudyVR3ZDnEiP90Q9Y0y6pJOfhaG1GxgjHdU+lMnJkhX9GmPL5g9EaNuPpMRwodbcQBKn1GBtPj1KFXADSeoQRXjE9ITZbJBI5TrjIyOUVOmXPngINu3MIwhGAl3Yhae0W6AUyXknouqPgYTQd2S1x9Kc3EGQnWv3CIUV7j0JCRtwaZiJ/wAKOJ+oyWlv+FV3VEsa/BJVqyqKjZEk9UzXph7XENyjNZ2nXNCp6pE9Oyt7a4D6YMgKru7Uy4xkHJTNvdGg7ZUOOnsjOtG2o2k4VJIJMd05dt3NBHB5UChWbV2uMQpfm+dQkAwEXVLe0w4+/XCo7hgDiJn6LR3jcfPZUF6drz2KRKh03Gm8lW+mXkXDGkkZkKlqhwMZGOU9YXGyuwTmeqrL0O7O6mIxIlZ6/c4SBx7LQ1XzbMd3as/qGWu6RyQsts5fMLHgESVAA9Rjupt8Hl47e6hNI3TMGO6on2tQtEZmVZWlWXACfhVFKrHaY+6sLEy5vfr7KLWgpOloyCn9hbBiFGtoMf3UskEEAFEc+QBBgEKPUAbGJx1Tzzu4gKJXeN6QphwOegRUzxyeuUD3bnzJIIXDgYMT3VRb2DzgxHsry3cfjCztu6HATnhX1pU3NA/dFiS79UkKJc5zkypzxEYUa6YCJhFZ6/o7iSR6ll9QomnUeXRn7rZXLMGTHdZrVqZ3F2RntwkZrMPaaFQ4kE8qwsa/qiUzc0TERlM27i1+JVZamhW3ARhWFvVkCTKoLSsRBnMK2tKggHlRpabi+me/umnNG4bojrKVtUEc8JDJf7e6DnOhstEe0JomcEe6eLAZB6ICwObH2QM7wYAHCF/O0mITjmloG1oXBruS0ZOEDLGBxAmf8JQIyRx0TjmET8zhEGE5IwOVNDBoNJJIn2XeTEARnqpQbJPdC6nJEGU1Qins+EsEt/TPfKcHpOQSiIl+ZA9wqGmtJcMY/updNhOYk+yBoB9QBATrXRxI6KIJwgcQAotTEyQnqjzt6TxlQrmqDxOEVDuahgjIH91VVqhyJypN1ULp9XAyqyq8l5jI7q4gqY3PIiDyr7T6BESIGFU2bA9wn7LUWFJoa09T0UpE23phrR0ISugA5zKeGMAQmavB6+6NIF3U2NJCprhzRDoOeVc3TQZmFTXDcEQT/skRFILiTHyCnaDOO56JsuIO0T9VKoUyYJ7SFUWFm0luFa0mmIUGzzEKzYfSf9kWG6jREcQqfUqm1pkdT9FcVcA4HCoNWf6H5+iFZy7fveXHPuEOn7n3APcoLp2HAgye2FJ0ZodWbzJRlrrJrvKaDjqhu6u1pT1I+XQ3z1jKrL6tJIJ+iNqXU3jf1yqqq4vIA7KVqFdzngE57KHSb5lYdYRF1pNMww57q9IOwdOqg6VQEAEcBWtVoDchRUSrI6nsoFwcloMlSa1SJMquqPLiRJkqwLTaHuHB9lOt6BOQI9kFnbH+nIHHZWRaKVPrMKC6LoHK7dKHohcYC09tJUO6eyWnjnohbmZyiLQIgrNea1z2AiVCuYB3CZGFNjKZr0927EFGbESjeCmRyIUtlw149JkKuq0CZI5TDbg272h0/Rac9xZXFBtUEtKp7y02ndGeisadczLTjn4Tr6bao3HaccKKpaF4+gTTfPb2VzZXtN+2kOvY/sqe/syJc6fkKNYah+Trg1N0juqzrQ3jQ1rgR+yz120OPqb7haa4Aq021BkETn3VDeUhJjvwFFqorNyRnH7Jil6K273+6lVSA+DCjlpbBAgz91WXobXl+n0T/wBo+uFTXjcO6fI5VvaS/S7d2BLAq29ZsDy6T7LLbLXxmqY7qvedpmJ6K0v4NQwOf2VbXcIElUdQqBsDCt7CC6ZMdlRU3fxBBkcR7q7sJjoDzCg0dqBhSoJJJOFBtXQBjHdTGg7RkQOUAP4PYGFX3JglwOSIyp1Y7ZGIVdXkbQfhChpnIM46hPtDG5GSm6VMCQe2B2TzW4IAiFUSGO9e6MDHyruxfIHcdlQMMERk+yuLBwaACpRcg7mg9UzWaHgyfdOUSCPgYSVGgTgQq0q7hmIIBzKodSoioXGJI4C0NwMOHfhVV20BwJHPZIlZC7pkVC6MKBljsq71GkSd5ENmMKqq0hMjP+VWUi1qyzPdW1rWGBB+qobeGu/wra1qjAByOfZDV5bPaR7+6kBxgcmOFWUKrh2jspbHuJEkAHsoalbtoJDeUdMjbEcIGmAdx6pWg7Y6eyNEeyZMJG04BH1TzIMgc+6F8xk8BKGiJGGieqV0wSiAP6p6rnCX8EkqAWgQQucHASIBhcHQ7hKfVk4QAAQASU4BJ+crmgRBPujAkjoEBspgNIn3XGGAxK4QDklNVXuAlA3Wq+k5yJVXcVtp3ETKlVqrc9sqquakYncTlIpmu6QXQc8AKGGGo4Ap6u8kA8Dj3R2VIuf0laZT9Otsg9Vo7anDQcBV9jQ2wSOeArag0BojKy1g4zmUxVO2ZlPkECT0Ueu4NBJjhCq+4jOfdVVd0F0Ej3hWNw6Q7g46d1VV6jtp4gjqkQAILgS0d1PtGzDjCr2jdB69VZ2lOI6z1VRZW7S0ccqc3DTH91EotxMKUG7WECAosNVnEB2FmtWqgBwwIxJWiuyGsLXEGeqyus1mAxJnuFSqO+qA7ROVYaC0urtjM8Kku6wNWBz1C0nhWlvq7uwSpGkuYo0NgPA5hUN4920uByrnUHhpmeBlZ29uC1oIGJRqqm4G4l2TghO6fSLnBx+ij16mYzJ6K20qhuIjMIi901gawQeikXDgaZHVdTo+TSTFckAhQVlxVBJHETyo9EB9SQiuXAOMxCe06iHVASPqVRbWtEbQ6PquuXw2BOOU+6GtAAAEKDdVIZyFFXpOE290lH090IE/K09PpcmCY7iEbQPp8IWsgey4uLTB4Wa4jLswMQhqAn+ZcI6DhDUcNskcoI9WmD1yFX3VsYJ4P91YVHBo6QeqbcwOE8SOFXNR+bUtSTJI6qVSvw71D6hOXdqKjXEfaFU16b6DzBiOR3VZXXmMrtgznlU2p6eXjzaTiC3hLb6k12CQCFMFVtVuI91D7TNBual1pQFYHzaOD7qJdgyXNG33PRSNIcKVd9NxG1wxHdLfU3OcWwUVn6rSKhMnI+yi3LyAGtImeeqlXvoeZzBwqy4rE8jBzyqzXoulVPN0S2fxLYUW/bhxBS+HKpOgUJB68pLxwg4gLLf6ZbUGw4l2Cq2rJBEkFXF/Sc4nkke3RVFVu3HPuDwqGGg729xjCutPdxEe6pxDXicQrayMRHTsg0NpJAE//SsGjY2ZEdu6r7EkhsnCmvIBEdEDFw+Gkg8mIUB3pPMuBUus/wBUE8meFELS7PvgqFSKLSSSc44TmzlLRaIIzhK70AnJ6kIAAcKha3HvCsLJxkDmeVXB5DvrKl2riHj34yqjQ0XTHHCfP6VCtXgtEYUx0jPRGohXFPKqrprWzn7K5rc9fhVl2wcmM9kGav6cyDwqesyAOmYlaK+pyQ7aewCpa9JwaTz89VWKgsY4OBJk9hwp9sSD+kZUE++DMKTRftc3HPugtqTzHY/Km0CXPbiVV0nmR74U6g9wcOJ7qCxbIG9GIg84Mpqm4kEQAJTkhobB+UaONO2CO2fZC90yOp4K5jgSR0TnpLOYUoa5IZIBnCQuc05P7ow0OduASObJ9iEA7XZMyTwiawuJJkmMrm55OCjaA1xkoODRux2hGP08IGk7iW8e6JzjxCBCTt5yo1arAmeRlPPdLQBAHdQrhxAwMBBEuXmNpMA9FWXR2PMZI91Kua210DpmQVCrHe+f3KoaALngZ+SrbTrYtjAyc9VAt6Y38z/ZXtjSAcBwgsranABz8dlLpy1owm6I2gHEJ5rY6lRXOI2woNw4kgZjupjuOeVCuZnbHyhVZdYJbGOJVZUJJJI4wrO4MS0HhV1RpdJkfRWM0NKXOEmc4VxZsIGW4PYKpoMAlxzt7d1cWwhg5hBYUR1AiRlSXHjPumKA4kZT9TkKNIt3BaZ6jlYvWyA6AcLXXlSWx2GFjNcqTvcCBByql+mbrP3XHz1W88H0C2xdXPBwF50KpdV+q9U0am620eg2AJbKtTkzqNQAk9uR3WXvrveTl3OPZXetXIptMQXDusdc3Rc85AkzjukW1KpHzHNHcrXaJa+mYj4WX0mj5zgSJ4zK3OnUfJo55IUpD1wQ1pHb91U3VUMaeqn3T8O57Ki1G5O0xMTH/wCIItWq6pVGIzyrvTqGxocTkfuqazouuKzQ0T8rRsaKVMN6hQFVdMmRBVJq17Ttml7nNAapt3dBjCXEDsOF5v4i1t17fflqElrD6o7qtT5ezvO1v1hcwYHRMucQ4Bxwn2OniErp31tLKF5K47twOVwIJJP2Rzrg6AThM13ksBalf6euOYTT3EiCommXPcTGTHRc18H1CMLnANJzKbIBEA5KqHS4P4xIVdd02kRAJT76jmkbT0TT6ri6SJEIKitZkS9gIiVFpXdSjU2uxHc9FfVGB5MmZEKrvbIF52tmFWcSrK/pmq1+8Aq6uXh9MPGdwWBrGrbvgkwtf4eunX+mQfU5mJSkqu1CmQNxlwnhZ69lgMyIWrv2FrXAjnCymqNw9sl3RE6b3wv6vDtAhxOMfKO6HpLnfuu8LhrfDtqTP6ckpbgbg5vTlRufSjv6khxiB8cqkrODXQ0QFbalJmHeyp6xGfZA0H+s4IKttPmRxlVFMlp4VxaGIOBIxCDQWh2s/wDpSXu9W09Qodm4EAGDPZSaoDiMxGEEertLoBjom20y4l2YbiE68Bro6fCcZG0wOiKOk3GO3CVxDW8zHJStbEZI+EDhAdHXlQNbiHSG4T1vUMnGQVFe4zOE9Q9OT6vZVlfWVTERKtGS5shUli6QP2lXVN3o5CjUNVszhVlwC7kdeIVnWJghVlwXB2DgYVFTcN3Eg4HcKkvmGYbEK/qtJ+AVU3rSA7k9hCIoqgIJG33gomPyD/4U49mXA5TAEGIARlZ0akhplT7dwJJwqq3eDHOOVY0TLuDKNLSi47Z5HdOh+5oKiUTBAme6kB8DhA5vO7rzwnQWwJ56Jlpk5HWUW4znjspQ4wtDsnlc7sOO6SBg+yXkCOJygFucI2kOHEpBEcRBXZIIHCBRM4/dc8gnkhI4lpkcoaj4byZhA3UqbY2gQe6gXFX1Ok/dP1X89J91Aqy4DP1SCJWfu4PCi7sz0PRPvMPcGwQUrKLS4AiIVEmypbqjYgg9YV9a0tgkAH3VdZ0g0AN5PTsrakA0czICgkMf2J/wnwY5nPdMU4nPCde6GjsigqGSRER3ChXWJc36qXUcY9RM9FEunQ39IP1QqsuRLpA57qFVdtdjqIUu4ccyQDx8qvdU3GDMT06qodot6gc8Dore2Ia0GCSO/RVtqASBBHVWdAnsFRZW4kggc9Snag9XH1Ue13HPRP1XcwJ6KKrb8gCWnJWH1+oG06gbzyVtNQy2cCOSsF4lMMqO2mY5ViVRaO38zf02nO5wx7SvWq7m0qFOm07QAvMvBNFtzrNICTt9RXpGov2T0jopRm9duQQWNAjhx7rIVKnmXGwQYV7rlw5tN7nQOwVDpjDcXO6MFVGx8O2ocGwFrh6ae3iOqrNBtW0aIdGYVjWqbAQOFlUDUK20FoJnv3WeuJrV2tnBP0KtNQqAkZkKvtqHmV/0490FppVr5QDoxzlTK9UAk/sgNQW9ENJz88Kk1jVfy1B75DWtySqKjxjr/wCVomhQefMqAgDt7rO+HdIdVq+Y9pc45JPVNW9Opr+puung7SYaOwW/03S2WdMS3jslW39NW2anPyE8w44wmWAwB7QnmiIz0U1sUpouyO6cBzygcxpbAPVGbCbZyNsJp+TEJzgATAQGemfZIyZcwgwTJ9ky5vqx2Tx9MHrCAAcOPKoYe8AEN/smXlp5BHsFILMYyCmqjAzJMkjCBky39Jn/AAkdDhG7J5CHe6XN2wOqBzmgA7vgKiBfaeKzXA/dB4VuXaZq/wCVrOPlVhtGOqsHt3NgHnMqpugWRUYJewzM9UZaPWLfY8xMLJanTe4ODQJhbN726jptC7aSGvaAR2IWa1SjtpkyJJ+qJ01/h2m4eH7UECdglJdNOchsYKPw7P8AoFuCfUBzCC74kuWW59M/fsA3SR8dVTXYAEgQB+6vL5u4ufEDoqa5A2/vnhUQ2hxeDOOytrKTBkGVVMEOBJj3hWtk/gYQXloPUJj2KmlhLekqDaCII4U4Oc727FANSluAdAPwnKLAB6upyEoaAzJMz+yRoLSZwOQgN20A46cJgndO0fKkF0kkQP8AKjOJggGZ7IumajgDAhJQeS+TgShrHaXdYiTCCk4y0CRmflGV7YmSDiFd0z6R8dFQWckDjDvsrm3dDf1dVMah+qBBJOOyrrgD1Rzyp9UgsVdXIcXCAFRXVgOMEn91WXlMudMxKtaxO4EgGFBuG7hMyURR1ae0x1I7qMaWY6+6sbkbj6Z7ZCg1OcnAyrDHUgAZ3H78KwtnDYM7oVYAScGVLtqpkCQM4UFvSeWAYycHCkUzgyZHYKJTeSC7kJ0PgdYQSW5xmE8CA346So7HbmCIkZ4T/AkxKlBiGjBRdMmAm8beEbXFzjgwg4EudHRKDLpzt6rizBAJlCCSB7D9kCuLQMcpqo8bCQcpXQWkn9lHqPDQSMII9eoS+REcKJVftG2cHmE7VPocS7PKibp4PVUMkHfgHvwpltR3kg7u89kwykC5xcYHzyrC1aDO0H3QTLem0BrhIKn0xHVR6AJGAeFKZumSop1jQIwT8pXu5iP9krGwJSOwThA24wJcYChXMEySZ7BTakBscR7qBVaWkvJMZ+qCru2ukunP9goO0F/U9SrG5y17vfsq8GYcTCqLC0YWgR8qfSADgMqHaOMAkYhTWcD1COZQT7VwkROeifqcHIB+FGtDAiQfcJ+t+mJRVTqBApPl0fThee+LqhFu9xJ4gLfaiQaZlxz7LzjxpU22uXHLsBWIf/C+mauo16pHpa2JW31WrsDp5WQ/C5gbRuKxd+qBHaFoNce5whp5MJRjPElxgU5ILjMdlM8K2PmvkjhU+svNXUw0mdoAWy8JWzWUxiJSjXWbPKpgBuI6KPfO7fcqW2GM5IwoN85u0ECTH0CyKa5zWIAzEcdSplhQFNoLhJI5PRNULcOdvcZhBqV820ty4EfKoY1bUmUCQHe2Vg9Sva2t3n5WiSaTT6j/AFFJ4g1irXufy9u6X1DJ67QtD4Q8OinTbVewkjJVVbeG9AZZUWuIGekcK7uCGAH2Sueyk3aHdI4Vbe3zcnfAhRGobO2R+6WTHwkY0cJZEfJ4UdA7skpNxg8IjExCAtJBIB/2RKRxnn6JHEbsCAELmvBEHlNmo7OM9PdVg47aG9cnlNENbJOZzKE19pzxHBC4VBHqEiMBBxM+ooXgdM9QSla7fMfpnso9Vxw0YnoOiALmnAiAD3VbcU6hEjAHKtBVbxmVGuKPnNc5r89u6uoqRfCk4seeRE/+co37a4BAlvBTd1ZGp+lp7SoIfWs3FjpLe3ZBotAuSyjWs3Gdp3Nb2HVR9StxUc5pHA4BVZZ6h5Go0KpMtcdrvaVob5p3B4byPuiVbaGC3R6Lc4CG6A5IJ9kekEf6e2JgILxvae5PZRqfSk1AOcTkAKmumenJ9wFbXrI3EmYzwqevn0mR/hBDbAqdc8K0sWu3d49lXwWuBHfnurKwqS6J29igvrUOLIgT7KY2GkdenKhWVUcA8dFObJMwZQODHaYSxzMRyjDfT0lC87RAAAhA2MuO0fRM1AAHf3TtUkRBymHGAZieyCPXIAiffKba5wewj6IiMkuIATbXbgM5mETFpa1TMDAxyry2rBzQOJwFnbOd7c/KvrV7QN2d3CLE8iWnieqr6/6iY9lPMlmBhRLn0gY+ymqrawzwoFYQC1pwrG5O4mBx1UC43GQ36qoraocfSJg8KvqU45B9sqfXcWuLWworocS2JgdUEMOAeQf3T9I5MGUxUZtqEkdMJ63DZxyVRbUHEGBMlSZmMTAhQ7Zxa+QPr7qawnaOCCVA7bkASf5eieBOCRgppkNfAEgp2kScOPHspQ4HOmClpu9YxlDukfqJ/wAom+kggcoFqOAmOvdDI2loMe/ZG4lwIACbAEnnjCAC7bMHhQ6zskTycp+odk8x7qHWcA3dMkqiNc1YeWTiFHaYLiRAKKs4uqF0CQiaz1AuM44QFRaDEiR26q0t27RjE9FCpMM4EhWVu0kARkHhBJpxA6eykMBEDPyo7JBzxlPB0t5PPVFiQ10d1ziTwOU2CAQGicSnmkQf2UDNQTOAOir60ukOGB2U+u70kgfZVldziDBwfokFfdHDo68KE0eoZnup1fadxOdowq4vcSegGQFUT7eqQ5sklWLXjgiVVUXfpyQJlWlEghBZWY9MkdE9Wy09/ZNWsgQDOOqdfwYHyoqkvxDXuMg5AC8x8d19lAAtmTj/AHXpupEbXAT3yvLfxAgUGmf5oytRI0P4bM2aYXGQXHcrPXHR6i+Mqt8EnytKpt/7YKLxDcbadUjhjTHsiayYcLnUnuEGXGF6b4dtTTtmktGYXmHhxvn3rTnLl7Dp1MUrdg4wpVv+j78NjhQbppqEgHhTaxJPRQXv27i7nogi3bjb08ECByvPvFHiE0yabHS92GtV/wCKtbba27juAEd+qwWj2VxrOo/mKwLsw0RwFRb+FtAqXNwLisNznZJXpVrRFpSaxvpIEKNo+n07O2ADADEfspNxUaJMieyimLqsMlo56dFV13As4yFIubxlMEclVde6dVBkbQO2ZRcehgHcD04K4tGzj7pTj5Sbg0kGBKBANzQY6psP2uMzlEZievZASHZnnCIVzoBDnc5TL9m2eyXZMyZICBzS1kgY7IgCwg7unCjuJbwE657zUIJhoSPcNpE5Ig9UDHm7XEl3HCR7t/UEnI9kbqbNhJzgmAFErO8sFzRJlAThtcfVB6LhVE7SRAUMXWx3qOTwldWZJdyVQ44mo/EcquuqbXucx3QqV+Ya4wBBd17qPcUiCXBwG7JRKotRovt2gtJ2mSCtVot+NV0mk8kl7BsdnOFQ3A3Dy6hwU14arP0zU6lk7DKvqYSiPRdKd/wgHGeqG4LnMcB/+rtLzbE8yUF07YTEkjostT6Ut5icj6HlU9xBdzIVrXa6s55xyqmqfWRGFQDWtDs5+SptoyHTAE9FDp5JMcKbasJe2Z7ZKC5sgG9J6qzpERgAT3VXakkgEiAVY02dT04EoJLXw0gujqm3jzC05hG5giQOe6UNJMSAB2UUzUaNojp+6iOBEkkgdApVRjmFxkcYEqNX3Ejb7k+yqITz6s8JKUcOJ/2CSpMuaDgHmEFItcATlzeERaUXGYaBhW9q53+VTWxh0CAIn3CtLaoJ2z06IsXLC3YMkhR7kdB9E5SMt446paokCUaxW1mwO+eVW3PqBDYGchWV3AJJPVV1YSeQcTKMq2uA055Kh1G7geAptYhsSDJHCivc2HiCgiPEvkz2HujpiIxn27JHAvM5HbKUQx2MkBBNt2iMiCT16Kaz0tjdgKDSd06kKYyGtEmUElhGDIwnmkbpEQVFGDtGBEynmOa/E5QPtPp24KNzuIgAdkzLXM7QP3Rb8njjogMkBk8z2QuJY3sUoIDR84ykcHOpkA/uoI1YuPSXcYKhVQD7nsOilVZb9+hUJ5GfVJ9lQxU6jjsFzGzDjKN7JdkiIR0htxlBKoSdpMwFY0R7wTlQKUxsAwptF0UxnhFO8ARlOMILIIJlAwtgFsyngCDmNqBWATJMAJ39LSZ5TTXtBw6UczM8KBqs47cEKuuw7Dhknop1Q7WgcqDXEvO2T7BIVW1QGg+4wob8HngqZctcHAe3BUFwLcEwVUSKLw7AP1VpakHrJEKot3y8dSVa2Y2kmfdBcW4giTynaolhE85TFsDM8p6ofQZIhFil1J3pLRGepXmHjppNqxuwkeYPplenaiYYWjA+JXm/jakX2rDBkPH90iLLwrXAsmtkTEFD4qeKen3Dg7kD6Jjw2QLduZ9k143fGk7CCCagCv7T9g8B2Xn1fMIGMr1G3BaBABBwAsd+H9h5Onte4ep2QVuKVMEclSqbqgQcZ5ys9rt4bamSDkZJ7K/1Cp5TcOyRiV5R488QVBUNlSePNfLSB0CRYz+p6g/XtSdSpuLqDHfcreeE9FFrRFRzTn2Wc8HaGC5r3t989V6ZTpNpUdoAAjj3VK4v2tDe2P2VdeVyGF8tG0wnriqACJiCqe7qBzpL4noTyoQzc1dzg7DiEwxrqtUjiU5sLhiSpdna+ndtJjOUV//Z" alt="Peren Açık" loading="lazy">
     </div>
     <div class="about-text reveal">
-      <div class="eyebrow"><span class="lang-inline" data-lang="tr">Hakkımda</span><span class="lang-inline" data-lang="en">About</span></div>
-      <h2><span class="lang-inline" data-lang="tr">Mutfaktan mutfağa, <em>denizden köye.</em></span><span class="lang-inline" data-lang="en">Kitchen to kitchen, <em>sea to village.</em></span></h2>
+      <div class="eyebrow">Hakkımda</div>
+      <h2>Mutfaktan mutfağa, <em>denizden köye.</em></h2>
 
-      <div class="lang-block" data-lang="tr">
+      
         <p>20 yılı aşkın mutfak kariyerime İstanbul'da başladım: Cibalıkapı Balıkçısı'nda Ermeni, Rum ve Türk meze geleneğini öğrendim. Mövenpick Hotel İstanbul'a stajla girdim ve üç ay sonra Chef de Partie (Garde Manger) olarak terfi ettim; Azzur à la carte restoranının soğuk mutfağından sorumlu oldum. Fire House'da executive şeflik, Crowne Plaza Harbiye'de chef de partie ve Celebrity Cruises'ta (Celebrity Infinity) Garde Manger olarak deniz mutfağında çalıştım.</p>
         <p>11 yıl boyunca Türk Hava Yolları için DO&CO'da senior uçan şef olarak, 10 saati aşan uçuşlarda business class menülerini hazırladım. Bu süreçte Abu Dhabi ve Meksika Formula 1 yarışlarında, DO&CO Münih'te pastry chef olarak görev aldım. Şimdi Ayvalık'tan, tüm bu deneyimi restoran, otel ve yat işletmelerine online ve yerinde danışmanlık olarak sunuyorum.</p>
-        <div class="about-quote">"Pes etmeden önce mutfağınıza bir şans daha verin; çoğu zaman çözüm sandığınızdan yakın."</div>
+        <div class="about-quote">"Pes etmeden önce mutfağınıza bir şans daha verin; çoğu zaman çözüm sandığınızdan yakın."
       </div>
-      <div class="lang-block" data-lang="en">
-        <p>My 20+ year career began in Istanbul at Cibalıkapı Balıkçısı, where I learned the Armenian, Greek and Turkish meze traditions. I joined Mövenpick Hotel Istanbul as an intern and was promoted to Chef de Partie (Garde Manger) after three months, running the cold kitchen at its à la carte restaurant, Azzur. I went on to be executive chef at Fire House, chef de partie at Crowne Plaza Harbiye, and Garde Manger at sea with Celebrity Cruises (Celebrity Infinity).</p>
-        <p>For 11 years I served as a senior flying chef at DO&CO for Turkish Airlines, preparing business-class menus on flights of over 10 hours. Along the way I cooked as a pastry chef at the Abu Dhabi and Mexico Formula 1 races and at DO&CO Munich. From my base in Ayvalık, I now bring all of that experience to restaurants, hotels and yachts, online and on-site.</p>
-        <div class="about-quote">"Before you give up on your kitchen, give it one more chance; the fix is often closer than you think."</div>
+      
       </div>
 
       <div class="badges">
-        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> THY/DO&CO · 11 <span class="lang-inline" data-lang="tr">Yıl</span><span class="lang-inline" data-lang="en">Yrs</span></span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> THY/DO&CO · 11 Yıl</span>
         <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Formula 1</span>
-        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> DO&CO <span class="lang-inline" data-lang="tr">Münih</span><span class="lang-inline" data-lang="en">Munich</span></span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> DO&CO Münih</span>
         <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Celebrity Cruises</span>
         <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> STCW</span>
-        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">Liman Cüzdanı</span><span class="lang-inline" data-lang="en">Seaman's Book</span></span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Liman Cüzdanı</span>
       </div>
     </div>
   </div>
@@ -770,48 +796,48 @@
     <polygon points="94,50 50,56 54,50 50,44" fill="rgba(201,164,99,.4)" stroke="none"/>
   </svg>
   <div class="section-inner section-narrow reveal">
-    <div class="eyebrow"><span class="lang-inline" data-lang="tr">Rota</span><span class="lang-inline" data-lang="en">The Route</span></div>
+    <div class="eyebrow">Rota</div>
     <h2>
-      <span class="lang-inline" data-lang="tr">20 yıllık bir rota, şimdi sizin mutfağınıza çıkıyor.</span>
-      <span class="lang-inline" data-lang="en">Twenty years on the move, now arriving in your kitchen.</span>
+      20 yıllık bir rota, şimdi sizin mutfağınıza çıkıyor.
+      
     </h2>
   </div>
 
   <div class="section-inner route-map">
     <div class="route-stop reveal">
       <div class="route-dot"></div>
-      <div class="route-tag"><span class="lang-inline" data-lang="tr">Başlangıç</span><span class="lang-inline" data-lang="en">The Start</span></div>
-      <div class="route-place"><span class="lang-inline" data-lang="tr">İstanbul · Mövenpick</span><span class="lang-inline" data-lang="en">Istanbul · Mövenpick</span></div>
+      <div class="route-tag">Başlangıç</div>
+      <div class="route-place">İstanbul · Mövenpick</div>
       <div class="route-desc">
-        <span class="lang-inline" data-lang="tr">Meze geleneğiyle başlayan kök; Mövenpick'te stajdan 3 ayda Chef de Partie'ye terfi.</span>
-        <span class="lang-inline" data-lang="en">Roots in meze tradition; promoted from intern to Chef de Partie at Mövenpick in three months.</span>
+        Meze geleneğiyle başlayan kök; Mövenpick'te stajdan 3 ayda Chef de Partie'ye terfi.
+        
       </div>
     </div>
     <div class="route-stop reveal">
       <div class="route-dot"></div>
-      <div class="route-tag"><span class="lang-inline" data-lang="tr">Otel & Deniz</span><span class="lang-inline" data-lang="en">Hotel & Sea</span></div>
-      <div class="route-place"><span class="lang-inline" data-lang="tr">Crowne Plaza · Celebrity Cruises</span><span class="lang-inline" data-lang="en">Crowne Plaza · Celebrity Cruises</span></div>
+      <div class="route-tag">Otel & Deniz</div>
+      <div class="route-place">Crowne Plaza · Celebrity Cruises</div>
       <div class="route-desc">
-        <span class="lang-inline" data-lang="tr">Chef de partie ve executive şeflik; uluslararası sularda deniz mutfağı ve erzak planlama.</span>
-        <span class="lang-inline" data-lang="en">Chef de partie and executive roles; galley operations and provisioning in international waters.</span>
+        Chef de partie ve executive şeflik; uluslararası sularda deniz mutfağı ve erzak planlama.
+        
       </div>
     </div>
     <div class="route-stop reveal">
       <div class="route-dot"></div>
-      <div class="route-tag"><span class="lang-inline" data-lang="tr">Gökyüzü & Sahne</span><span class="lang-inline" data-lang="en">Sky & Stage</span></div>
-      <div class="route-place"><span class="lang-inline" data-lang="tr">THY / DO&CO · Formula 1</span><span class="lang-inline" data-lang="en">THY / DO&CO · Formula 1</span></div>
+      <div class="route-tag">Gökyüzü & Sahne</div>
+      <div class="route-place">THY / DO&CO · Formula 1</div>
       <div class="route-desc">
-        <span class="lang-inline" data-lang="tr">11 yıl senior uçan şef; Abu Dhabi & Meksika F1 ve DO&CO Münih'te pastry chef.</span>
-        <span class="lang-inline" data-lang="en">11 years as senior flying chef; pastry chef at Abu Dhabi & Mexico F1 and DO&CO Munich.</span>
+        11 yıl senior uçan şef; Abu Dhabi & Meksika F1 ve DO&CO Münih'te pastry chef.
+        
       </div>
     </div>
     <div class="route-stop current reveal">
       <div class="route-dot"></div>
-      <div class="route-tag"><span class="lang-inline" data-lang="tr">Şimdi</span><span class="lang-inline" data-lang="en">Now</span></div>
+      <div class="route-tag">Şimdi</div>
       <div class="route-place">Ayvalık</div>
       <div class="route-desc">
-        <span class="lang-inline" data-lang="tr">Online ve yerinde menü danışmanlığı: Ege kıyıları ve Türkiye geneli.</span>
-        <span class="lang-inline" data-lang="en">Online and on-site menu consultancy across the Aegean coast and Turkey.</span>
+        Online ve yerinde menü danışmanlığı: Ege kıyıları ve Türkiye geneli.
+        
       </div>
     </div>
   </div>
@@ -821,35 +847,35 @@
 <section class="services" id="hizmetler">
   <div class="section-inner">
     <div class="reveal">
-      <div class="eyebrow"><span class="lang-inline" data-lang="tr">Hizmetler</span><span class="lang-inline" data-lang="en">Services</span></div>
-      <h2><span class="lang-inline" data-lang="tr">Mutfağınızın neresinde sıkıştıysanız, <em>oradan başlıyoruz.</em></span><span class="lang-inline" data-lang="en">Wherever your kitchen is stuck, <em>that's where we start.</em></span></h2>
+      <div class="eyebrow">Hizmetler</div>
+      <h2>Mutfağınızın neresinde sıkıştıysanız, <em>oradan başlıyoruz.</em></h2>
     </div>
 
     <div class="services-list">
       <div class="service-row reveal">
         <span class="service-num">01</span>
-        <h3><span class="lang-inline" data-lang="tr">Menü Tasarımı & Yeni Konsept</span><span class="lang-inline" data-lang="en">Menu Design & New Concepts</span></h3>
-        <p><span class="lang-inline" data-lang="tr">Hedef kitlenize, mekânınıza ve mutfak kapasitenize göre kurgulanmış, satılabilir ve uygulanabilir bir menü. Sıfırdan açılışlarda konsept dahil.</span><span class="lang-inline" data-lang="en">A sellable, executable menu built around your audience, venue and kitchen capacity, with concept included for new openings.</span></p>
+        <h3>Menü Tasarımı & Yeni Konsept</h3>
+        <p>Hedef kitlenize, mekânınıza ve mutfak kapasitenize göre kurgulanmış, satılabilir ve uygulanabilir bir menü. Sıfırdan açılışlarda konsept dahil.</p>
       </div>
       <div class="service-row reveal">
         <span class="service-num">02</span>
-        <h3><span class="lang-inline" data-lang="tr">Maliyet Hesabı & Karlılık</span><span class="lang-inline" data-lang="en">Cost Analysis & Profitability</span></h3>
-        <p><span class="lang-inline" data-lang="tr">Her tabağın gram gram gerçek maliyeti, porsiyon disiplini ve kar marjı. Menü mühendisliğiyle yıldız ve yük tabaklarınızı ayırıyoruz.</span><span class="lang-inline" data-lang="en">The true cost of every dish gram by gram, portion discipline and margins. Menu engineering separates your stars from your dead weight.</span></p>
+        <h3>Maliyet Hesabı & Karlılık</h3>
+        <p>Her tabağın gram gram gerçek maliyeti, porsiyon disiplini ve kar marjı. Menü mühendisliğiyle yıldız ve yük tabaklarınızı ayırıyoruz.</p>
       </div>
       <div class="service-row reveal">
         <span class="service-num">03</span>
-        <h3><span class="lang-inline" data-lang="tr">Reçete Standardizasyonu</span><span class="lang-inline" data-lang="en">Recipe Standardization</span></h3>
-        <p><span class="lang-inline" data-lang="tr">Şef değişse de tat değişmesin: ölçülü, fotoğraflı, tekrarlanabilir reçete kartları ve hazırlık listeleri.</span><span class="lang-inline" data-lang="en">The chef may change; the taste shouldn't. Measured, photographed, repeatable recipe cards and prep lists.</span></p>
+        <h3>Reçete Standardizasyonu</h3>
+        <p>Şef değişse de tat değişmesin: ölçülü, fotoğraflı, tekrarlanabilir reçete kartları ve hazırlık listeleri.</p>
       </div>
       <div class="service-row reveal">
         <span class="service-num">04</span>
-        <h3><span class="lang-inline" data-lang="tr">Mevsimsel Menü Güncellemesi</span><span class="lang-inline" data-lang="en">Seasonal Menu Updates</span></h3>
-        <p><span class="lang-inline" data-lang="tr">Sezona, yerel ürüne ve maliyet dalgalanmalarına göre düzenli menü yenileme, özellikle turizm sezonu öncesi.</span><span class="lang-inline" data-lang="en">Regular refreshes aligned with season, local produce and cost swings, especially before the tourist season.</span></p>
+        <h3>Mevsimsel Menü Güncellemesi</h3>
+        <p>Sezona, yerel ürüne ve maliyet dalgalanmalarına göre düzenli menü yenileme, özellikle turizm sezonu öncesi.</p>
       </div>
       <div class="service-row reveal">
         <span class="service-num">05</span>
-        <h3><span class="lang-inline" data-lang="tr">Mutfak Ekibi Eğitimi</span><span class="lang-inline" data-lang="en">Kitchen Team Training</span></h3>
-        <p><span class="lang-inline" data-lang="tr">Reçeteleri ve standartları sahada uygulayabilen bir ekip için yerinde, pratik eğitim ve servis düzeni.</span><span class="lang-inline" data-lang="en">Hands-on, on-site training so your team applies recipes and standards consistently on the line.</span></p>
+        <h3>Mutfak Ekibi Eğitimi</h3>
+        <p>Reçeteleri ve standartları sahada uygulayabilen bir ekip için yerinde, pratik eğitim ve servis düzeni.</p>
       </div>
     </div>
   </div>
@@ -859,27 +885,27 @@
 <section>
   <div class="section-inner">
     <div class="reveal">
-      <div class="eyebrow"><span class="lang-inline" data-lang="tr">Nasıl Çalışıyoruz</span><span class="lang-inline" data-lang="en">How It Works</span></div>
-      <h2><span class="lang-inline" data-lang="tr">Dört adımda, formdan menüye.</span><span class="lang-inline" data-lang="en">Four steps from form to finished menu.</span></h2>
+      <div class="eyebrow">Nasıl Çalışıyoruz</div>
+      <h2>Dört adımda, formdan menüye.</h2>
     </div>
 
     <div class="process-grid">
       <div class="process-step reveal">
-        <h3><span class="lang-inline" data-lang="tr">Form</span><span class="lang-inline" data-lang="en">The Form</span></h3>
-        <p><span class="lang-inline" data-lang="tr">2 dakikalık ön başvuru formunu doldurun. 48 saat içinde dönüyorum.</span><span class="lang-inline" data-lang="en">Fill in the 2-minute form. I get back to you within 48 hours.</span></p>
+        <h3>Form</h3>
+        <p>2 dakikalık ön başvuru formunu doldurun. 48 saat içinde dönüyorum.</p>
       </div>
       <div class="process-step reveal">
-        <h3><span class="lang-inline" data-lang="tr">Keşif Görüşmesi</span><span class="lang-inline" data-lang="en">Discovery Call</span></h3>
-        <p><span class="lang-inline" data-lang="tr">30 dakikalık görüşmede işletmenizi ve hedeflerinizi dinliyorum.</span><span class="lang-inline" data-lang="en">A 30-minute call where I listen to your business and goals.</span></p>
-        <span class="free-tag"><span class="lang-inline" data-lang="tr">Ücretsiz</span><span class="lang-inline" data-lang="en">Free</span></span>
+        <h3>Keşif Görüşmesi</h3>
+        <p>30 dakikalık görüşmede işletmenizi ve hedeflerinizi dinliyorum.</p>
+        <span class="free-tag">Ücretsiz</span>
       </div>
       <div class="process-step reveal">
-        <h3><span class="lang-inline" data-lang="tr">Analiz & Teklif</span><span class="lang-inline" data-lang="en">Analysis & Proposal</span></h3>
-        <p><span class="lang-inline" data-lang="tr">Mevcut menünüzü ve maliyetlerinizi inceleyip net bir kapsam ve fiyat sunuyorum.</span><span class="lang-inline" data-lang="en">I review your menu and costs, then present a clear scope and price.</span></p>
+        <h3>Analiz & Teklif</h3>
+        <p>Mevcut menünüzü ve maliyetlerinizi inceleyip net bir kapsam ve fiyat sunuyorum.</p>
       </div>
       <div class="process-step reveal">
-        <h3><span class="lang-inline" data-lang="tr">Menü Teslimatı</span><span class="lang-inline" data-lang="en">Menu Delivery</span></h3>
-        <p><span class="lang-inline" data-lang="tr">Reçeteler, maliyet tabloları ve gerekiyorsa ekip eğitimiyle teslim.</span><span class="lang-inline" data-lang="en">Delivered with recipes, cost sheets and team training if needed.</span></p>
+        <h3>Menü Teslimatı</h3>
+        <p>Reçeteler, maliyet tabloları ve gerekiyorsa ekip eğitimiyle teslim.</p>
       </div>
     </div>
   </div>
@@ -889,69 +915,69 @@
 <section class="packages" id="paketler">
   <div class="section-inner">
     <div class="reveal">
-      <div class="eyebrow"><span class="lang-inline" data-lang="tr">Paketler & Fiyatlar</span><span class="lang-inline" data-lang="en">Packages & Pricing</span></div>
-      <h2><span class="lang-inline" data-lang="tr">Net fiyat, net kapsam. <em>Sürpriz yok.</em></span><span class="lang-inline" data-lang="en">Clear price, clear scope. <em>No surprises.</em></span></h2>
+      <div class="eyebrow">Paketler & Fiyatlar</div>
+      <h2>Net fiyat, net kapsam. <em>Sürpriz yok.</em></h2>
     </div>
 
     <div class="pkg-grid">
       <div class="pkg-card reveal">
-        <div class="pkg-name"><span class="lang-inline" data-lang="tr">Temel</span><span class="lang-inline" data-lang="en">Basic</span></div>
-        <div class="pkg-tag"><span class="lang-inline" data-lang="tr">Menünüze hızlı bir dış göz</span><span class="lang-inline" data-lang="en">A quick outside eye on your menu</span></div>
+        <div class="pkg-name">Temel</div>
+        <div class="pkg-tag">Menünüze hızlı bir dış göz</div>
         <ul class="pkg-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">Menü & maliyet analizi</span><span class="lang-inline" data-lang="en">Menu & cost analysis</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">1 danışmanlık görüşmesi</span><span class="lang-inline" data-lang="en">1 consulting session</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">Yazılı öneri raporu</span><span class="lang-inline" data-lang="en">Written recommendations</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Menü & maliyet analizi</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 1 danışmanlık görüşmesi</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Yazılı öneri raporu</li>
         </ul>
         <div class="pkg-price">4.000 ₺<span style="font-size:1rem;font-weight:400;">'den</span></div>
-        <div class="pkg-price-sub"><span class="lang-inline" data-lang="tr">başlayan · tek seferlik</span><span class="lang-inline" data-lang="en">starting · one-time</span></div>
-        <a class="pkg-cta" href="#form"><span class="lang-inline" data-lang="tr">Bu paketle başla</span><span class="lang-inline" data-lang="en">Start with Basic</span></a>
+        <div class="pkg-price-sub">başlayan · tek seferlik</div>
+        <a class="pkg-cta" href="#form">Bu paketle başla</a>
       </div>
 
       <div class="pkg-card featured reveal">
-        <div class="pkg-ribbon"><span class="lang-inline" data-lang="tr">En çok tercih edilen</span><span class="lang-inline" data-lang="en">Most popular</span></div>
-        <div class="pkg-name"><span class="lang-inline" data-lang="tr">Standart</span><span class="lang-inline" data-lang="en">Standard</span></div>
-        <div class="pkg-tag"><span class="lang-inline" data-lang="tr">Baştan sona tam menü süreci</span><span class="lang-inline" data-lang="en">The full menu process, end to end</span></div>
+        <div class="pkg-ribbon">En çok tercih edilen</div>
+        <div class="pkg-name">Standart</div>
+        <div class="pkg-tag">Baştan sona tam menü süreci</div>
         <ul class="pkg-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">Tam süreç danışmanlığı</span><span class="lang-inline" data-lang="en">Full-process consulting</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">Standart reçete kartları</span><span class="lang-inline" data-lang="en">Standardized recipe cards</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">Maliyet & karlılık tablosu</span><span class="lang-inline" data-lang="en">Cost & profitability sheet</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Tam süreç danışmanlığı</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Standart reçete kartları</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Maliyet & karlılık tablosu</li>
         </ul>
         <div class="pkg-price">12.000 ₺<span style="font-size:1rem;font-weight:400;">'den</span></div>
-        <div class="pkg-price-sub"><span class="lang-inline" data-lang="tr">başlayan · proje bazlı</span><span class="lang-inline" data-lang="en">starting · per project</span></div>
-        <a class="pkg-cta" href="#form"><span class="lang-inline" data-lang="tr">Bu paketle başla</span><span class="lang-inline" data-lang="en">Start with Standard</span></a>
+        <div class="pkg-price-sub">başlayan · proje bazlı</div>
+        <a class="pkg-cta" href="#form">Bu paketle başla</a>
       </div>
 
       <div class="pkg-card reveal">
         <div class="pkg-name">Premium</div>
-        <div class="pkg-tag"><span class="lang-inline" data-lang="tr">Standart + sahada uygulama</span><span class="lang-inline" data-lang="en">Standard + on-site execution</span></div>
+        <div class="pkg-tag">Standart + sahada uygulama</div>
         <ul class="pkg-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">Standart paketin tümü</span><span class="lang-inline" data-lang="en">Everything in Standard</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">Aylık takip görüşmesi (3 ay)</span><span class="lang-inline" data-lang="en">Monthly follow-up calls (3 months)</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">Yerinde reçete uygulaması</span><span class="lang-inline" data-lang="en">On-site recipe implementation</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">Konsepte uygun 2 imza "yıldız ürün"</span><span class="lang-inline" data-lang="en">2 signature "star dishes" matched to your concept</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Standart paketin tümü</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Aylık takip görüşmesi (3 ay)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Yerinde reçete uygulaması</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Konsepte uygun 2 imza "yıldız ürün"</li>
         </ul>
         <div class="pkg-price">20.000 ₺<span style="font-size:1rem;font-weight:400;">'den</span></div>
-        <div class="pkg-price-sub"><span class="lang-inline" data-lang="tr">başlayan · sahada uygulama dahil</span><span class="lang-inline" data-lang="en">starting · incl. on-site work</span></div>
-        <a class="pkg-cta" href="#form"><span class="lang-inline" data-lang="tr">Bu paketle başla</span><span class="lang-inline" data-lang="en">Start with Premium</span></a>
+        <div class="pkg-price-sub">başlayan · sahada uygulama dahil</div>
+        <a class="pkg-cta" href="#form">Bu paketle başla</a>
       </div>
 
       <div class="pkg-card custom reveal">
-        <div class="pkg-name"><span class="lang-inline" data-lang="tr">Size Özel</span><span class="lang-inline" data-lang="en">Tailored</span></div>
-        <div class="pkg-tag"><span class="lang-inline" data-lang="tr">Bu kalıplara sığmayan ihtiyaçlar için</span><span class="lang-inline" data-lang="en">For needs that don't fit a box</span></div>
+        <div class="pkg-name">Size Özel</div>
+        <div class="pkg-tag">Bu kalıplara sığmayan ihtiyaçlar için</div>
         <ul class="pkg-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">Yat & tekne sezon menüleri</span><span class="lang-inline" data-lang="en">Yacht & charter season menus</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">Açılış öncesi yoğun destek</span><span class="lang-inline" data-lang="en">Intensive pre-opening support</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> <span class="lang-inline" data-lang="tr">Tek seferlik kriz / hızlı çözüm</span><span class="lang-inline" data-lang="en">One-off crisis / quick fix</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Yat & tekne sezon menüleri</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Açılış öncesi yoğun destek</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Tek seferlik kriz / hızlı çözüm</li>
         </ul>
-        <div class="pkg-custom-line"><span class="lang-inline" data-lang="tr">Size özel teklif</span><span class="lang-inline" data-lang="en">A tailored quote</span></div>
-        <div class="pkg-price-sub"><span class="lang-inline" data-lang="tr">ihtiyacınıza göre kurgulanır</span><span class="lang-inline" data-lang="en">built around your needs</span></div>
-        <a class="pkg-cta wa-cta" href="https://wa.me/905335675622" target="_blank" rel="noopener"><span class="lang-inline" data-lang="tr">Konuşalım</span><span class="lang-inline" data-lang="en">Let's talk</span></a>
+        <div class="pkg-custom-line">Size özel teklif</div>
+        <div class="pkg-price-sub">ihtiyacınıza göre kurgulanır</div>
+        <a class="pkg-cta wa-cta" href="https://wa.me/905335675622" target="_blank" rel="noopener">Konuşalım</a>
       </div>
     </div>
 
     <p class="pkg-note" style="margin-top: 24px;">
-      <span class="lang-inline" data-lang="tr">Fiyatlar işletmenin büyüklüğüne ve menü kapsamına göre belirlenir; net teklif ücretsiz görüşmenin ardından verilir.</span>
-      <span class="lang-inline" data-lang="en">Prices depend on the size of the business and the scope of the menu; a firm quote follows the free call.</span>
+      Fiyatlar işletmenin büyüklüğüne ve menü kapsamına göre belirlenir; net teklif ücretsiz görüşmenin ardından verilir.
+      
     </p>
   </div>
 </section>
@@ -968,20 +994,20 @@
 <section>
   <div class="section-inner">
     <div class="reveal">
-      <div class="eyebrow"><span class="lang-inline" data-lang="tr">Referanslar</span><span class="lang-inline" data-lang="en">Testimonials</span></div>
-      <h2><span class="lang-inline" data-lang="tr">Mutfaklardan gelen sözler.</span><span class="lang-inline" data-lang="en">Words from the kitchens.</span></h2>
+      <div class="eyebrow">Referanslar</div>
+      <h2>Mutfaklardan gelen sözler.</h2>
     </div>
 
     <div class="quotes-grid">
       <div class="quote-card reveal">
-        <p><span class="lang-inline" data-lang="tr">"[Müşteri yorumu buraya gelecek]"</span><span class="lang-inline" data-lang="en">"[Client testimonial goes here]"</span></p>
+        <p>"[Müşteri yorumu buraya gelecek]"</p>
         <div class="quote-who">[Ad Soyad]</div>
-        <div class="quote-where"><span class="lang-inline" data-lang="tr">[Restoran adı], Ayvalık</span><span class="lang-inline" data-lang="en">[Restaurant name], Ayvalık</span></div>
+        <div class="quote-where">[Restoran adı], Ayvalık</div>
       </div>
       <div class="quote-card reveal">
-        <p><span class="lang-inline" data-lang="tr">"[İkinci yorum buraya]"</span><span class="lang-inline" data-lang="en">"[Second testimonial here]"</span></p>
+        <p>"[İkinci yorum buraya]"</p>
         <div class="quote-who">[Ad Soyad]</div>
-        <div class="quote-where"><span class="lang-inline" data-lang="tr">[Otel / Yat adı], Bodrum</span><span class="lang-inline" data-lang="en">[Hotel / Yacht name], Bodrum</span></div>
+        <div class="quote-where">[Otel / Yat adı], Bodrum</div>
       </div>
     </div>
   </div>
@@ -992,30 +1018,30 @@ GIZLI-BITIS -->
 <section class="faq">
   <div class="section-inner section-narrow">
     <div class="reveal">
-      <div class="eyebrow"><span class="lang-inline" data-lang="tr">Sık Sorulanlar</span><span class="lang-inline" data-lang="en">FAQ</span></div>
-      <h2><span class="lang-inline" data-lang="tr">Aklınıza takılanlar.</span><span class="lang-inline" data-lang="en">Questions you might have.</span></h2>
+      <div class="eyebrow">Sık Sorulanlar</div>
+      <h2>Aklınıza takılanlar.</h2>
     </div>
 
     <div class="faq-list reveal">
       <details>
-        <summary><span class="lang-inline" data-lang="tr">Danışmanlık tamamen online mı yapılıyor?</span><span class="lang-inline" data-lang="en">Is the consultancy fully online?</span></summary>
-        <div class="faq-body"><span class="lang-inline" data-lang="tr">Çoğu süreç online yürütülebilir: görüşmeler, menü analizi, reçete kartları ve maliyet tabloları. Ekip eğitimi ve mutfak gözlemi için Ege kıyılarına yerinde ziyaret de yapıyorum; uzak şehirler için seyahat ayrıca planlanır.</span><span class="lang-inline" data-lang="en">Most of the process works online: calls, menu analysis, recipe cards and cost sheets. For team training and kitchen observation I also do on-site visits along the Aegean coast; travel to other cities is planned separately.</span></div>
+        <summary>Danışmanlık tamamen online mı yapılıyor?</summary>
+        <div class="faq-body">Çoğu süreç online yürütülebilir: görüşmeler, menü analizi, reçete kartları ve maliyet tabloları. Ekip eğitimi ve mutfak gözlemi için Ege kıyılarına yerinde ziyaret de yapıyorum; uzak şehirler için seyahat ayrıca planlanır.</div>
       </details>
       <details>
-        <summary><span class="lang-inline" data-lang="tr">Süreç ne kadar sürüyor?</span><span class="lang-inline" data-lang="en">How long does it take?</span></summary>
-        <div class="faq-body"><span class="lang-inline" data-lang="tr">Temel paket genelde 1 hafta içinde tamamlanır. Standart paket, menü büyüklüğüne göre 3–6 hafta sürer. Sezon açılışına yetişmek istiyorsanız erken başlamak her zaman avantajdır.</span><span class="lang-inline" data-lang="en">The Basic package usually completes within a week. Standard takes 3–6 weeks depending on menu size. If you're aiming for season opening, starting early is always an advantage.</span></div>
+        <summary>Süreç ne kadar sürüyor?</summary>
+        <div class="faq-body">Temel paket genelde 1 hafta içinde tamamlanır. Standart paket, menü büyüklüğüne göre 3–6 hafta sürer. Sezon açılışına yetişmek istiyorsanız erken başlamak her zaman avantajdır.</div>
       </details>
       <details>
-        <summary><span class="lang-inline" data-lang="tr">Sıfırdan açılan bir işletmeye de yardımcı oluyor musunuz?</span><span class="lang-inline" data-lang="en">Do you help brand-new businesses too?</span></summary>
-        <div class="faq-body"><span class="lang-inline" data-lang="tr">Evet. Konsept, menü kurgusu, mutfak iş akışı ve açılış öncesi ekip eğitimi dahil sıfırdan kurulum desteği veriyorum. Form üzerinde "sıfırdan kuruyorum" seçeneğini işaretlemeniz yeterli.</span><span class="lang-inline" data-lang="en">Yes. I support new openings end-to-end: concept, menu structure, kitchen workflow and pre-opening team training. Just tick "starting from scratch" on the form.</span></div>
+        <summary>Sıfırdan açılan bir işletmeye de yardımcı oluyor musunuz?</summary>
+        <div class="faq-body">Evet. Konsept, menü kurgusu, mutfak iş akışı ve açılış öncesi ekip eğitimi dahil sıfırdan kurulum desteği veriyorum. Form üzerinde "sıfırdan kuruyorum" seçeneğini işaretlemeniz yeterli.</div>
       </details>
       <details>
-        <summary><span class="lang-inline" data-lang="tr">Yat mutfakları için neden ayrıca uzmanlık gerekiyor?</span><span class="lang-inline" data-lang="en">Why do yacht galleys need specific expertise?</span></summary>
-        <div class="faq-body"><span class="lang-inline" data-lang="tr">Dar alan, sınırlı soğuk depo, dalgalı denizde pişirme ve erzak planlaması karada öğrenilmez. STCW belgem, liman cüzdanım ve Celebrity Cruises'taki deniz mutfağı deneyimimle yat menülerini bu gerçeklere göre kuruyorum.</span><span class="lang-inline" data-lang="en">Tight space, limited cold storage, cooking in swell and provisioning can't be learned ashore. With my STCW certificate, seaman's book and galley experience at Celebrity Cruises, I build yacht menus around those realities.</span></div>
+        <summary>Yat mutfakları için neden ayrıca uzmanlık gerekiyor?</summary>
+        <div class="faq-body">Dar alan, sınırlı soğuk depo, dalgalı denizde pişirme ve erzak planlaması karada öğrenilmez. STCW belgem, liman cüzdanım ve Celebrity Cruises'taki deniz mutfağı deneyimimle yat menülerini bu gerçeklere göre kuruyorum.</div>
       </details>
       <details>
-        <summary><span class="lang-inline" data-lang="tr">İlk görüşme gerçekten ücretsiz mi?</span><span class="lang-inline" data-lang="en">Is the first call really free?</span></summary>
-        <div class="faq-body"><span class="lang-inline" data-lang="tr">Evet, 30 dakikalık keşif görüşmesi tamamen ücretsiz ve hiçbir taahhüt gerektirmiyor. Amaç, birbirimize uygun olup olmadığımızı görmek.</span><span class="lang-inline" data-lang="en">Yes, the 30-minute discovery call is completely free with zero commitment. The goal is simply to see if we're a good fit.</span></div>
+        <summary>İlk görüşme gerçekten ücretsiz mi?</summary>
+        <div class="faq-body">Evet, 30 dakikalık keşif görüşmesi tamamen ücretsiz ve hiçbir taahhüt gerektirmiyor. Amaç, birbirimize uygun olup olmadığımızı görmek.</div>
       </details>
     </div>
   </div>
@@ -1024,27 +1050,27 @@ GIZLI-BITIS -->
 <!-- FORM CTA -->
 <section class="form-cta" id="form">
   <div class="section-inner section-narrow reveal">
-    <div class="eyebrow"><span class="lang-inline" data-lang="tr">Başvuru</span><span class="lang-inline" data-lang="en">Get Started</span></div>
-    <h2><span class="lang-inline" data-lang="tr">Menünüzü konuşalım.</span><span class="lang-inline" data-lang="en">Let's talk about your menu.</span></h2>
+    <div class="eyebrow">Başvuru</div>
+    <h2>Menünüzü konuşalım.</h2>
     <p class="lede">
-      <span class="lang-inline" data-lang="tr">2 dakikalık formu doldurun; 48 saat içinde WhatsApp veya telefonla dönüyorum. İlk görüşme ücretsiz.</span>
-      <span class="lang-inline" data-lang="en">Fill in the 2-minute form; I'll get back within 48 hours via WhatsApp or phone. First call is free.</span>
+      2 dakikalık formu doldurun; 48 saat içinde WhatsApp veya telefonla dönüyorum. İlk görüşme ücretsiz.
+      
     </p>
     <div class="cta-actions">
       <a class="btn btn-primary" href="menu-danismanlik-formu.html">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-        <span class="lang-inline" data-lang="tr">Ön Başvuru Formunu Aç</span>
-        <span class="lang-inline" data-lang="en">Open the Application Form</span>
+        Ön Başvuru Formunu Aç
+        
       </a>
       <a class="btn btn-ghost wa-cta" href="https://wa.me/905335675622" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A8.9 8.9 0 0 0 12.04 3C7.1 3 3.1 7 3.1 11.94c0 1.78.5 3.43 1.4 4.83L3 21l4.4-1.45a8.95 8.95 0 0 0 4.62 1.27h.01c4.94 0 8.97-4 8.97-8.94 0-2.4-.94-4.65-2.4-6.3zm-5.55 13.7h-.01a7.4 7.4 0 0 1-3.78-1.04l-.27-.16-2.81.92.93-2.74-.18-.28a7.39 7.39 0 0 1-1.13-3.94c0-4.1 3.34-7.44 7.46-7.44 2 0 3.86.78 5.27 2.18a7.4 7.4 0 0 1 2.19 5.27c0 4.1-3.34 7.23-7.67 7.23z"/></svg>
-        <span class="lang-inline" data-lang="tr">Direkt WhatsApp'tan Yaz</span>
-        <span class="lang-inline" data-lang="en">Message Me on WhatsApp</span>
+        Direkt WhatsApp'tan Yaz
+        
       </a>
     </div>
     <p class="cta-fineprint">
-      <span class="lang-inline" data-lang="tr">Bilgileriniz yalnızca size dönüş yapmak için kullanılır, üçüncü kişilerle paylaşılmaz.</span>
-      <span class="lang-inline" data-lang="en">Your details are used only to get back to you and are never shared with third parties.</span>
+      Bilgileriniz yalnızca size dönüş yapmak için kullanılır, üçüncü kişilerle paylaşılmaz.
+      
     </p>
   </div>
 </section>
@@ -1055,11 +1081,11 @@ GIZLI-BITIS -->
     <div class="footer-grid">
       <div>
         <div class="footer-brand">Peren Açık <em>· Mutfak Danışmanlığı</em></div>
-        <div class="lang-block" data-lang="tr"><p>Ayvalık merkezli; Ege kıyılarına yerinde, Türkiye geneline online menü danışmanlığı.</p></div>
-        <div class="lang-block" data-lang="en"><p>Based in Ayvalık; on-site along the Aegean coast, online across Turkey.</p></div>
+        <p>Ayvalık merkezli; Ege kıyılarına yerinde, Türkiye geneline online menü danışmanlığı.</p>
+        
       </div>
       <div>
-        <h4><span class="lang-inline" data-lang="tr">İletişim</span><span class="lang-inline" data-lang="en">Contact</span></h4>
+        <h4>İletişim</h4>
         <div class="social-row">
           <a class="social-icon wa-cta" href="https://wa.me/905335675622" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A8.9 8.9 0 0 0 12.04 3C7.1 3 3.1 7 3.1 11.94c0 1.78.5 3.43 1.4 4.83L3 21l4.4-1.45a8.95 8.95 0 0 0 4.62 1.27h.01c4.94 0 8.97-4 8.97-8.94 0-2.4-.94-4.65-2.4-6.3zm-5.55 13.7h-.01a7.4 7.4 0 0 1-3.78-1.04l-.27-.16-2.81.92.93-2.74-.18-.28a7.39 7.39 0 0 1-1.13-3.94c0-4.1 3.34-7.44 7.46-7.44 2 0 3.86.78 5.27 2.18a7.4 7.4 0 0 1 2.19 5.27c0 4.1-3.34 7.23-7.67 7.23z"/></svg>
@@ -1075,18 +1101,18 @@ GIZLI-BITIS -->
         <p class="contact-line"><a href="mailto:perenacik@gmail.com">perenacik@gmail.com</a></p>
       </div>
       <div>
-        <h4><span class="lang-inline" data-lang="tr">Sayfalar</span><span class="lang-inline" data-lang="en">Sections</span></h4>
+        <h4>Sayfalar</h4>
         <ul>
-          <li><a href="#hakkimda"><span class="lang-inline" data-lang="tr">Hakkımda</span><span class="lang-inline" data-lang="en">About</span></a></li>
-          <li><a href="#hizmetler"><span class="lang-inline" data-lang="tr">Hizmetler</span><span class="lang-inline" data-lang="en">Services</span></a></li>
-          <li><a href="#paketler"><span class="lang-inline" data-lang="tr">Paketler</span><span class="lang-inline" data-lang="en">Packages</span></a></li>
-          <li><a href="#form"><span class="lang-inline" data-lang="tr">Başvuru</span><span class="lang-inline" data-lang="en">Apply</span></a></li>
+          <li><a href="#hakkimda">Hakkımda</a></li>
+          <li><a href="#hizmetler">Hizmetler</a></li>
+          <li><a href="#paketler">Paketler</a></li>
+          <li><a href="#form">Başvuru</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="lang-inline" data-lang="tr">© 2026 Peren Açık · Ayvalık / Ege Kıyıları / Türkiye geneli (online)</span>
-      <span class="lang-inline" data-lang="en">© 2026 Peren Açık · Ayvalık / Aegean Coast / Turkey-wide (online)</span>
+      © 2026 Peren Açık · Ayvalık / Ege Kıyıları / Türkiye geneli (online)
+      
     </div>
   </div>
 </footer>
@@ -1098,30 +1124,26 @@ GIZLI-BITIS -->
 
 <script>
   var WA_NUMBER = '905335675622';
-  var WA_MSG = {
-    tr: 'Merhaba Peren, menü danışmanlığı için ücretsiz görüşme almak istiyorum.',
-    en: 'Hello Peren, I would like to book a free menu consultancy call.'
-  };
-  function applyWaLinks(lang) {
-    var msg = encodeURIComponent(WA_MSG[lang] || WA_MSG.tr);
+  var WA_MSG = "Merhaba Peren, menü danışmanlığı için ücretsiz görüşme almak istiyorum.";
+  (function () {
+    document.body.classList.add('js');
+    var msg = encodeURIComponent(WA_MSG);
     document.querySelectorAll('.wa-cta').forEach(function (a) {
       a.setAttribute('href', 'https://wa.me/' + WA_NUMBER + '?text=' + msg);
     });
-  }
-  function setLang(lang) {
-    document.body.classList.toggle('show-en', lang === 'en');
-    document.getElementById('btn-tr').classList.toggle('active', lang === 'tr');
-    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-    document.documentElement.lang = lang;
-    applyWaLinks(lang);
-    try { localStorage.setItem('site-lang', lang); } catch (e) {}
-  }
-  (function () {
-    document.body.classList.add('js');
-    applyWaLinks('tr');
-    try { if (localStorage.getItem('site-lang') === 'en') setLang('en'); } catch (e) {}
 
-    // apply gentle stagger to grouped reveal items
+    // language dropdown
+    var dd = document.getElementById('langDd');
+    var btn = document.getElementById('langDdBtn');
+    if (dd && btn) {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var open = dd.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      document.addEventListener('click', function () { dd.classList.remove('open'); btn.setAttribute('aria-expanded','false'); });
+    }
+
     document.querySelectorAll(
       '.aud-grid .reveal, .route-map .reveal, .services-list .reveal, ' +
       '.process-grid .reveal, .pkg-grid .reveal, .quotes-grid .reveal'
@@ -1132,8 +1154,6 @@ GIZLI-BITIS -->
         entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
       }, { threshold: 0.12 });
       document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
-
-      // draw the route line when the map scrolls into view
       var map = document.querySelector('.route-map');
       if (map) {
         var mapObs = new IntersectionObserver(function (entries) {
