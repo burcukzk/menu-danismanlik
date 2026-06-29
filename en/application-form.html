@@ -348,12 +348,24 @@
     padding: 6px 14px; text-decoration: none; transition: background .15s, color .15s;
   }
   .lang-switch-link:hover { background: var(--copper); color: #fff; }
+  .back-link {
+    position: absolute; top: 16px; left: 16px; z-index: 5;
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
+    letter-spacing: .04em; color: rgba(255,255,255,.7);
+    text-decoration: none; padding: 6px 13px;
+    border: 1px solid rgba(255,255,255,.25); border-radius: 20px;
+    background: rgba(0,0,0,.2); transition: background .15s, color .15s, border-color .15s;
+  }
+  .back-link:hover { border-color: var(--copper); color: #fff; background: var(--copper); }
+  .back-link svg { width: 12px; height: 12px; }
 </style>
 </head>
 <body>
 
 <!-- HERO -->
 <div class="hero">
+  <a class="back-link" href="/en/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Back to site</a>
   <div class="lang-toggle">
     <a class="lang-switch-link" href="/menu-danismanlik-formu.html">TR</a>
   </div>
