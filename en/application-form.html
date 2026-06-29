@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Application Form | Peren Açık — Menu Consultancy</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:      #1a1612;
+    --smoke:    #f7f4ef;
+    --linen:    #ede8e0;
+    --copper:   #a0622a;
+    --copper-lt:#c47d3e;
+    --muted:    #7a726a;
+    --border:   #d8d0c4;
+    --white:    #ffffff;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    background: var(--smoke);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--ink);
+    padding: 56px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 120%, rgba(160,98,42,.35) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--copper-lt);
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--copper-lt);
+  }
+  .hero-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,.55);
+    max-width: 400px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── STEPS BAR ── */
+  .steps-bar {
+    background: var(--linen);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .step-pill {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .05em;
+    color: var(--muted);
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .step-pill .num {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--linen);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px;
+    color: var(--muted);
+  }
+
+  /* ── FORM WRAP ── */
+  .form-wrap {
+    max-width: 640px;
+    margin: 40px auto 80px;
+    padding: 0 20px;
+  }
+
+  /* ── SECTION ── */
+  .form-section {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px 28px;
+    margin-bottom: 20px;
+  }
+  .section-label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--copper);
+    margin-bottom: 6px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--linen);
+  }
+
+  /* ── FIELD ── */
+  .field { margin-bottom: 20px; }
+  .field:last-child { margin-bottom: 0; }
+
+  label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 7px;
+    letter-spacing: .02em;
+  }
+  label .req { color: var(--copper); margin-left: 2px; }
+  label .hint {
+    font-weight: 300;
+    color: var(--muted);
+    font-size: 11px;
+    margin-left: 4px;
+  }
+
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  select,
+  textarea {
+    width: 100%;
+    background: var(--smoke);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 11px 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--ink);
+    outline: none;
+    transition: border-color .18s, box-shadow .18s;
+    appearance: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--copper);
+    box-shadow: 0 0 0 3px rgba(160,98,42,.1);
+    background: var(--white);
+  }
+  textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+  select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a726a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+
+  /* ── CHECKBOX / RADIO GROUP ── */
+  .check-group { display: flex; flex-direction: column; gap: 9px; }
+  .check-group.horizontal { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--smoke);
+    transition: border-color .15s, background .15s;
+    user-select: none;
+  }
+  .check-item:hover { border-color: var(--copper-lt); background: var(--white); }
+  .check-item input { display: none; }
+  .check-item input:checked ~ .check-box { background: var(--copper); border-color: var(--copper); }
+  .check-item input:checked ~ .check-box::after { opacity: 1; }
+  .check-item input:checked ~ span { color: var(--ink); font-weight: 400; }
+  .check-item:has(input:checked) { border-color: var(--copper); background: #fdf8f4; }
+
+  .check-box {
+    width: 17px; height: 17px;
+    border: 1.5px solid var(--border);
+    border-radius: 4px;
+    flex-shrink: 0;
+    position: relative;
+    transition: background .15s, border-color .15s;
+  }
+  .check-box::after {
+    content: '';
+    position: absolute;
+    top: 2px; left: 5px;
+    width: 5px; height: 9px;
+    border: 2px solid white;
+    border-top: none; border-left: none;
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity .1s;
+  }
+  .radio-box {
+    width: 17px; height: 17px;
+    border: 1.5px solid var(--border);
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+    transition: background .15s, border-color .15s;
+  }
+  .check-item input:checked ~ .radio-box { border-color: var(--copper); }
+  .check-item input:checked ~ .radio-box::after { opacity: 1; }
+  .radio-box::after {
+    content: '';
+    position: absolute;
+    top: 3px; left: 3px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--copper);
+    opacity: 0;
+    transition: opacity .1s;
+  }
+
+  .check-item span { font-size: 13px; color: var(--muted); }
+
+  /* ── RANGE ── */
+  .range-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* ── SUBMIT ── */
+  .submit-section {
+    background: var(--ink);
+    border-radius: 12px;
+    padding: 32px 28px;
+    text-align: center;
+  }
+  .submit-section p {
+    font-size: 12px;
+    color: rgba(255,255,255,.45);
+    margin-bottom: 20px;
+    line-height: 1.7;
+  }
+  .submit-section p strong { color: rgba(255,255,255,.75); font-weight: 400; }
+
+  .btn-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--copper);
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .04em;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 36px;
+    cursor: pointer;
+    transition: background .18s, transform .1s;
+  }
+  .btn-submit:hover { background: var(--copper-lt); transform: translateY(-1px); }
+  .btn-submit:active { transform: translateY(0); }
+  .btn-submit svg { width: 16px; height: 16px; opacity: .85; }
+
+  /* ── SUCCESS ── */
+  .success-msg {
+    display: none;
+    background: #f0faf4;
+    border: 1px solid #a3d9b1;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  .success-msg.show { display: block; }
+  .success-msg p { font-size: 13px; color: #2d6a4f; line-height: 1.6; }
+  .success-msg strong { font-weight: 500; }
+
+  .error-msg {
+    display: none;
+    background: #fdf0ee;
+    border: 1px solid #e7b4ac;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  .error-msg.show { display: block; }
+  .error-msg p { font-size: 13px; color: #9a3b2c; line-height: 1.6; }
+
+  /* ── GOOGLE FORM LINK ── */
+  .gform-link {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .gform-link a {
+    color: var(--copper);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px dashed var(--copper-lt);
+  }
+  .gform-link a:hover { color: var(--copper-lt); }
+
+  @media (max-width: 480px) {
+    .form-section { padding: 24px 18px; }
+    .range-wrap { grid-template-columns: 1fr; }
+  }
+
+  /* ── LANGUAGE ── */
+  :root { color-scheme: light only; }
+  .lang-toggle {
+    position: absolute; top: 16px; right: 16px; z-index: 5;
+    display: flex; border: 1px solid rgba(255,255,255,.25);
+    border-radius: 20px; overflow: hidden; background: rgba(0,0,0,.2);
+  }
+  .lang-switch-link {
+    font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
+    letter-spacing: .08em; color: rgba(255,255,255,.8);
+    padding: 6px 14px; text-decoration: none; transition: background .15s, color .15s;
+  }
+  .lang-switch-link:hover { background: var(--copper); color: #fff; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="lang-toggle">
+    <a class="lang-switch-link" href="/menu-danismanlik-formu.html">TR</a>
+  </div>
+  <div class="hero-eyebrow">Menu Consultancy</div>
+  <h1>Let's redesign<br><em>your kitchen together.</em></h1>
+  <p class="hero-sub">Fill in the form and I'll get back to you within 48 hours. This is the first step toward a free discovery call.</p>
+</div>
+
+<!-- STEPS BAR -->
+<div class="steps-bar">
+  <div class="step-pill"><span class="num">1</span> Form</div>
+  <div class="step-pill"><span class="num">2</span> Discovery Call</div>
+  <div class="step-pill"><span class="num">3</span> Analysis & Proposal</div>
+  <div class="step-pill"><span class="num">4</span> Menu Delivery</div>
+</div>
+
+<!-- FORM -->
+<div class="form-wrap">
+  <form id="mainForm" action="https://formspree.io/f/xnjyoyoo" method="POST">
+
+    <!-- İşletme Bilgileri -->
+    <div class="form-section">
+      <div class="section-label">Part 1</div>
+      <div class="section-title">Business Details</div>
+
+      <div class="field">
+        <label>Full Name <span class="req">*</span></label>
+        <input type="text" name="Ad Soyad" placeholder="Ahmet Yılmaz" required>
+      </div>
+
+      <div class="field">
+        <label>Phone / WhatsApp <span class="req">*</span></label>
+        <input type="tel" name="Telefon" placeholder="+90 5XX XXX XX XX" required>
+      </div>
+
+      <div class="field">
+        <label>E-mail <span class="hint">(optional)</span></label>
+        <input type="email" name="E-posta" placeholder="ornek@email.com / example@email.com">
+      </div>
+
+      <div class="field">
+        <label>Business Name <span class="req">*</span></label>
+        <input type="text" name="Isletme Adi" placeholder="Restoran / Otel / Yat / Restaurant / Hotel / Yacht" required>
+      </div>
+
+      <div class="field">
+        <label>Business Type <span class="req">*</span></label>
+        <div class="check-group">
+          <label class="check-item">
+            <input type="radio" name="Isletme Turu" value="restoran">
+            <span class="radio-box"></span>
+            <span>Restaurant</span>
+          </label>
+          <label class="check-item">
+            <input type="radio" name="Isletme Turu" value="meyhane">
+            <span class="radio-box"></span>
+            <span>Meyhane / Seafood House</span>
+          </label>
+          <label class="check-item">
+            <input type="radio" name="Isletme Turu" value="otel">
+            <span class="radio-box"></span>
+            <span>Hotel / Boutique Hotel</span>
+          </label>
+          <label class="check-item">
+            <input type="radio" name="Isletme Turu" value="yat">
+            <span class="radio-box"></span>
+            <span>Yacht / Charter Boat</span>
+          </label>
+          <label class="check-item">
+            <input type="radio" name="Isletme Turu" value="diger">
+            <span class="radio-box"></span>
+            <span>Other</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>City / District <span class="req">*</span></label>
+        <input type="text" name="Sehir" placeholder="Ayvalık, İstanbul, Bodrum…" required>
+      </div>
+    </div>
+
+    <!-- Mevcut Durum -->
+    <div class="form-section">
+      <div class="section-label">Part 2</div>
+      <div class="section-title">Current Situation</div>
+
+      <div class="field">
+        <label>Capacity <span class="hint">(guests)</span></label>
+        <div class="range-wrap">
+          <select name="Kapasite">
+            <option value="">Seating capacity…</option>
+            <option>Under 20</option>
+            <option>20 – 50</option>
+            <option>50 – 100</option>
+            <option>100 – 200</option>
+            <option>200+</option>
+          </select>
+          <select name="Sef Sayisi">
+            <option value="">Number of chefs…</option>
+            <option>Just me</option>
+            <option>1 – 3 people</option>
+            <option>4 – 8 people</option>
+            <option>9+ people</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Do you have a current menu?</label>
+        <div class="check-group horizontal">
+          <label class="check-item">
+            <input type="radio" name="Mevcut Menu" value="evet">
+            <span class="radio-box"></span>
+            <span>Yes, I have an active menu</span>
+          </label>
+          <label class="check-item">
+            <input type="radio" name="Mevcut Menu" value="hayir">
+            <span class="radio-box"></span>
+            <span>No, starting from scratch</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>What do you most need help with? <span class="req">*</span></label>
+        <div class="check-group">
+          <label class="check-item">
+            <input type="checkbox" name="Destek Konulari" value="menu-tasarim">
+            <span class="check-box"></span>
+            <span>Menu design & new concept</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="Destek Konulari" value="maliyet">
+            <span class="check-box"></span>
+            <span>Cost analysis & profitability</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="Destek Konulari" value="recete">
+            <span class="check-box"></span>
+            <span>Recipe standardization</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="Destek Konulari" value="mevsimsel">
+            <span class="check-box"></span>
+            <span>Seasonal menu updates</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="Destek Konulari" value="egitim">
+            <span class="check-box"></span>
+            <span>Kitchen team training</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Beklentiler -->
+    <div class="form-section">
+      <div class="section-label">Part 3</div>
+      <div class="section-title">Expectations</div>
+
+      <div class="field">
+        <label>Who is your target audience?</label>
+        <div class="check-group">
+          <label class="check-item">
+            <input type="checkbox" name="Hedef Kitle" value="yerli-turist">
+            <span class="check-box"></span>
+            <span>Domestic tourists</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="Hedef Kitle" value="yabanci-turist">
+            <span class="check-box"></span>
+            <span>Foreign tourists</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="Hedef Kitle" value="yerel">
+            <span class="check-box"></span>
+            <span>Local residents</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="Hedef Kitle" value="kurumsal">
+            <span class="check-box"></span>
+            <span>Corporate / business dining</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Budget range <span class="hint">(for consulting)</span></label>
+        <select name="Butce">
+          <option value="">Select a range…</option>
+          <option>Basic: from 4.000 ₺</option>
+          <option>Standard: from 12.000 ₺</option>
+          <option>Premium: from 20.000 ₺</option>
+          <option>Tailored: decided on the call</option>
+          <option>Not decided yet</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>When would you like to start?</label>
+        <div class="check-group horizontal">
+          <label class="check-item">
+            <input type="radio" name="Baslangic Zamani" value="hemen">
+            <span class="radio-box"></span>
+            <span>This week</span>
+          </label>
+          <label class="check-item">
+            <input type="radio" name="Baslangic Zamani" value="ay">
+            <span class="radio-box"></span>
+            <span>This month</span>
+          </label>
+          <label class="check-item">
+            <input type="radio" name="Baslangic Zamani" value="esnek">
+            <span class="radio-box"></span>
+            <span>Flexible</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Anything you'd like to add</label>
+        <textarea name="Notlar" placeholder="…"></textarea>
+      </div>
+    </div>
+
+    <!-- SUBMIT -->
+    <div class="submit-section">
+      <p>After you submit, I get back to you <strong>within 48 hours</strong> by WhatsApp or phone. The first call is <strong>free</strong> and lasts 30 minutes.</p>
+      <button type="submit" class="btn-submit">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        Submit Form
+      </button>
+    </div>
+
+  </form>
+
+  <div class="success-msg" id="successMsg">
+    <p>✅ <strong>Your application has been received.</strong> Thank you for your interest, we'll be in touch shortly.</p>
+  </div>
+
+  <div class="error-msg" id="errorMsg">
+    <p>Something went wrong and the form couldn't be sent. Please try again or message on WhatsApp.</p>
+  </div>
+
+  <div class="gform-link">
+    Prefer to message instead of filling the form? →
+    <a href="https://wa.me/905335675622?text=Merhaba%20Peren%2C%20men%C3%BC%20dan%C4%B1%C5%9Fmanl%C4%B1%C4%9F%C4%B1%20i%C3%A7in%20yaz%C4%B1yorum." target="_blank" rel="noopener">Message on WhatsApp</a>
+  </div>
+</div>
+
+<script>
+  document.getElementById('mainForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var form = this;
+    var btn = form.querySelector('.btn-submit');
+    var errorMsg = document.getElementById('errorMsg');
+    errorMsg.classList.remove('show');
+    if (btn) { btn.disabled = true; btn.style.opacity = '.6'; btn.style.cursor = 'wait'; }
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(response) {
+      if (response.ok) {
+        document.getElementById('successMsg').classList.add('show');
+        form.style.display = 'none';
+        window.scrollTo({ top: document.getElementById('successMsg').offsetTop - 40, behavior: 'smooth' });
+      } else {
+        showError(btn);
+      }
+    }).catch(function() {
+      showError(btn);
+    });
+  });
+
+  function showError(btn) {
+    var errorMsg = document.getElementById('errorMsg');
+    errorMsg.classList.add('show');
+    if (btn) { btn.disabled = false; btn.style.opacity = ''; btn.style.cursor = ''; }
+    window.scrollTo({ top: errorMsg.offsetTop - 40, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
