@@ -254,6 +254,9 @@
   /* ── RANGE ── */
   .range-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
+  .field-error { display: none; margin-top: 8px; font-size: 12px; color: #9a3b2c; }
+  .field-error.show { display: block; }
+
   /* ── SUBMIT ── */
   .submit-section {
     background: var(--ink);
@@ -385,6 +388,8 @@
 <!-- FORM -->
 <div class="form-wrap">
   <form id="mainForm" action="https://formspree.io/f/xnjyoyoo" method="POST">
+    <!-- spam filter: bots fill this, people never see it -->
+    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none !important">
 
     <!-- İşletme Bilgileri -->
     <div class="form-section">
@@ -404,6 +409,28 @@
       <div class="field">
         <label>E-mail <span class="hint">(optional)</span></label>
         <input type="email" name="E-posta" placeholder="ornek@email.com / example@email.com">
+      </div>
+
+      <div class="field" id="kanalField">
+        <label>How should I get back to you? <span class="req">*</span></label>
+        <div class="check-group horizontal">
+          <label class="check-item">
+            <input type="radio" name="Donus Kanali" value="whatsapp">
+            <span class="radio-box"></span>
+            <span>WhatsApp</span>
+          </label>
+          <label class="check-item">
+            <input type="radio" name="Donus Kanali" value="telefon">
+            <span class="radio-box"></span>
+            <span>Phone call</span>
+          </label>
+          <label class="check-item">
+            <input type="radio" name="Donus Kanali" value="eposta">
+            <span class="radio-box"></span>
+            <span>Email</span>
+          </label>
+        </div>
+        <p class="field-error" id="kanalError">Please choose how you'd like me to get back to you.</p>
       </div>
 
       <div class="field">
@@ -594,7 +621,7 @@
 
     <!-- SUBMIT -->
     <div class="submit-section">
-      <p>After you submit, I get back to you <strong>within 48 hours</strong> by WhatsApp or phone. The first call is <strong>free</strong> and lasts 30 minutes.</p>
+      <p>After you submit, I get back to you <strong>within 48 hours</strong> through the channel you choose. The first call is <strong>free</strong> and lasts 30 minutes.</p>
       <button type="submit" class="btn-submit">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
         Submit Form
@@ -608,19 +635,30 @@
   </div>
 
   <div class="error-msg" id="errorMsg">
-    <p>Something went wrong and the form couldn't be sent. Please try again or message on WhatsApp.</p>
+    <p>Something went wrong and the form couldn't be sent. Please try again or write to <a href="mailto:contact@perenacik.com">contact@perenacik.com</a>.</p>
   </div>
 
-  <div class="gform-link">
-    Prefer to message instead of filling the form? →
-    <a href="https://wa.me/905335675622?text=Merhaba%20Peren%2C%20men%C3%BC%20dan%C4%B1%C5%9Fmanl%C4%B1%C4%9F%C4%B1%20i%C3%A7in%20yaz%C4%B1yorum." target="_blank" rel="noopener">Message on WhatsApp</a>
-  </div>
 </div>
 
 <script>
+
+  var emailInput = document.querySelector('input[name="E-posta"]');
+  document.querySelectorAll('input[name="Donus Kanali"]').forEach(function (r) {
+    r.addEventListener('change', function () {
+      document.getElementById('kanalError').classList.remove('show');
+      emailInput.required = (r.value === 'eposta' && r.checked);
+    });
+  });
+
   document.getElementById('mainForm').addEventListener('submit', function(e) {
     e.preventDefault();
     var form = this;
+    if (!form.querySelector('input[name="Donus Kanali"]:checked')) {
+      var ke = document.getElementById('kanalError');
+      ke.classList.add('show');
+      window.scrollTo({ top: document.getElementById('kanalField').offsetTop - 60, behavior: 'smooth' });
+      return;
+    }
     var btn = form.querySelector('.btn-submit');
     var errorMsg = document.getElementById('errorMsg');
     errorMsg.classList.remove('show');

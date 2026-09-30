@@ -43,8 +43,7 @@
   "name": "Peren Açık — Menü Danışmanlığı",
   "description": "Restoran, otel ve yat mutfakları için menü geliştirme, maliyet analizi ve reçete standardizasyonu. 20+ yıl deneyim, THY/DO&CO uçan şefliği, Formula 1 ve uluslararası deniz mutfağı geçmişi.",
   "url": "https://perenacik.com",
-  "telephone": "+905335675622",
-  "email": "perenacik@gmail.com",
+  "email": "contact@perenacik.com",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Ayvalık",
@@ -76,7 +75,7 @@
     }
   },
   "sameAs": [
-    "https://wa.me/905335675622"
+    "https://www.linkedin.com/in/peren-acik-7087773b2/"
   ]
 }
 </script>
@@ -206,16 +205,19 @@
   .lang-dd-menu a.soon::after { content: 'yakında'; margin-left: auto; font-size: 9px; letter-spacing: .04em; }
 
 
-  .nav-wa {
-    display: none; align-items: center; gap: 6px;
+  .nav-cta {
+    display: flex; align-items: center; gap: 6px; white-space: nowrap;
     background: var(--copper); color: var(--white);
     font-size: 11px; font-weight: 500; letter-spacing: .04em;
     padding: 9px 16px; border-radius: 20px; text-decoration: none;
     transition: background .15s;
   }
-  .nav-wa:hover { background: var(--copper-lt); }
-  @media (min-width: 560px) { .nav-wa { display: flex; } }
-  .nav-wa svg { width: 13px; height: 13px; }
+  .nav-cta:hover { background: var(--copper-lt); }
+  @media (max-width: 559px) {
+    .nav-cta { padding: 8px 12px; font-size: 10.5px; }
+    .nav-brand { font-size: 1.08rem; line-height: 1.15; }
+  }
+  .nav-cta svg { width: 13px; height: 13px; }
 
   /* ───────── HERO ───────── */
   .hero {
@@ -632,18 +634,6 @@
     font-size: 11px; color: rgba(255,255,255,.32); text-align: center;
   }
 
-  /* ───────── FLOATING WHATSAPP ───────── */
-  .float-wa {
-    position: fixed; bottom: 20px; right: 20px;
-    width: 54px; height: 54px; border-radius: 50%;
-    background: var(--copper);
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 10px 28px -6px rgba(160,98,42,.65);
-    z-index: 60; color: var(--white);
-    transition: background .15s, transform .15s;
-  }
-  .float-wa:hover { background: var(--copper-lt); transform: scale(1.06); }
-  .float-wa svg { width: 25px; height: 25px; }
 </style>
 </head>
 <body>
@@ -667,10 +657,7 @@
         <a class="soon" href="#"><span class="flag">🇸🇪</span>Svenska</a>
       </div>
     </div>
-    <a class="nav-wa wa-cta" href="https://wa.me/905335675622" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A8.9 8.9 0 0 0 12.04 3C7.1 3 3.1 7 3.1 11.94c0 1.78.5 3.43 1.4 4.83L3 21l4.4-1.45a8.95 8.95 0 0 0 4.62 1.27h.01c4.94 0 8.97-4 8.97-8.94 0-2.4-.94-4.65-2.4-6.3zm-5.55 13.7h-.01a7.4 7.4 0 0 1-3.78-1.04l-.27-.16-2.81.92.93-2.74-.18-.28a7.39 7.39 0 0 1-1.13-3.94c0-4.1 3.34-7.44 7.46-7.44 2 0 3.86.78 5.27 2.18a7.4 7.4 0 0 1 2.19 5.27c0 4.1-3.34 7.23-7.67 7.23z"/></svg>
-      WhatsApp
-    </a>
+    <a class="nav-cta" href="application-form.html">Book a Call</a>
   </div>
 </nav>
 
@@ -689,15 +676,10 @@
     
 
     <div class="hero-actions">
-      <a class="btn btn-primary wa-cta" href="https://wa.me/905335675622?text=Merhaba%20Peren%2C%20men%C3%BC%20dan%C4%B1%C5%9Fmanl%C4%B1%C4%9F%C4%B1%20i%C3%A7in%20%C3%BCcretsiz%20g%C3%B6r%C3%BC%C5%9Fme%20almak%20istiyorum." target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A8.9 8.9 0 0 0 12.04 3C7.1 3 3.1 7 3.1 11.94c0 1.78.5 3.43 1.4 4.83L3 21l4.4-1.45a8.95 8.95 0 0 0 4.62 1.27h.01c4.94 0 8.97-4 8.97-8.94 0-2.4-.94-4.65-2.4-6.3zm-5.55 13.7h-.01a7.4 7.4 0 0 1-3.78-1.04l-.27-.16-2.81.92.93-2.74-.18-.28a7.39 7.39 0 0 1-1.13-3.94c0-4.1 3.34-7.44 7.46-7.44 2 0 3.86.78 5.27 2.18a7.4 7.4 0 0 1 2.19 5.27c0 4.1-3.34 7.23-7.67 7.23z"/></svg>
+      <a class="btn btn-primary" href="application-form.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
         
         Book a Free Call
-      </a>
-      <a class="btn btn-ghost wa-cta" href="https://wa.me/905335675622" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A8.9 8.9 0 0 0 12.04 3C7.1 3 3.1 7 3.1 11.94c0 1.78.5 3.43 1.4 4.83L3 21l4.4-1.45a8.95 8.95 0 0 0 4.62 1.27h.01c4.94 0 8.97-4 8.97-8.94 0-2.4-.94-4.65-2.4-6.3zm-5.55 13.7h-.01a7.4 7.4 0 0 1-3.78-1.04l-.27-.16-2.81.92.93-2.74-.18-.28a7.39 7.39 0 0 1-1.13-3.94c0-4.1 3.34-7.44 7.46-7.44 2 0 3.86.78 5.27 2.18a7.4 7.4 0 0 1 2.19 5.27c0 4.1-3.34 7.23-7.67 7.23z"/></svg>
-        
-        Message on WhatsApp
       </a>
     </div>
   </div>
@@ -971,7 +953,7 @@
         </ul>
         <div class="pkg-custom-line">A tailored quote</div>
         <div class="pkg-price-sub">built around your needs</div>
-        <a class="pkg-cta wa-cta" href="https://wa.me/905335675622" target="_blank" rel="noopener">Let's talk</a>
+        <a class="pkg-cta" href="application-form.html">Let's talk</a>
       </div>
     </div>
 
@@ -1054,18 +1036,13 @@ GIZLI-BITIS -->
     <h2>Let's talk about your menu.</h2>
     <p class="lede">
       
-      Fill in the 2-minute form; I'll get back within 48 hours via WhatsApp or phone. First call is free.
+      Fill in the 2-minute form; I'll get back to you within 48 hours through the channel you choose (phone, WhatsApp or email). First call is free.
     </p>
     <div class="cta-actions">
       <a class="btn btn-primary" href="application-form.html">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
         
         Open the Application Form
-      </a>
-      <a class="btn btn-ghost wa-cta" href="https://wa.me/905335675622" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A8.9 8.9 0 0 0 12.04 3C7.1 3 3.1 7 3.1 11.94c0 1.78.5 3.43 1.4 4.83L3 21l4.4-1.45a8.95 8.95 0 0 0 4.62 1.27h.01c4.94 0 8.97-4 8.97-8.94 0-2.4-.94-4.65-2.4-6.3zm-5.55 13.7h-.01a7.4 7.4 0 0 1-3.78-1.04l-.27-.16-2.81.92.93-2.74-.18-.28a7.39 7.39 0 0 1-1.13-3.94c0-4.1 3.34-7.44 7.46-7.44 2 0 3.86.78 5.27 2.18a7.4 7.4 0 0 1 2.19 5.27c0 4.1-3.34 7.23-7.67 7.23z"/></svg>
-        
-        Message Me on WhatsApp
       </a>
     </div>
     <p class="cta-fineprint">
@@ -1087,18 +1064,14 @@ GIZLI-BITIS -->
       <div>
         <h4>Contact</h4>
         <div class="social-row">
-          <a class="social-icon wa-cta" href="https://wa.me/905335675622" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A8.9 8.9 0 0 0 12.04 3C7.1 3 3.1 7 3.1 11.94c0 1.78.5 3.43 1.4 4.83L3 21l4.4-1.45a8.95 8.95 0 0 0 4.62 1.27h.01c4.94 0 8.97-4 8.97-8.94 0-2.4-.94-4.65-2.4-6.3zm-5.55 13.7h-.01a7.4 7.4 0 0 1-3.78-1.04l-.27-.16-2.81.92.93-2.74-.18-.28a7.39 7.39 0 0 1-1.13-3.94c0-4.1 3.34-7.44 7.46-7.44 2 0 3.86.78 5.27 2.18a7.4 7.4 0 0 1 2.19 5.27c0 4.1-3.34 7.23-7.67 7.23z"/></svg>
-          </a>
           <a class="social-icon" href="https://www.linkedin.com/in/peren-acik-7087773b2/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5zM3 9h4v12H3zM9 9h3.8v1.71h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21H9z"/></svg>
           </a>
-          <a class="social-icon" href="mailto:perenacik@gmail.com" aria-label="E-posta" title="perenacik@gmail.com">
+          <a class="social-icon" href="mailto:contact@perenacik.com" aria-label="Email" title="contact@perenacik.com">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
           </a>
         </div>
-        <p class="contact-line"><a href="https://wa.me/905335675622" target="_blank" rel="noopener">+90 533 567 56 22</a></p>
-        <p class="contact-line"><a href="mailto:perenacik@gmail.com">perenacik@gmail.com</a></p>
+        <p class="contact-line"><a href="mailto:contact@perenacik.com">contact@perenacik.com</a></p>
       </div>
       <div>
         <h4>Sections</h4>
@@ -1117,20 +1090,9 @@ GIZLI-BITIS -->
   </div>
 </footer>
 
-<!-- FLOATING WHATSAPP -->
-<a class="float-wa wa-cta" href="https://wa.me/905335675622" target="_blank" rel="noopener" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A8.9 8.9 0 0 0 12.04 3C7.1 3 3.1 7 3.1 11.94c0 1.78.5 3.43 1.4 4.83L3 21l4.4-1.45a8.95 8.95 0 0 0 4.62 1.27h.01c4.94 0 8.97-4 8.97-8.94 0-2.4-.94-4.65-2.4-6.3zm-5.55 13.7h-.01a7.4 7.4 0 0 1-3.78-1.04l-.27-.16-2.81.92.93-2.74-.18-.28a7.39 7.39 0 0 1-1.13-3.94c0-4.1 3.34-7.44 7.46-7.44 2 0 3.86.78 5.27 2.18a7.4 7.4 0 0 1 2.19 5.27c0 4.1-3.34 7.23-7.67 7.23z"/></svg>
-</a>
-
 <script>
-  var WA_NUMBER = '905335675622';
-  var WA_MSG = "Hello Peren, I would like to book a free menu consultancy call.";
   (function () {
     document.body.classList.add('js');
-    var msg = encodeURIComponent(WA_MSG);
-    document.querySelectorAll('.wa-cta').forEach(function (a) {
-      a.setAttribute('href', 'https://wa.me/' + WA_NUMBER + '?text=' + msg);
-    });
 
     // language dropdown
     var dd = document.getElementById('langDd');
